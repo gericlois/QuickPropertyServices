@@ -5,7 +5,7 @@
           <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
               <!-- Uncomment the line below if you also wish to use an image logo -->
               <!-- <img src="../assets/img/logo.png" alt=""> -->
-              <h1 class="sitename">iLanding</h1>
+              <h1 class="sitename">Quick Property Services</h1>
           </a>
 
           <nav id="navmenu" class="navmenu">
@@ -15,7 +15,6 @@
                   <li><a href="services.php">Services</a></li>
                   <li><a href="portfolio.php">Porfolio</a></li>
                   <li><a href="contact.php">Contact</a></li>
-                  <li><a href="#contact">Contact</a></li>
               </ul>
               <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
           </nav>

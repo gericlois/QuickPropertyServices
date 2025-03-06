@@ -19,18 +19,19 @@
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
                                 <i class="bi bi-gear-fill me-2"></i>
-                                Working for your success
+                                Quick Property Services
                             </div>
 
                             <h1 class="mb-4">
-                                Maecenas Vitae <br>
-                                Consectetur Led <br>
-                                <span class="accent-text">Vestibulum Ante</span>
+                                Your Home, Your Vision We Make It a Reality<br>
+                                <span class="accent-text"> Transforming Homes, Enhancing Lives</span>
                             </h1>
 
                             <p class="mb-4 mb-md-5">
-                                Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.
-                                Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+                                <b>Quick Property Services LLC</b> is a family-owned business, based in Utah County,
+                                with our head office in Highland. We take our business seriously and our philosophy of
+                                “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every
+                                project.
                             </p>
 
                             <div class="hero-buttons">
@@ -114,249 +115,94 @@
 
         </section><!-- /Hero Section -->
 
-        <!-- About Section -->
-        <section id="about" class="about section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4 align-items-center justify-content-between">
-
-                    <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
-                        <span class="about-meta">MORE ABOUT US</span>
-                        <h2 class="about-title">Voluptas enim suscipit temporibus</h2>
-                        <p class="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-                        <div class="row feature-list-wrapper">
-                            <div class="col-md-6">
-                                <ul class="feature-list">
-                                    <li><i class="bi bi-check-circle-fill"></i> Lorem ipsum dolor sit amet</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Consectetur adipiscing elit</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Sed do eiusmod tempor</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="feature-list">
-                                    <li><i class="bi bi-check-circle-fill"></i> Incididunt ut labore et</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Dolore magna aliqua</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Ut enim ad minim veniam</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="info-wrapper">
-                            <div class="row gy-4">
-                                <div class="col-lg-5">
-                                    <div class="profile d-flex align-items-center gap-3">
-                                        <img src="../assets/img/avatar-1.webp" alt="CEO Profile" class="profile-image">
-                                        <div>
-                                            <h4 class="profile-name">Mario Smith</h4>
-                                            <p class="profile-position">CEO &amp; Founder</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="contact-info d-flex align-items-center gap-2">
-                                        <i class="bi bi-telephone-fill"></i>
-                                        <div>
-                                            <p class="contact-label">Call us anytime</p>
-                                            <p class="contact-number">+123 456-789</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="image-wrapper">
-                            <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                                <img src="../assets/img/about-5.webp" alt="Business Meeting"
-                                    class="img-fluid main-image rounded-4">
-                                <img src="../assets/img/about-2.webp" alt="Team Discussion"
-                                    class="img-fluid small-image rounded-4">
-                            </div>
-                            <div class="experience-badge floating">
-                                <h3>15+ <span>Years</span></h3>
-                                <p>Of experience in business service</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </section><!-- /About Section -->
-
-        <!-- Features Section -->
-        <section id="features" class="features section">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Features</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-
-                <div class="d-flex justify-content-center">
-
-                    <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
-
-                        <li class="nav-item">
-                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-                                <h4>Modisit</h4>
-                            </a>
-                        </li><!-- End tab nav item -->
-
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-                                <h4>Praesenti</h4>
-                            </a><!-- End tab nav item -->
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-                                <h4>Explica</h4>
-                            </a>
-                        </li><!-- End tab nav item -->
-
-                    </ul>
-
-                </div>
-
-                <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-
-                    <div class="tab-pane fade active show" id="features-tab-1">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Voluptatem dignissimos provident</h3>
-                                <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
-                                </p>
-                                <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                            trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="../assets/img/features-illustration-1.webp" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div><!-- End tab content item -->
-
-                    <div class="tab-pane fade" id="features-tab-2">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Neque exercitationem debitis</h3>
-                                <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
-                                </p>
-                                <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
-                                            dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                            trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="../assets/img/features-illustration-2.webp" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div><!-- End tab content item -->
-
-                    <div class="tab-pane fade" id="features-tab-3">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Voluptatibus commodi accusamu</h3>
-                                <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
-                                            dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                                </ul>
-                                <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
-                                </p>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="../assets/img/features-illustration-3.webp" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div><!-- End tab content item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Features Section -->
-
-        <!-- Features Cards Section -->
+        <!-- Choose Us Cards Section -->
         <section id="features-cards" class="features-cards section">
 
             <div class="container">
-
+                <!-- Section Title -->
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Why Choose Us?</h2>
+                    <p>Expert Craftsmanship | Seamless Process | Customer-Centric Approach</p>
+                </div><!-- End Section Title -->
                 <div class="row gy-4">
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="feature-box orange">
+                        <div class="feature-box blue">
                             <i class="bi bi-award"></i>
-                            <h4>Corporis voluptates</h4>
-                            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                            <h4>Years of Experience</h4>
+                            <p>With a proven track record in home remodeling and renovations, our team brings years of
+                                expertise to every project, ensuring top-quality results that stand the test of time.
+                            </p>
                         </div>
-                    </div><!-- End Feature Borx-->
+                    </div><!-- End Choose Us Box-->
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                         <div class="feature-box blue">
                             <i class="bi bi-patch-check"></i>
-                            <h4>Explicabo consectetur</h4>
-                            <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
+                            <h4>Fully Insured</h4>
+                            <p>We prioritize your peace of mind. Our company is fully insured, protecting you and your
+                                home throughout every phase of the remodeling process.</p>
                         </div>
-                    </div><!-- End Feature Borx-->
+                    </div><!-- End Choose Us Box-->
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="feature-box green">
+                        <div class="feature-box blue">
                             <i class="bi bi-sunrise"></i>
-                            <h4>Ullamco laboris</h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                            <h4>Cost Control Experts</h4>
+                            <p>We believe in transparency and smart budgeting. Our team works closely with you to ensure
+                                your project stays within budget without compromising on quality.</p>
                         </div>
-                    </div><!-- End Feature Borx-->
+                    </div><!-- End Choose Us Box-->
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="feature-box red">
+                        <div class="feature-box blue">
                             <i class="bi bi-shield-check"></i>
-                            <h4>Labore consequatur</h4>
-                            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                            <h4> 100% Satisfaction Guarantee</h4>
+                            <p>Your happiness is our priority. We don’t consider the job done until you’re fully
+                                satisfied with the results.</p>
                         </div>
-                    </div><!-- End Feature Borx-->
+                    </div><!-- End Choose Us Box-->
+                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="feature-box blue">
+                            <i class="bi bi-award"></i>
+                            <h4>Free Consultation</h4>
+                            <p>Not sure where to start? We offer free consultations to discuss your vision, provide
+                                expert advice, and help you make the best decisions for your home.</p>
+                        </div>
+                    </div><!-- End Choose Us Box-->
+
+                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="feature-box blue">
+                            <i class="bi bi-patch-check"></i>
+                            <h4>Satisfied Customers</h4>
+                            <p>Our clients love our work! With numerous successful projects and glowing testimonials, we
+                                have built a reputation for excellence and reliability.</p>
+                        </div>
+                    </div><!-- End Choose Us Box-->
+
+                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="feature-box blue">
+                            <i class="bi bi-sunrise"></i>
+                            <h4>Project Management</h4>
+                            <p>From planning to execution, we handle every detail of your project efficiently, ensuring
+                                a smooth process and timely completion.</p>
+                        </div>
+                    </div><!-- End Choose Us Box-->
+
+                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="feature-box blue">
+                            <i class="bi bi-shield-check"></i>
+                            <h4>Affordable Pricing</h4>
+                            <p>High-quality remodeling doesn’t have to break the bank. We offer competitive pricing and
+                                flexible options to fit your budget.</p>
+                        </div>
+                    </div><!-- End Choose Us Box-->
 
                 </div>
 
             </div>
 
-        </section><!-- /Features Cards Section -->
+        </section><!-- /Choose Us Cards Section -->
 
         <!-- Features 2 Section -->
         <section id="features-2" class="features-2 section">
@@ -524,169 +370,6 @@
             </div>
 
         </section><!-- /Call To Action Section -->
-
-        <!-- Clients Section -->
-        <section id="clients" class="clients section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="swiper init-swiper">
-                    <script type="application/json" class="swiper-config">
-                    {
-                        "loop": true,
-                        "speed": 600,
-                        "autoplay": {
-                            "delay": 5000
-                        },
-                        "slidesPerView": "auto",
-                        "pagination": {
-                            "el": ".swiper-pagination",
-                            "type": "bullets",
-                            "clickable": true
-                        },
-                        "breakpoints": {
-                            "320": {
-                                "slidesPerView": 2,
-                                "spaceBetween": 40
-                            },
-                            "480": {
-                                "slidesPerView": 3,
-                                "spaceBetween": 60
-                            },
-                            "640": {
-                                "slidesPerView": 4,
-                                "spaceBetween": 80
-                            },
-                            "992": {
-                                "slidesPerView": 6,
-                                "spaceBetween": 120
-                            }
-                        }
-                    }
-                    </script>
-                    <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-1.png" class="img-fluid"
-                                alt=""></div>
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-2.png" class="img-fluid"
-                                alt=""></div>
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-3.png" class="img-fluid"
-                                alt=""></div>
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-4.png" class="img-fluid"
-                                alt=""></div>
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-5.png" class="img-fluid"
-                                alt=""></div>
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-6.png" class="img-fluid"
-                                alt=""></div>
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-7.png" class="img-fluid"
-                                alt=""></div>
-                        <div class="swiper-slide"><img src="../assets/img/clients/client-8.png" class="img-fluid"
-                                alt=""></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-            </div>
-
-        </section><!-- /Clients Section -->
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials section light-background">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Testimonials</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-
-                <div class="row g-5">
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-item">
-                            <img src="../assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                            <h3>Saul Goodman</h3>
-                            <h4>Ceo &amp; Founder</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                    risus at semper.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-item">
-                            <img src="../assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                            <h3>Sara Wilsson</h3>
-                            <h4>Designer</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                    cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                    legam anim culpa.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="testimonial-item">
-                            <img src="../assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                            <h3>Jena Karlis</h3>
-                            <h4>Store Owner</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                    veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                    minim.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="testimonial-item">
-                            <img src="../assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                            <h3>Matt Brandon</h3>
-                            <h4>Freelancer</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                    fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem
-                                    dolore labore illum veniam.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Testimonials Section -->
 
         <!-- Stats Section -->
         <section id="stats" class="stats section">
@@ -1042,128 +725,6 @@
                 </div>
             </div>
         </section><!-- /Faq Section -->
-
-        <!-- Call To Action 2 Section -->
-        <section id="call-to-action-2" class="call-to-action-2 section dark-background">
-
-            <div class="container">
-                <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="col-xl-10">
-                        <div class="text-center">
-                            <h3>Call To Action</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum.</p>
-                            <a class="cta-btn" href="#">Call To Action</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section><!-- /Call To Action 2 Section -->
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact section light-background">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row g-4 g-lg-5">
-                    <div class="col-lg-5">
-                        <div class="info-box" data-aos="fade-up" data-aos-delay="200">
-                            <h3>Contact Info</h3>
-                            <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante
-                                ipsum primis.</p>
-
-                            <div class="info-item" data-aos="fade-up" data-aos-delay="300">
-                                <div class="icon-box">
-                                    <i class="bi bi-geo-alt"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Our Location</h4>
-                                    <p>A108 Adam Street</p>
-                                    <p>New York, NY 535022</p>
-                                </div>
-                            </div>
-
-                            <div class="info-item" data-aos="fade-up" data-aos-delay="400">
-                                <div class="icon-box">
-                                    <i class="bi bi-telephone"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Phone Number</h4>
-                                    <p>+1 5589 55488 55</p>
-                                    <p>+1 6678 254445 41</p>
-                                </div>
-                            </div>
-
-                            <div class="info-item" data-aos="fade-up" data-aos-delay="500">
-                                <div class="icon-box">
-                                    <i class="bi bi-envelope"></i>
-                                </div>
-                                <div class="content">
-                                    <h4>Email Address</h4>
-                                    <p>info@example.com</p>
-                                    <p>contact@example.com</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7">
-                        <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
-                            <h3>Get In Touch</h3>
-                            <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante
-                                ipsum primis.</p>
-
-                            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                                data-aos-delay="200">
-                                <div class="row gy-4">
-
-                                    <div class="col-md-6">
-                                        <input type="text" name="name" class="form-control" placeholder="Your Name"
-                                            required="">
-                                    </div>
-
-                                    <div class="col-md-6 ">
-                                        <input type="email" class="form-control" name="email" placeholder="Your Email"
-                                            required="">
-                                    </div>
-
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" name="subject" placeholder="Subject"
-                                            required="">
-                                    </div>
-
-                                    <div class="col-12">
-                                        <textarea class="form-control" name="message" rows="6" placeholder="Message"
-                                            required=""></textarea>
-                                    </div>
-
-                                    <div class="col-12 text-center">
-                                        <div class="loading">Loading</div>
-                                        <div class="error-message"></div>
-                                        <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                                        <button type="submit" class="btn">Send Message</button>
-                                    </div>
-
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section><!-- /Contact Section -->
 
     </main>
 
