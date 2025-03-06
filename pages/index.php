@@ -47,7 +47,8 @@
 
                     <div class="col-lg-6">
                         <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                            <img src="../assets/img/illustration-1.webp" alt="Hero Image" class="img-fluid">
+                            <img src="../assets/img/6.png" alt="Hero Image" class="img-fluid" width="500" height="auto">
+
 
                             <div class="customers-badge">
                                 <div class="customer-avatars">
@@ -58,7 +59,7 @@
                                     <img src="../assets/img/avatar-5.webp" alt="Customer 5" class="avatar">
                                     <span class="avatar more">12+</span>
                                 </div>
-                                <p class="mb-0 mt-2">12,000+ lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                                <p class="mb-0 mt-2">1200+ Satisfied Customers all over the country.</p>
                             </div>
                         </div>
                     </div>
@@ -68,11 +69,11 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <i class="bi bi-trophy"></i>
+                                <i class="bi bi-people"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>3x Won Awards</h4>
-                                <p class="mb-0">Vestibulum ante ipsum</p>
+                                <h4>Expert Remodeling Team</h4>
+                                <p class="mb-0"> Skilled professionals with years of experience.</p>
                             </div>
                         </div>
                     </div>
@@ -82,30 +83,30 @@
                                 <i class="bi bi-briefcase"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>6.5k Faucibus</h4>
-                                <p class="mb-0">Nullam quis ante</p>
+                                <h4>Seamless Process</h4>
+                                <p class="mb-0"> From consultation to completion, we handle it all.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <i class="bi bi-graph-up"></i>
+                                <i class="bi bi-emoji-smile"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>80k Mauris</h4>
-                                <p class="mb-0">Etiam sit amet orci</p>
+                                <h4>Customer-First Approach</h4>
+                                <p class="mb-0">We listen, plan, and execute to exceed expectations.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <i class="bi bi-award"></i>
+                                <i class="bi bi-coin"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>6x Phasellus</h4>
-                                <p class="mb-0">Vestibulum ante ipsum</p>
+                                <h4>Transparent Pricing </h4>
+                                <p class="mb-0">No hidden fees, just honest and fair estimates.</p>
                             </div>
                         </div>
                     </div>
@@ -128,7 +129,7 @@
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                         <div class="feature-box blue">
-                            <i class="bi bi-award"></i>
+                            <i class="bi bi-alarm"></i>
                             <h4>Years of Experience</h4>
                             <p>With a proven track record in home remodeling and renovations, our team brings years of
                                 expertise to every project, ensuring top-quality results that stand the test of time.
@@ -147,7 +148,7 @@
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                         <div class="feature-box blue">
-                            <i class="bi bi-sunrise"></i>
+                            <i class="bi bi-hammer"></i>
                             <h4>Cost Control Experts</h4>
                             <p>We believe in transparency and smart budgeting. Our team works closely with you to ensure
                                 your project stays within budget without compromising on quality.</p>
@@ -156,7 +157,7 @@
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                         <div class="feature-box blue">
-                            <i class="bi bi-shield-check"></i>
+                            <i class="bi bi-house-check"></i>
                             <h4> 100% Satisfaction Guarantee</h4>
                             <p>Your happiness is our priority. We don’t consider the job done until you’re fully
                                 satisfied with the results.</p>
@@ -164,7 +165,7 @@
                     </div><!-- End Choose Us Box-->
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                         <div class="feature-box blue">
-                            <i class="bi bi-award"></i>
+                            <i class="bi bi-telephone-outbound"></i>
                             <h4>Free Consultation</h4>
                             <p>Not sure where to start? We offer free consultations to discuss your vision, provide
                                 expert advice, and help you make the best decisions for your home.</p>
@@ -173,7 +174,7 @@
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                         <div class="feature-box blue">
-                            <i class="bi bi-patch-check"></i>
+                            <i class="bi bi-people"></i>
                             <h4>Satisfied Customers</h4>
                             <p>Our clients love our work! With numerous successful projects and glowing testimonials, we
                                 have built a reputation for excellence and reliability.</p>
@@ -182,7 +183,7 @@
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                         <div class="feature-box blue">
-                            <i class="bi bi-sunrise"></i>
+                            <i class="bi bi-briefcase"></i>
                             <h4>Project Management</h4>
                             <p>From planning to execution, we handle every detail of your project efficiently, ensuring
                                 a smooth process and timely completion.</p>
@@ -191,7 +192,7 @@
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                         <div class="feature-box blue">
-                            <i class="bi bi-shield-check"></i>
+                            <i class="bi bi-currency-dollar"></i>
                             <h4>Affordable Pricing</h4>
                             <p>High-quality remodeling doesn’t have to break the bank. We offer competitive pricing and
                                 flexible options to fit your budget.</p>
