@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/head.php" ?>
+<?php 
+session_start();
+include "includes/head.php" ?>
 
 <body class="index-page">
 
@@ -385,8 +387,8 @@
                 <div class="row">
 
                     <div class="col-lg-5" data-aos="fade-up">
-                        <h2 class="faq-title"> What services do you offer through this website?/h2>
-                        <p class="faq-description">We provide a wide range of professional services, including home maintenance, repairs, renovations, and more. You can browse available services and book them easily through our platform.</p>
+                        <h2 class="faq-title"> Find Answers to Common Questions</h2>
+                        <p class="faq-description">Have questions? We've got you covered! Browse through our frequently asked questions to find detailed answers about our services, features, and how we can assist you. If you don’t see your question here, feel free to reach out to our support team for further assistance.</p>
                         <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
                             <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
