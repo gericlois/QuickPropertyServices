@@ -1351,11 +1351,11 @@ section,
 
 .features-2 .phone-mockup {
   position: relative;
-  padding: 30px 0;
+  padding: 10px 0;
 }
 
 .features-2 .phone-mockup img {
-  max-width: 300px;
+  max-width: 100%;
   height: auto;
   filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
 }

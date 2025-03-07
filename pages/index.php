@@ -124,7 +124,8 @@
                 <div class="container section-title" data-aos="fade-up">
                     <h2>Why Choose Us?</h2>
                     <p>Expert Craftsmanship | Seamless Process | Customer-Centric Approach</p>
-                </div><!-- End Section Title -->
+                </div>
+                <!-- End Section Title -->
                 <div class="row gy-4">
 
                     <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
@@ -209,17 +210,22 @@
         <section id="features-2" class="features-2 section">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+                <!-- Section Title -->
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Experience Seamless Performance Across All Platforms</h2>
+                    <p>Our platform is designed for speed, security, and accessibility—ensuring a flawless user experience on any device, any browser, anytime.</p>
+                </div>
+                <!-- End Section Title -->
                 <div class="row align-items-center">
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
 
                         <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
                             <div class="d-flex align-items-center justify-content-end gap-4">
                                 <div class="feature-content">
-                                    <h3>Use On Any Device</h3>
-                                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                                        Curae; In ac dui quis mi consectetuer lacinia.</p>
+                                    <h3>Works on Any Device</h3>
+                                    <p>Enjoy a seamless experience across all devices, from desktops to smartphones. Our
+                                        platform is built to adapt flawlessly to any screen size.</p>
                                 </div>
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-display"></i>
@@ -230,9 +236,9 @@
                         <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
                             <div class="d-flex align-items-center justify-content-end gap-4">
                                 <div class="feature-content">
-                                    <h3>Feather Icons</h3>
-                                    <p>Phasellus ullamcorper ipsum rutrum nunc nunc nonummy metus vestibulum volutpat
-                                        sapien arcu sed augue aliquam erat volutpat.</p>
+                                    <h3>Modern & Intuitive Icons</h3>
+                                    <p>Our clean and minimal icons enhance usability, making navigation effortless and
+                                        visually appealing.</p>
                                 </div>
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-feather"></i>
@@ -243,9 +249,9 @@
                         <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
                             <div class="d-flex align-items-center justify-content-end gap-4">
                                 <div class="feature-content">
-                                    <h3>Retina Ready</h3>
-                                    <p>Aenean tellus metus bibendum sed posuere ac mattis non nunc vestibulum fringilla
-                                        purus sit amet fermentum aenean commodo.</p>
+                                    <h3>Crystal Clear Display (Retina Ready)</h3>
+                                    <p>Experience sharp, high-resolution visuals designed to look stunning on all modern
+                                        screens.</p>
                                 </div>
                                 <div class="feature-icon flex-shrink-0">
                                     <i class="bi bi-eye"></i>
@@ -255,13 +261,14 @@
 
                     </div>
 
-                    <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
                         <div class="phone-mockup text-center">
-                            <img src="../assets/img/phone-app-screen.webp" alt="Phone Mockup" class="img-fluid">
+                            <img src="../assets/img/laptop.png" alt="Phone Mockup" class="img-fluid" width="100%"
+                                height="auto">
                         </div>
                     </div><!-- End Phone Mockup -->
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
 
                         <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
                             <div class="d-flex align-items-center gap-4">
@@ -269,9 +276,9 @@
                                     <i class="bi bi-code-square"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>W3c Valid Code</h3>
-                                    <p>Donec vitae sapien ut libero venenatis faucibus nullam quis ante etiam sit amet
-                                        orci eget eros faucibus tincidunt.</p>
+                                    <h3> Clean & Optimized Code (W3C Valid)</h3>
+                                    <p>We follow best coding practices, ensuring a high-quality, error-free website that
+                                        performs efficiently.</p>
                                 </div>
                             </div>
                         </div><!-- End .feature-item -->
@@ -282,9 +289,9 @@
                                     <i class="bi bi-phone"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Fully Responsive</h3>
-                                    <p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet
-                                        adipiscing sem neque sed ipsum.</p>
+                                    <h3> Fully Responsive Design</h3>
+                                    <p>No matter the device, our layout adjusts dynamically to provide a smooth browsing
+                                        experience.</p>
                                 </div>
                             </div>
                         </div><!-- End .feature-item -->
@@ -295,9 +302,9 @@
                                     <i class="bi bi-browser-chrome"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Browser Compatibility</h3>
-                                    <p>Nullam dictum felis eu pede mollis pretium integer tincidunt cras dapibus vivamus
-                                        elementum semper nisi aenean vulputate.</p>
+                                    <h3>Cross-Browser Compatibility</h3>
+                                    <p>Our website is optimized to work perfectly on all major web browsers, ensuring a
+                                        consistent experience everywhere.</p>
                                 </div>
                             </div>
                         </div><!-- End .feature-item -->
@@ -316,10 +323,9 @@
 
                 <div class="row content justify-content-center align-items-center position-relative">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="display-4 mb-4">Maecenas tempus tellus eget condimentum</h2>
-                        <p class="mb-4">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                            Curae; Donec velit neque, auctor sit amet aliquam vel</p>
-                        <a href="#" class="btn btn-cta">Call To Action</a>
+                        <h2 class="display-4 mb-4">Get the Services You Need, Anytime, Anywhere!</h2>
+                        <p class="mb-4">Our platform connects you with top professionals for hassle-free service booking. Enjoy seamless, secure, and efficient solutions at your fingertips.</p>
+                        <a href="#" class="btn btn-cta">Book a Service Now ⟶ </a>
                     </div>
 
                     <!-- Abstract Background Elements -->
@@ -372,267 +378,6 @@
 
         </section><!-- /Call To Action Section -->
 
-        <!-- Stats Section -->
-        <section id="stats" class="stats section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Clients</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Projects</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Hours Of Support</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Workers</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Stats Section -->
-
-        <!-- Services Section -->
-        <section id="services" class="services section light-background">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row g-4">
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-activity"></i>
-                            </div>
-                            <div>
-                                <h3>Nesciunt Mete</h3>
-                                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus
-                                    dolores iure perferendis tempore et consequatur.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-diagram-3"></i>
-                            </div>
-                            <div>
-                                <h3>Eosle Commodi</h3>
-                                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque
-                                    eum hic non ut nesciunt dolorem.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-easel"></i>
-                            </div>
-                            <div>
-                                <h3>Ledo Markt</h3>
-                                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id
-                                    voluptas adipisci eos earum corrupti.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-clipboard-data"></i>
-                            </div>
-                            <div>
-                                <h3>Asperiores Commodit</h3>
-                                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea
-                                    fuga sit provident adipisci neque.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Services Section -->
-
-        <!-- Pricing Section -->
-        <section id="pricing" class="pricing section light-background">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Pricing</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row g-4 justify-content-center">
-
-                    <!-- Basic Plan -->
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="pricing-card">
-                            <h3>Basic Plan</h3>
-                            <div class="price">
-                                <span class="currency">$</span>
-                                <span class="amount">9.9</span>
-                                <span class="period">/ month</span>
-                            </div>
-                            <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                accusantium doloremque laudantium totam.</p>
-
-                            <h4>Featured Included:</h4>
-                            <ul class="features-list">
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Duis aute irure dolor
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Excepteur sint occaecat
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Nemo enim ipsam voluptatem
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-primary">
-                                Buy Now
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Standard Plan -->
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="pricing-card popular">
-                            <div class="popular-badge">Most Popular</div>
-                            <h3>Standard Plan</h3>
-                            <div class="price">
-                                <span class="currency">$</span>
-                                <span class="amount">19.9</span>
-                                <span class="period">/ month</span>
-                            </div>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium voluptatum.</p>
-
-                            <h4>Featured Included:</h4>
-                            <ul class="features-list">
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Lorem ipsum dolor sit amet
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Consectetur adipiscing elit
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Sed do eiusmod tempor
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Ut labore et dolore magna
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-light">
-                                Buy Now
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Premium Plan -->
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="pricing-card">
-                            <h3>Premium Plan</h3>
-                            <div class="price">
-                                <span class="currency">$</span>
-                                <span class="amount">39.9</span>
-                                <span class="period">/ month</span>
-                            </div>
-                            <p class="description">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                                quam nihil molestiae.</p>
-
-                            <h4>Featured Included:</h4>
-                            <ul class="features-list">
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Temporibus autem quibusdam
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Saepe eveniet ut et voluptates
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Nam libero tempore soluta
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Cumque nihil impedit quo
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Maxime placeat facere possimus
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-primary">
-                                Buy Now
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section><!-- /Pricing Section -->
-
         <!-- Faq Section -->
         <section class="faq-9 faq section light-background" id="faq">
 
@@ -640,9 +385,8 @@
                 <div class="row">
 
                     <div class="col-lg-5" data-aos="fade-up">
-                        <h2 class="faq-title">Have a question? Check out the FAQ</h2>
-                        <p class="faq-description">Maecenas tempus tellus eget condimentum rhoncus sem quam semper
-                            libero sit amet adipiscing sem neque sed ipsum.</p>
+                        <h2 class="faq-title"> What services do you offer through this website?/h2>
+                        <p class="faq-description">We provide a wide range of professional services, including home maintenance, repairs, renovations, and more. You can browse available services and book them easily through our platform.</p>
                         <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
                             <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -657,65 +401,51 @@
                         <div class="faq-container">
 
                             <div class="faq-item faq-active">
-                                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                                <h3>How do I book a service?</h3>
                                 <div class="faq-content">
-                                    <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus
-                                        laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor
-                                        rhoncus dolor purus non.</p>
+                                    <p>Simply visit our services page, choose the service you need, select a date and time, and confirm your booking. Our professionals will take care of the rest!</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
 
                             <div class="faq-item">
-                                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
+                                <h3>Are the service providers qualified and insured?</h3>
                                 <div class="faq-content">
-                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
-                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
-                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
-                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                                    <p>Yes! We carefully vet all service providers to ensure they are qualified, experienced, and fully insured for your peace of mind.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
 
                             <div class="faq-item">
-                                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                                <h3> How much do the services cost?</h3>
                                 <div class="faq-content">
-                                    <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci.
-                                        Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl
-                                        suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis
-                                        convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                    <p>Prices vary depending on the type of service and complexity of the task. You can view pricing details on each service page before booking.
                                     </p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
 
                             <div class="faq-item">
-                                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                                <h3> What if I need to reschedule or cancel a booking?</h3>
                                 <div class="faq-content">
-                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
-                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
-                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
-                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                                    <p>You can easily reschedule or cancel your booking through your account. Please check our cancellation policy for more details.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
 
                             <div class="faq-item">
-                                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
+                                <h3>How can I contact customer support?</h3>
                                 <div class="faq-content">
-                                    <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse
-                                        in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl
-                                        suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                                    <p> If you have any questions or need assistance, you can reach us via email, phone, or live chat on our website. We're here to help!
                                     </p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
 
                             <div class="faq-item">
-                                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
+                                <h3>Do you offer same-day services?</h3>
                                 <div class="faq-content">
-                                    <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed
-                                        in suscipit sequi. Distinctio ipsam dolore et.</p>
+                                    <p> Yes! Depending on availability, we offer same-day service for urgent requests. Check the service details or contact our team to confirm availability.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
