@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<?php include "includes/head.php" ?>
+<?php
+session_start();
+if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
+  header("Location: login.php?error=AccessDenied");
+} else {
+    include "includes/head.php";
+    include "scripts/connection.php";
+}?>
 
 <body>
 

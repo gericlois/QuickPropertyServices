@@ -5,10 +5,14 @@
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
+html, body {
+  font-family: "Arial", sans-serif;
   background: #dfe9f9;
   color: #444444;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -34,6 +38,7 @@ h6 {
 # Main
 --------------------------------------------------------------*/
 #main {
+  flex: 1;
   margin-top: 60px;
   padding: 20px 30px;
   transition: all 0.3s;
@@ -1206,20 +1211,24 @@ h6 {
 # Footer
 --------------------------------------------------------------*/
 .footer {
-  padding: 20px 0;
+  padding: 8px 0;
   font-size: 14px;
   transition: all 0.3s;
   border-top: 1px solid #cddfff;
+  text-align: center;
+  color: #012970;
+  background: #dfe9f9;
 }
 
 .footer .copyright {
+  font-size: 12px;
   text-align: center;
   color: #012970;
 }
 
 .footer .credits {
-  padding-top: 5px;
+  padding-top: 2px;
   text-align: center;
-  font-size: 13px;
+  font-size: 11px;
   color: #012970;
 }

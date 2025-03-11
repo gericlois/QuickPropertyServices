@@ -1,52 +1,45 @@
 <?php
-require '../../admin/pages/scripts/connection.php'; 
+require '../../admin/pages/scripts/connection.php'; // Database connection
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hashing password
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
+    $first_name = trim($_POST['first_name']);
+    $last_name = trim($_POST['last_name']);
+    $email = trim($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $role = $_POST['role'];
-    $created_at = date("Y-m-d");
+    $created_at = date("Y-m-d H:i:s"); // Timestamp
 
-    $conn->begin_transaction(); // Start transaction
+    // Check if email already exists
+    $checkEmail = $conn->prepare("SELECT email FROM users WHERE email = ?");
+    $checkEmail->bind_param("s", $email);
+    $checkEmail->execute();
+    $result = $checkEmail->get_result();
 
-    try {
-        // Check if email already exists
-        $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
+    if ($result->num_rows > 0) {
+        header("Location: ../signup.php?error=EmailAlreadyExists");
+        exit();
+    }
 
-        if ($stmt->num_rows > 0) {
-            // Email already exists, redirect with an error message
-            header("Location: ../signup.php?error=EmailAlreadyExists");
-            exit();
+    // Insert into users table (without status)
+    $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, role, created_at) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $first_name, $last_name, $email, $password, $role, $created_at);
+
+    if ($stmt->execute()) {
+        $user_id = $conn->insert_id; // Get last inserted user_id
+
+        // If role is "user", insert into clients table with "Active" status and created_at timestamp
+        if ($role === "user") {
+            $status = "1"; // Status for clients
+            $stmtClient = $conn->prepare("INSERT INTO clients (user_id, status, created_at) VALUES (?, ?, ?)");
+            $stmtClient->bind_param("iss", $user_id, $status, $created_at);
+            $stmtClient->execute();
+            $stmtClient->close();
         }
 
-        // Insert into users table
-        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, phone, address, role, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssss", $first_name, $last_name, $email, $password, $phone, $address, $role, $created_at);
-        $stmt->execute();
-        $user_id = $stmt->insert_id; // Get the last inserted user ID
-
-        // If the user is a provider, insert into providers table
-        if ($role === 'provider') {
-            $status = 'Active'; // Assuming 'A' means Active
-
-            $stmt = $conn->prepare("INSERT INTO providers (provider_id, password, status, created_at) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("isss", $user_id, $password, $status, $created_at);
-            $stmt->execute();
-        }
-
-        $conn->commit(); // Commit transaction
         header("Location: ../promp.php?success=AccountCreated");
         exit();
-    } catch (Exception $e) {
-        $conn->rollback(); // Rollback on error
-        header("Location: ../promp.php?error=DatabaseError");
+    } else {
+        header("Location: ../signup.php?error=SignupFailed");
         exit();
     }
 }

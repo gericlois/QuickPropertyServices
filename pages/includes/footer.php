@@ -3,7 +3,7 @@
       <div class="container footer-top">
           <div class="row gy-4">
               <div class="col-lg-7 col-md-6 footer-about">
-                  <a href="index.html" class="logo d-flex align-items-center">
+                  <a href="index.php" class="logo d-flex align-items-center">
                       <span class="sitename">Quick Property Services LLC</span>
                   </a>
                   <p>"Your Home, Your Vision We Make It a Reality"</p>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="container copyright text-center mt-4">
-          <p>© <span>Copyright</span> <strong class="px-1 sitename">Quick Property Services LLC</strong> <span>All Rights Reserved 2025</span>
+          <p>© <span>Copyright</span> <strong class="px-1 sitename"><a href="../admin/pages/index.php">Quick Property Services LLC</a></strong> <span>All Rights Reserved 2025</span>
           </p>
           <div class="credits">
               Designed by <a href="https://casugayportfolio.my.canva.site/">GL Casugay</a> 
