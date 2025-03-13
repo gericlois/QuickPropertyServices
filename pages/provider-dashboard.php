@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<?php
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'provider') {
+  header("Location: login.php?error=AccessDenied");
+} else {
+    include "includes/head.php";
+    include "../admin/pages/scripts/connection.php";
+}?>
 
-<?php include "includes/head.php" ?>
 
 <body class="index-page">
 
@@ -15,41 +24,31 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row g-4 g-lg-5 justify-content-center">
-                    <div class="col-lg-5 col-md-7 mx-auto">
+                    <div class="col-lg-12 col-md-7 mx-auto">
                         <div class="contact-form text-center p-4 shadow rounded" data-aos="fade-up"
                             data-aos-delay="300">
-                            <h3 class="mb-3">Create an Account</h3>
-                            <p class="text-muted">Fill in your details to register.</p>
+                            <h3 class="mb-3">Login to Your Account</h3>
+                            <p class="text-muted">Enter your credentials to access your account.</p>
                             <?php
                             if (isset($_GET['error'])) {
-                                if ($_GET["error"] == "EmailAlreadyExists") {
+                                if ($_GET["error"] == "InvalidPassword") {
                                     echo '
                                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                        <b>Email has been taken, select another email!</b>
+                                                        <b>Incorrect password. Please double-check your entry before trying again!</b>
                                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                         </div>';
                                 }
-                                if ($_GET["error"] == "emailtaken") {
+                                if ($_GET["error"] == "UserNotFound") {
                                     echo '
                                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                        <b>Email has been taken, select another email!</b>
+                                                        <b>User not found. Please check your email or sign up for an account!!</b>
                                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                         </div>';
                                 }
                             }
                             ?>
-                            <form action="scripts/signup.php" method="post">
+                            <form action="scripts/login.php" method="post">
                                 <div class="row gy-3">
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" name="first_name"
-                                            placeholder="First Name" required>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name"
-                                            required>
-                                    </div>
-
                                     <div class="col-12">
                                         <input type="email" class="form-control" name="email"
                                             placeholder="Email Address" required>
@@ -60,39 +59,24 @@
                                             placeholder="Password" required>
                                     </div>
 
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" name="phone" placeholder="Phone Number">
-                                    </div>
-
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" name="address" placeholder="Address">
-                                    </div>
-
-                                    <div class="col-12">
-                                        <select class="form-control" name="role" id="role">
-                                            <option value="client">Client</option>
-                                            <option value="provider">Provider</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-12 d-none" id="businessField">
-                                        <input type="text" class="form-control" name="business_name"
-                                            placeholder="Business Name">
+                                    <div class="col-12 text-end">
+                                        <a href="#" class="text-decoration-none small">Forgot Password?</a>
                                     </div>
 
                                     <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                                        <button type="submit" class="btn btn-primary w-100">Login</button>
                                     </div>
 
                                     <div class="col-12 text-center">
-                                        <p class="mt-3 mb-0">Already have an account? <a href="login.html"
-                                                class="text-decoration-none">Login</a></p>
+                                        <p class="mt-3 mb-0">Don't have an account? <a href="signup.php"
+                                                class="text-decoration-none">Sign Up</a></p>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
 
             </div>
 

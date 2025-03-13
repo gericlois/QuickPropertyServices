@@ -1,17 +1,33 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <a href="index.php" class="logo d-flex align-items-center me-auto me-xl-0">
             <h1 class="sitename">Quick Property Services</h1>
         </a>
 
+        <?php 
+        $current_page = basename($_SERVER['PHP_SELF']); // Get current page filename
+        ?>
+
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="index.php" class="active">Home</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="services.php">Services</a></li>
-                <li><a href="portfolio.php">Portfolio</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <?php if (isset($_SESSION['role'])): ?>
+                    <?php if ($_SESSION['role'] === 'user'): ?>
+                        <li><a href="user-dashboard.php" class="<?= $current_page == 'user-dashboard.php' ? 'active' : '' ?>">User Dashboard</a></li>
+                        <li><a href="user-services.php" class="<?= $current_page == 'user-services.php' ? 'active' : '' ?>">Services</a></li>
+                        <li><a href="user-profile.php" class="<?= $current_page == 'user-profile.php' ? 'active' : '' ?>">User Profile</a></li>
+                    <?php elseif ($_SESSION['role'] === 'provider'): ?>
+                        <li><a href="provider-dashboard.php" class="<?= $current_page == 'provider-dashboard.php' ? 'active' : '' ?>">Provider Dashboard</a></li>
+                        <li><a href="provider-services.php" class="<?= $current_page == 'provider-services.php' ? 'active' : '' ?>">Services</a></li>
+                        <li><a href="provider-profile.php" class="<?= $current_page == 'provider-profile.php' ? 'active' : '' ?>">Provider Profile</a></li>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <li><a href="index.php" class="<?= $current_page == 'index.php' ? 'active' : '' ?>">Home</a></li>
+                    <li><a href="about.php" class="<?= $current_page == 'about.php' ? 'active' : '' ?>">About</a></li>
+                    <li><a href="services.php" class="<?= $current_page == 'services.php' ? 'active' : '' ?>">Services</a></li>
+                    <li><a href="portfolio.php" class="<?= $current_page == 'portfolio.php' ? 'active' : '' ?>">Portfolio</a></li>
+                    <li><a href="contact.php" class="<?= $current_page == 'contact.php' ? 'active' : '' ?>">Contact</a></li>
+                <?php endif; ?>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -24,7 +40,11 @@
                     <span><?php echo $_SESSION['first_name']; ?> <?php echo $_SESSION['last_name']; ?></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                    <?php if ($_SESSION['role'] === 'user'): ?>
+                        <li><a class="dropdown-item" href="profile_user.php" class="<?= $current_page == 'profile_user.php' ? 'active' : '' ?>">Profile</a></li>
+                    <?php elseif ($_SESSION['role'] === 'provider'): ?>
+                        <li><a class="dropdown-item" href="profile_provider.php" class="<?= $current_page == 'profile_provider.php' ? 'active' : '' ?>">Profile</a></li>
+                    <?php endif; ?>
                     <li><a class="dropdown-item" href="scripts/logout.php">Logout</a></li>
                 </ul>
             </div>

@@ -1142,6 +1142,10 @@ section,
 /*--------------------------------------------------------------
 # Features Section
 --------------------------------------------------------------*/
+.features {
+  padding-top: 160px;
+}
+
 .features .nav-tabs {
   border: 0;
   background-color: color-mix(in srgb, var(--default-color), transparent 96%);

@@ -36,6 +36,14 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                         </div>';
                                 }
+                                if ($_GET["error"] == "AccountDeactivated") {
+                                    echo '
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                        <b>Your account has been deactivated. Please contact the administrator if you wish to reactivate it. <a href="contact.php"
+                                                class="text-decoration-none">Contact Us Here</a></b>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                        </div>';
+                                }
                             }
                             ?>
                             <form action="scripts/login.php" method="post">

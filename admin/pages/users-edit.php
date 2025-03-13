@@ -46,16 +46,19 @@ $stmt->close();
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Dashboard</h1>
+            <h1>Dashboard
+                
+            </h1>
             <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+            <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="users.php">Users</a></li>
+                    <li class="breadcrumb-item active">Edit Profile</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
-        <section class="section dashboard">
+        <section class="section">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">

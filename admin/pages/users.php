@@ -30,11 +30,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-
-        <section class="section dashboard">
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php
+        <?php
                             if (isset($_GET['success'])) {
                                 if (isset($_GET["success"]) && $_GET["success"] == "UserUpdated") {
                                     echo '
@@ -54,6 +50,9 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                
                             }
                             ?>
+        <section class="section dashboard">
+            <div class="row">
+                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">User Data Table</h5>
