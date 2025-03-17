@@ -3,14 +3,38 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'provider') {
-  header("Location: login.php?error=AccessDenied");
+    header("Location: login.php?error=AccessDenied");
+    exit();
 } else {
     include "includes/head.php";
     include "../admin/pages/scripts/connection.php";
-}?>
+}
 
+$provider_id = $_SESSION['provider_id']; // Get the logged-in provider's ID
 
-<body class="index-page">
+// Pagination setup
+$limit = 10; // Number of services per page
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+// Fetch provider services with pagination
+$query = "SELECT * FROM services WHERE provider_id = ? ORDER BY created_at DESC LIMIT ? OFFSET ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("iii", $provider_id, $limit, $offset);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Count total services for pagination
+$count_query = "SELECT COUNT(*) AS total FROM services WHERE provider_id = ?";
+$count_stmt = $conn->prepare($count_query);
+$count_stmt->bind_param("i", $provider_id);
+$count_stmt->execute();
+$count_result = $count_stmt->get_result();
+$total_services = $count_result->fetch_assoc()['total'];
+$total_pages = ceil($total_services / $limit);
+?>
+
+<body>
 
     <?php include "includes/header.php" ?>
 
@@ -21,259 +45,102 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'provider') {
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
+                <h2>My Services</h2>
+                <p>Manage and showcase the services you offer.</p>
+            </div>
 
+            <!-- Add New Service Button -->
+            <div class="container text-end mb-3">
+                <a href="service-add.php" class="btn btn-primary">Add New Service</a>
+            </div>
+            <div class="container">
+                <?php
+                if (isset($_GET['success'])) {
+                    if ($_GET["success"] == "ServiceUpdated") {
+                        echo '
+                                                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                        <b>Service Updated. Please double-check your entry for possible mistake!</b>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                        </div>';
+                    }
+                    if ($_GET["success"] == "ServiceDeactivated") {
+                        echo '
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                        <b>Service Deactivated. Service is not available for clients as of this time!</b>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                        </div>';
+                    }
+                    if ($_GET["success"] == "ServiceActivated") {
+                        echo '
+                                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                        <b>Service Activated. Service will be available for clients as of this time!</b>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                        </div>';
+                    }
+                }
+                ?>
+            </div>
+
+            <!-- Services List -->
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="row g-4">
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-activity"></i>
-                            </div>
-                            <div>
-                                <h3>Nesciunt Mete</h3>
-                                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus
-                                    dolores iure perferendis tempore et consequatur.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-diagram-3"></i>
-                            </div>
-                            <div>
-                                <h3>Eosle Commodi</h3>
-                                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque
-                                    eum hic non ut nesciunt dolorem.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-easel"></i>
-                            </div>
-                            <div>
-                                <h3>Ledo Markt</h3>
-                                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id
-                                    voluptas adipisci eos earum corrupti.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
+                    <?php while ($row = $result->fetch_assoc()) : ?>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-card d-flex">
+                                <div class="icon flex-shrink-0">
+                                    <i class="bi bi-diagram-3"></i>
+                                </div>
+                                <div>
+                                    <h3>
+                                        <?= htmlspecialchars($row['service_name']) ?>
+                                        <span class="badge <?= ($row['status'] == 1) ? 'bg-success' : 'bg-danger' ?>">
+                                            <?= ($row['status'] == 1) ? 'Active' : 'Inactive' ?>
+                                        </span>
+                                    </h3>
+                                    <p><strong>Price:</strong> $<?= number_format($row['base_price'], 2) ?></p>
+                                    <p><?= nl2br(htmlspecialchars($row['description'])) ?></p>
+                                    <a href="provider-services-view.php?service_id=<?= $row['service_id'] ?>"
+                                        class="btn btn-sm btn-primary">View <i class="bi bi-arrow-right"></i></a>
+                                    <a href="provider-services-edit.php?service_id=<?= urlencode($row['service_id']); ?>&provider_id=<?= urlencode($row['provider_id']); ?>"
+                                        class="btn btn-sm btn-primary">Edit</a>
+                                    <?php if ($row['status'] == 1): ?>
+                                        <a href="scripts/service-deactivate.php?service_id=<?= urlencode($row['service_id']); ?>"
+                                            class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure you want to deactivate this service?')">Deactivate</a>
+                                    <?php elseif ($row['status'] == 2): ?>
+                                        <a href="scripts/service-activate.php?service_id=<?= urlencode($row['service_id']); ?>"
+                                            class="btn btn-sm btn-secondary"
+                                            onclick="return confirm('Are you sure you want to activate this service?')">Activate</a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-clipboard-data"></i>
-                            </div>
-                            <div>
-                                <h3>Asperiores Commodit</h3>
-                                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea
-                                    fuga sit provident adipisci neque.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
+                    <?php endwhile; ?>
                 </div>
+            </div>
 
+            <!-- Pagination -->
+            <div class="container mt-4 text-center">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <?php if ($page > 1): ?>
+                            <li class="page-item"><a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a></li>
+                        <?php endif; ?>
+
+                        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                                <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                            </li>
+                        <?php endfor; ?>
+
+                        <?php if ($page < $total_pages): ?>
+                            <li class="page-item"><a class="page-link" href="?page=<?= $page + 1 ?>">Next</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
             </div>
 
         </section><!-- /Services Section -->
-
-        <!-- Pricing Section -->
-        <section id="pricing" class="pricing section light-background">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Pricing</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row g-4 justify-content-center">
-
-                    <!-- Basic Plan -->
-                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                        <div class="pricing-card">
-                            <h3>Basic Plan</h3>
-                            <div class="price">
-                                <span class="currency">$</span>
-                                <span class="amount">9.9</span>
-                                <span class="period">/ month</span>
-                            </div>
-                            <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                accusantium doloremque laudantium totam.</p>
-
-                            <h4>Featured Included:</h4>
-                            <ul class="features-list">
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Duis aute irure dolor
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Excepteur sint occaecat
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Nemo enim ipsam voluptatem
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-primary">
-                                Buy Now
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Standard Plan -->
-                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                        <div class="pricing-card popular">
-                            <div class="popular-badge">Most Popular</div>
-                            <h3>Standard Plan</h3>
-                            <div class="price">
-                                <span class="currency">$</span>
-                                <span class="amount">19.9</span>
-                                <span class="period">/ month</span>
-                            </div>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium voluptatum.</p>
-
-                            <h4>Featured Included:</h4>
-                            <ul class="features-list">
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Lorem ipsum dolor sit amet
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Consectetur adipiscing elit
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Sed do eiusmod tempor
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Ut labore et dolore magna
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-light">
-                                Buy Now
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Premium Plan -->
-                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="pricing-card">
-                            <h3>Premium Plan</h3>
-                            <div class="price">
-                                <span class="currency">$</span>
-                                <span class="amount">39.9</span>
-                                <span class="period">/ month</span>
-                            </div>
-                            <p class="description">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                                quam nihil molestiae.</p>
-
-                            <h4>Featured Included:</h4>
-                            <ul class="features-list">
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Temporibus autem quibusdam
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Saepe eveniet ut et voluptates
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Nam libero tempore soluta
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Cumque nihil impedit quo
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Maxime placeat facere possimus
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-primary">
-                                Buy Now
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Premium Plan -->
-                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                        <div class="pricing-card">
-                            <h3>Premium Plan</h3>
-                            <div class="price">
-                                <span class="currency">$</span>
-                                <span class="amount">39.9</span>
-                                <span class="period">/ month</span>
-                            </div>
-                            <p class="description">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-                                quam nihil molestiae.</p>
-
-                            <h4>Featured Included:</h4>
-                            <ul class="features-list">
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Temporibus autem quibusdam
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Saepe eveniet ut et voluptates
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Nam libero tempore soluta
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Cumque nihil impedit quo
-                                </li>
-                                <li>
-                                    <i class="bi bi-check-circle-fill"></i>
-                                    Maxime placeat facere possimus
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-primary">
-                                Buy Now
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section><!-- /Pricing Section -->
 
     </main>
 

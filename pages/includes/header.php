@@ -13,9 +13,9 @@
             <ul>
                 <?php if (isset($_SESSION['role'])): ?>
                     <?php if ($_SESSION['role'] === 'user'): ?>
-                        <li><a href="user-dashboard.php" class="<?= $current_page == 'user-dashboard.php' ? 'active' : '' ?>">User Dashboard</a></li>
-                        <li><a href="user-services.php" class="<?= $current_page == 'user-services.php' ? 'active' : '' ?>">Services</a></li>
-                        <li><a href="user-profile.php" class="<?= $current_page == 'user-profile.php' ? 'active' : '' ?>">User Profile</a></li>
+                        <li><a href="client-dashboard.php" class="<?= $current_page == 'client-dashboard.php' ? 'active' : '' ?>">User Dashboard</a></li>
+                        <li><a href="client-services.php" class="<?= $current_page == 'client-services.php' ? 'active' : '' ?>">Services</a></li>
+                        <li><a href="client-profile.php" class="<?= $current_page == 'client-profile.php' ? 'active' : '' ?>">User Profile</a></li>
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>
                         <li><a href="provider-dashboard.php" class="<?= $current_page == 'provider-dashboard.php' ? 'active' : '' ?>">Provider Dashboard</a></li>
                         <li><a href="provider-services.php" class="<?= $current_page == 'provider-services.php' ? 'active' : '' ?>">Services</a></li>
@@ -40,10 +40,16 @@
                     <span><?php echo $_SESSION['first_name']; ?> <?php echo $_SESSION['last_name']; ?></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    
+                <li><a class="dropdown-item" href="#"><?php echo $_SESSION['first_name']; ?> <?php echo $_SESSION['last_name']; ?></a></li>
+                <li><a class="dropdown-item" href="#"> <span class="badge text-bg-primary "><?php echo $_SESSION['role']; ?> #100<?php echo $_SESSION['provider_id']; ?></span></a></li>
+                <hr>
+                
                     <?php if ($_SESSION['role'] === 'user'): ?>
-                        <li><a class="dropdown-item" href="profile_user.php" class="<?= $current_page == 'profile_user.php' ? 'active' : '' ?>">Profile</a></li>
+                        <hr>
+                        <li><a class="dropdown-item" href="client-profile.php" class="<?= $current_page == 'profile_user.php' ? 'active' : '' ?>">Profile</a></li>
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>
-                        <li><a class="dropdown-item" href="profile_provider.php" class="<?= $current_page == 'profile_provider.php' ? 'active' : '' ?>">Profile</a></li>
+                        <li><a class="dropdown-item" href="provider-profile.php" class="<?= $current_page == 'profile_provider.php' ? 'active' : '' ?>">Profile</a></li>
                     <?php endif; ?>
                     <li><a class="dropdown-item" href="scripts/logout.php">Logout</a></li>
                 </ul>

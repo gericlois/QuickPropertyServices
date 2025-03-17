@@ -775,7 +775,7 @@ section,
   background-color: var(--accent-color);
   border-color: var(--accent-color);
   color: var(--contrast-color);
-  padding: 0.75rem 2.5rem;
+  padding: .6rem 2rem;
   border-radius: 50px;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -1696,6 +1696,37 @@ section,
 .services {
   padding-top: 160px;
 }
+.services .btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: .6rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.services .btn-warning {
+  padding: .6rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.services .btn-danger {
+  padding: .6rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.services .btn-secondary {
+  padding: .6rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
 
 .services .service-card {
   height: 100%;
@@ -1743,7 +1774,7 @@ section,
   margin-bottom: 25px;
   color: color-mix(in srgb, var(--default-color), transparent 25%);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: .5;
 }
 
 .services .service-card .read-more {
@@ -2181,7 +2212,7 @@ section,
 .contact .contact-form .btn {
   background-color: var(--accent-color);
   color: var(--contrast-color);
-  padding: 1rem 2rem;
+  padding: .6rem 2rem;
   border-radius: 2rem;
   display: inline-flex;
   align-items: center;
