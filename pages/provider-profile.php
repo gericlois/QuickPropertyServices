@@ -45,7 +45,9 @@ if (!$provider) {
             <div class="container section-title" data-aos="fade-up">
                 <h2>My Profile</h2>
                 <p>Manage your personal information and account settings</p>
-            </div><!-- End Section Title -->
+            </div>
+            <!-- End Section Title -->
+
             <div class="container">
 
                 <div class="d-flex justify-content-center">

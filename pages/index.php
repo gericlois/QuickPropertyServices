@@ -3,7 +3,28 @@
 
 <?php 
 session_start();
-include "includes/head.php" ?>
+include "includes/head.php";
+
+// Check if the user is logged in and redirect based on role
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role'];
+
+    if ($role === 'provider') {
+        $_SESSION['provider_id'] = $_SESSION['user_id'] ?? null;
+        header("Location: provider-dashboard.php?success=LoginSuccessfully");
+        exit();
+    } elseif ($role === 'client') {
+        $_SESSION['client_id'] = $_SESSION['user_id'] ?? null;
+        header("Location: client-services.php?success=LoginSuccessfully");
+        exit();
+    }
+} else {
+    // If no session role, redirect to login page
+    header("Location: ../login.php?error=PleaseLogin");
+    exit();
+}
+?>
+
 
 <body class="index-page">
 
@@ -38,7 +59,7 @@ include "includes/head.php" ?>
 
                             <div class="hero-buttons">
                                 <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
-                                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
+                                <a href="#"
                                     class="btn btn-link mt-2 mt-sm-0 glightbox">
                                     <i class="bi bi-play-circle me-1"></i>
                                     Play Video

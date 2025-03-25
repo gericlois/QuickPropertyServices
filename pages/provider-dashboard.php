@@ -1,99 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<!DOCTYPE html>
 <html lang="en">
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'provider') {
-  header("Location: login.php?error=AccessDenied");
-} else {
-    include "includes/head.php";
-    include "../admin/pages/scripts/connection.php";
-}?>
+    header("Location: login.php?error=AccessDenied");
+    exit();
+}
+include "includes/head.php";
+include "../admin/pages/scripts/connection.php";
 
+$provider_id = $_SESSION['user_id'];
+$query = "SELECT * FROM bookings b inner join providers p ON b.provider_id = p.provider_id WHERE b.provider_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $provider_id);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
 
 <body class="index-page">
-
-    <?php include "includes/header.php" ?>
+    <?php include "includes/header.php"; ?>
 
     <main class="main">
+    <section id="features" class="features section light-background">
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact section light-background">
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+    <h2>My Dashboard</h2>
+    <p>Manage your personal information and account settings</p>
+</div>
+<!-- End Section Title -->
+ 
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+<div class="container">
 
-                <div class="row g-4 g-lg-5 justify-content-center">
-                    <div class="col-lg-12 col-md-7 mx-auto">
-                        <div class="contact-form text-center p-4 shadow rounded" data-aos="fade-up"
-                            data-aos-delay="300">
-                            <h3 class="mb-3">Login to Your Account</h3>
-                            <p class="text-muted">Enter your credentials to access your account.</p>
-                            <?php
-                            if (isset($_GET['error'])) {
-                                if ($_GET["error"] == "InvalidPassword") {
-                                    echo '
-                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                        <b>Incorrect password. Please double-check your entry before trying again!</b>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                        </div>';
-                                }
-                                if ($_GET["error"] == "UserNotFound") {
-                                    echo '
-                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                        <b>User not found. Please check your email or sign up for an account!!</b>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                        </div>';
-                                }
-                            }
-                            ?>
-                            <form action="scripts/login.php" method="post">
-                                <div class="row gy-3">
-                                    <div class="col-12">
-                                        <input type="email" class="form-control" name="email"
-                                            placeholder="Email Address" required>
-                                    </div>
+                <div class="row">
+                    <!-- Provider Info --><div class="col-lg-4">
+                        <div class="card p-3 shadow">
+                            <h4>Welcome, <?php echo $_SESSION['first_name'] ?? 'Provider'; ?>!</h4>
+                            <?php if (!empty($row['business_name'])): ?>
+                                <p>Business Name: <?php echo $row['business_name']; ?></p>
+                            <?php endif; ?>
+                            <p>Email: <?php echo $_SESSION['email'] ?? 'Not Available'; ?></p>
+                            <p>Status: <span class="badge bg-success">Active</span></p>
+                        </div>
+                    </div>
 
-                                    <div class="col-12">
-                                        <input type="password" class="form-control" name="password"
-                                            placeholder="Password" required>
-                                    </div>
+                    <!-- Manage Services -->
+                    <div class="col-lg-4">
+                        <div class="card p-3 shadow">
+                            <h4>Manage Your Services</h4>
+                            <a href="provider-services.php" class="btn btn-primary">View & Manage Services</a>
+                        </div>
+                    </div>
+                    
 
-                                    <div class="col-12 text-end">
-                                        <a href="#" class="text-decoration-none small">Forgot Password?</a>
-                                    </div>
-
-                                    <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-primary w-100">Login</button>
-                                    </div>
-
-                                    <div class="col-12 text-center">
-                                        <p class="mt-3 mb-0">Don't have an account? <a href="signup.php"
-                                                class="text-decoration-none">Sign Up</a></p>
-                                    </div>
-                                </div>
-                            </form>
+                    <!-- Profile Management -->
+                    <div class="col-lg-4">
+                        <div class="card p-3 shadow">
+                            <h4>Manage Profile</h4>
+                            <a href="provider-profile.php" class="btn btn-secondary">Edit Profile</a>
                         </div>
                     </div>
                 </div>
 
-
+                <div class="row mt-4">
+                    <!-- Booking Requests -->
+                    <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <div class="card p-3 shadow">
+                            <h4>Booking Requests</h4>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Client ID</th>
+                                        <th>Service ID</th>
+                                        <th>Appointment Date</th>
+                                        <th>Status</th>
+                                        <th>Total Price</th>
+                                        <th>Created At</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = $result->fetch_assoc()) { ?>
+                                        <tr>
+                                            <td><?php echo $row['booking_id']; ?></td>
+                                            <td><?php echo $row['client_id']; ?></td>
+                                            <td><?php echo $row['service_id']; ?></td>
+                                            <td><?php echo $row['appointment_date']; ?></td>
+                                            <td><?php echo $row['status']; ?></td>
+                                            <td><?php echo $row['total_price']; ?></td>
+                                            <td><?php echo $row['created_at']; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
-
+                                    </div>
         </section>
-        <!-- /Contact Section -->
-
     </main>
 
-    <?php include "includes/footer.php" ?>
+    <?php include "includes/footer.php"; ?>
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
 
-    <!-- Vendor JS Files -->
-    <?php include "includes/script.php" ?>
-
+    <?php include "includes/script.php"; ?>
 </body>
-
 </html>

@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'provider') {
-  header("Location: login.php?error=AccessDenied");
-} else {
-    include "includes/head.php";
-    include "../admin/pages/scripts/connection.php";
-}?>
+
+// Check if the user is logged in and if their role is 'provider'
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'provider') {
+    header("Location: login.php?error=AccessDenied");
+    exit(); // Ensure script stops execution after redirection
+}
+
+// If the user is a provider, proceed with page loading
+include "includes/head.php";
+include "../admin/pages/scripts/connection.php";
+?>
 
 
 <body class="index-page">

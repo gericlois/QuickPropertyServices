@@ -85,7 +85,7 @@
                                     </div>
 
                                     <div class="col-12 text-center">
-                                        <p class="mt-3 mb-0">Already have an account? <a href="login.html"
+                                        <p class="mt-3 mb-0">Already have an account? <a href="login.php"
                                                 class="text-decoration-none">Login</a></p>
                                     </div>
                                 </div>

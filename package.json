@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "Thanks for downloading this template!",
   "main": "index.js",
-
-  "scripts": {  
-    "dev": "C:\\xampp2\\php\\php.exe -S localhost:8000 -t .",
+  "scripts": {
+    "dev": "C:\\xampp\\php\\php.exe -S localhost:8000 -t .",
     "test": "echo \"Error: no test specified\" && exit 1",
-     "watch": "browser-sync start --proxy localhost:8000 --files '**/*.php, **/*.html, **/*.css, **/*.js'"
-    
+    "watch": "browser-sync start --proxy localhost:8000 --files '**/*.php, **/*.html, **/*.css, **/*.js'"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.3"
+  }
 }

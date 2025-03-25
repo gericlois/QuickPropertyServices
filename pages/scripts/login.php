@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    // Check if email exists in the users table
+    // Check if email exists
     $stmt = $conn->prepare("SELECT user_id, first_name, last_name, email, password, role FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -23,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        // Determine which table to check for status
+        // Get status for provider or client
         $status = null;
         $provider_id = null;
 
         if ($role === 'provider') {
             $status_stmt = $conn->prepare("SELECT provider_id, status FROM providers WHERE user_id = ?");
-        } elseif ($role === 'client') {
-            $status_stmt = $conn->prepare("SELECT status FROM clients WHERE user_id = ?");
+        } elseif ($role === 'client') {  // Ensure this matches your database roles
+            $status_stmt = $conn->prepare("SELECT client_id, status FROM clients WHERE user_id = ?");
         } else {
             $status_stmt = null;
         }
@@ -43,36 +43,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $status_data = $status_result->fetch_assoc();
                 $status = $status_data['status'];
                 if ($role === 'provider') {
-                    $provider_id = $status_data['provider_id']; // Get provider_id
+                    $provider_id = $status_data['provider_id']; 
                 }
             }
             $status_stmt->close();
         }
 
         // If status is 2, deny access
-        if ($status === '2') {
+        if ($status == 2) {
             header("Location: ../login.php?error=AccountDeactivated");
             exit();
         }
 
         // Verify password
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_id'] = $user_id;
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name'] = $user['last_name'];
             $_SESSION['email'] = $user['email'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role'] = $role;
 
-            // Store provider_id if user is a provider
-            if ($role === 'provider') {
-                $_SESSION['provider_id'] = $provider_id;
-            }
 
-            // Redirect based on user role
             if ($role === 'provider') {
+                $_SESSION['provider_id'] = $provider_id ?? null;
                 header("Location: ../provider-dashboard.php?success=LoginSuccessfully");
-            } elseif ($role === 'user') {
-                header("Location: ../user-dashboard.php?success=LoginSuccessfully");
+            } elseif ($role === 'client') {
+                $_SESSION['client_id'] = $client_id ?? null;
+                header("Location: ../client-services.php?success=LoginSuccessfully");
+            } else {
+                header("Location: ../login.php?error=RoleNotAllowed");
             }
             exit();
         } else {

@@ -12,14 +12,14 @@
         <nav id="navmenu" class="navmenu">
             <ul>
                 <?php if (isset($_SESSION['role'])): ?>
-                    <?php if ($_SESSION['role'] === 'user'): ?>
-                        <li><a href="client-dashboard.php" class="<?= $current_page == 'client-dashboard.php' ? 'active' : '' ?>">User Dashboard</a></li>
+                    <?php if ($_SESSION['role'] === 'client'): ?>
+                        <li><a href="client-dashboard.php" class="<?= $current_page == 'client-dashboard.php' ? 'active' : '' ?>">Dashboard</a></li>
                         <li><a href="client-services.php" class="<?= $current_page == 'client-services.php' ? 'active' : '' ?>">Services</a></li>
-                        <li><a href="client-profile.php" class="<?= $current_page == 'client-profile.php' ? 'active' : '' ?>">User Profile</a></li>
+                        <li><a href="client-profile.php" class="<?= $current_page == 'client-profile.php' ? 'active' : '' ?>">Profile</a></li>
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>
-                        <li><a href="provider-dashboard.php" class="<?= $current_page == 'provider-dashboard.php' ? 'active' : '' ?>">Provider Dashboard</a></li>
-                        <li><a href="provider-services.php" class="<?= $current_page == 'provider-services.php' ? 'active' : '' ?>">Services</a></li>
-                        <li><a href="provider-profile.php" class="<?= $current_page == 'provider-profile.php' ? 'active' : '' ?>">Provider Profile</a></li>
+                        <li><a href="provider-dashboard.php" class="<?= $current_page == 'provider-dashboard.php' ? 'active' : '' ?>">My Dashboard</a></li>
+                        <li><a href="provider-services.php" class="<?= $current_page == 'provider-services.php' ? 'active' : '' ?>">My Services</a></li>
+                        <li><a href="provider-profile.php" class="<?= $current_page == 'provider-profile.php' ? 'active' : '' ?>">My Profile</a></li>
                     <?php endif; ?>
                 <?php else: ?>
                     <li><a href="index.php" class="<?= $current_page == 'index.php' ? 'active' : '' ?>">Home</a></li>
@@ -42,10 +42,10 @@
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     
                 <li><a class="dropdown-item" href="#"><?php echo $_SESSION['first_name']; ?> <?php echo $_SESSION['last_name']; ?></a></li>
-                <li><a class="dropdown-item" href="#"> <span class="badge text-bg-primary "><?php echo $_SESSION['role']; ?> #100<?php echo $_SESSION['provider_id']; ?></span></a></li>
+                <li><a class="dropdown-item" href="#"> <span class="badge text-bg-primary "><?php echo $_SESSION['role']; ?> #<?php echo $_SESSION['user_id']; ?></span></a></li>
                 <hr>
                 
-                    <?php if ($_SESSION['role'] === 'user'): ?>
+                    <?php if ($_SESSION['role'] === 'client'): ?>
                         <hr>
                         <li><a class="dropdown-item" href="client-profile.php" class="<?= $current_page == 'profile_user.php' ? 'active' : '' ?>">Profile</a></li>
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>
