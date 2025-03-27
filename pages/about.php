@@ -43,15 +43,6 @@
 
                         <div class="info-wrapper">
                             <div class="row gy-4">
-                                <div class="col-lg-5">
-                                    <div class="profile d-flex align-items-center gap-3">
-                                        <img src="" alt="CEO Profile" class="profile-image">
-                                        <div>
-                                            <h4 class="profile-name">Julian</h4>
-                                            <p class="profile-position">CEO &amp; Founder</p>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-lg-7">
                                     <div class="contact-info d-flex align-items-center gap-2">
                                         <i class="bi bi-telephone-fill"></i>
