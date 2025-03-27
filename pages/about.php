@@ -18,25 +18,25 @@
                 <div class="row gy-4 align-items-center justify-content-between">
 
                     <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
-                        <span class="about-meta">MORE ABOUT USs</span>
-                        <h2 class="about-title">Voluptas enim suscipit temporibus</h2>
-                        <p class="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        <span class="about-meta">MORE ABOUT US</span>
+                        <h2 class="about-title">Quick Property Services LLC</h2>
+                        <p class="about-description">Quick Property Services LLC is a family-owned business, based in Utah County, with our head office in Highland. Established in 2017, The founder with experience in property management, new cosntruction, home improvement and home repair fully understands the needs of each of our clients therefore has made “Excellence in Maintenance and repairs” our mission and core philosophy. We take our business seriously and our philosophy of “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every project.</p>
 
                         <div class="row feature-list-wrapper">
                             <div class="col-md-6">
                                 <ul class="feature-list">
-                                    <li><i class="bi bi-check-circle-fill"></i> Lorem ipsum dolor sit amet</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Consectetur adipiscing elit</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Sed do eiusmod tempor</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Years of Experience</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Fully Insured</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Cost Control Experts</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> 100% Satisfaction Guarantee</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul class="feature-list">
-                                    <li><i class="bi bi-check-circle-fill"></i> Incididunt ut labore et</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Dolore magna aliqua</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Ut enim ad minim veniam</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Free Consultation</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Satisfied Customers</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Project Management</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Affordable Pricing</li>
                                 </ul>
                             </div>
                         </div>
@@ -45,9 +45,9 @@
                             <div class="row gy-4">
                                 <div class="col-lg-5">
                                     <div class="profile d-flex align-items-center gap-3">
-                                        <img src="../assets/img/avatar-1.webp" alt="CEO Profile" class="profile-image">
+                                        <img src="" alt="CEO Profile" class="profile-image">
                                         <div>
-                                            <h4 class="profile-name">Mario Smith</h4>
+                                            <h4 class="profile-name">Julian</h4>
                                             <p class="profile-position">CEO &amp; Founder</p>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                         <i class="bi bi-telephone-fill"></i>
                                         <div>
                                             <p class="contact-label">Call us anytime</p>
-                                            <p class="contact-number">+123 456-789</p>
+                                            <p class="contact-number">+801-613-0482</p>
                                         </div>
                                     </div>
                                 </div>
@@ -85,129 +85,6 @@
 
         </section><!-- /About Section -->
 
-        <!-- Features Section -->
-        <section id="features" class="features section">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Features</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-
-                <div class="d-flex justify-content-center">
-
-                    <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
-
-                        <li class="nav-item">
-                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-                                <h4>Modisit</h4>
-                            </a>
-                        </li><!-- End tab nav item -->
-
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-                                <h4>Praesenti</h4>
-                            </a><!-- End tab nav item -->
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-                                <h4>Explica</h4>
-                            </a>
-                        </li><!-- End tab nav item -->
-
-                    </ul>
-
-                </div>
-
-                <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-
-                    <div class="tab-pane fade active show" id="features-tab-1">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Voluptatem dignissimos provident</h3>
-                                <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
-                                </p>
-                                <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                            trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="../assets/img/features-illustration-1.webp" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div><!-- End tab content item -->
-
-                    <div class="tab-pane fade" id="features-tab-2">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Neque exercitationem debitis</h3>
-                                <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
-                                </p>
-                                <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
-                                            dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                            trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="../assets/img/features-illustration-2.webp" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div><!-- End tab content item -->
-
-                    <div class="tab-pane fade" id="features-tab-3">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                <h3>Voluptatibus commodi accusamu</h3>
-                                <ul>
-                                    <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                            voluptate velit.</span></li>
-                                    <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
-                                            dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                                </ul>
-                                <p class="fst-italic">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.
-                                </p>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2 text-center">
-                                <img src="../assets/img/features-illustration-3.webp" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div><!-- End tab content item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Features Section -->
 
         <!-- Features Cards Section -->
         <section id="features-cards" class="features-cards section">
@@ -216,37 +93,23 @@
 
                 <div class="row gy-4">
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-xl-6 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                         <div class="feature-box orange">
                             <i class="bi bi-award"></i>
-                            <h4>Corporis voluptates</h4>
-                            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                            <h4>Our Mission</h4>
+                            <p>At the heart of our business is our commitment to “Excellence in Maintenance and Repairs.” With extensive experience in property management, new construction, home improvement, and home repair, we fully understand the unique needs of each client.</p>
                         </div>
                     </div><!-- End Feature Borx-->
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-xl-6 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                         <div class="feature-box blue">
                             <i class="bi bi-patch-check"></i>
-                            <h4>Explicabo consectetur</h4>
-                            <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
+                            <h4>Why Choose Us?</h4>
+                            <p>We deliver quality workmanship, reliable service, and a customer-first approach, ensuring hassle-free property maintenance tailored to your needs. With years of experience in property management and home repairs, we guarantee efficient solutions, timely service, and exceptional results you can trust.</p>
                         </div>
                     </div><!-- End Feature Borx-->
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="feature-box green">
-                            <i class="bi bi-sunrise"></i>
-                            <h4>Ullamco laboris</h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                        </div>
-                    </div><!-- End Feature Borx-->
-
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="feature-box red">
-                            <i class="bi bi-shield-check"></i>
-                            <h4>Labore consequatur</h4>
-                            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                        </div>
-                    </div><!-- End Feature Borx-->
+                    
 
                 </div>
 
@@ -254,110 +117,7 @@
 
         </section><!-- /Features Cards Section -->
 
-        <!-- Features 2 Section -->
-        <section id="features-2" class="features-2 section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row align-items-center">
-
-                    <div class="col-lg-4">
-
-                        <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
-                            <div class="d-flex align-items-center justify-content-end gap-4">
-                                <div class="feature-content">
-                                    <h3>Use On Any Device</h3>
-                                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                                        Curae; In ac dui quis mi consectetuer lacinia.</p>
-                                </div>
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-display"></i>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
-                            <div class="d-flex align-items-center justify-content-end gap-4">
-                                <div class="feature-content">
-                                    <h3>Feather Icons</h3>
-                                    <p>Phasellus ullamcorper ipsum rutrum nunc nunc nonummy metus vestibulum volutpat
-                                        sapien arcu sed augue aliquam erat volutpat.</p>
-                                </div>
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-feather"></i>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
-                            <div class="d-flex align-items-center justify-content-end gap-4">
-                                <div class="feature-content">
-                                    <h3>Retina Ready</h3>
-                                    <p>Aenean tellus metus bibendum sed posuere ac mattis non nunc vestibulum fringilla
-                                        purus sit amet fermentum aenean commodo.</p>
-                                </div>
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-eye"></i>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                    </div>
-
-                    <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="phone-mockup text-center">
-                            <img src="../assets/img/phone-app-screen.webp" alt="Phone Mockup" class="img-fluid">
-                        </div>
-                    </div><!-- End Phone Mockup -->
-
-                    <div class="col-lg-4">
-
-                        <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
-                            <div class="d-flex align-items-center gap-4">
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-code-square"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>W3c Valid Code</h3>
-                                    <p>Donec vitae sapien ut libero venenatis faucibus nullam quis ante etiam sit amet
-                                        orci eget eros faucibus tincidunt.</p>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="300">
-                            <div class="d-flex align-items-center gap-4">
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-phone"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Fully Responsive</h3>
-                                    <p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet
-                                        adipiscing sem neque sed ipsum.</p>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
-                            <div class="d-flex align-items-center gap-4">
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-browser-chrome"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Browser Compatibility</h3>
-                                    <p>Nullam dictum felis eu pede mollis pretium integer tincidunt cras dapibus vivamus
-                                        elementum semper nisi aenean vulputate.</p>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                    </div>
-                </div>
-
-            </div>
-
-        </section><!-- /Features 2 Section -->
-
+    
         <!-- Call To Action Section -->
         <section id="call-to-action" class="call-to-action section">
 
@@ -365,10 +125,9 @@
 
                 <div class="row content justify-content-center align-items-center position-relative">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="display-4 mb-4">Maecenas tempus tellus eget condimentum</h2>
-                        <p class="mb-4">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                            Curae; Donec velit neque, auctor sit amet aliquam vel</p>
-                        <a href="#" class="btn btn-cta">Call To Action</a>
+                        <h2 class="display-4 mb-4">Ready to Get Started?</h2>
+                        <p class="mb-4">Let us handle your property maintenance with expert care and precision. Contact us today for reliable, high-quality service—because your home deserves the best! </p>
+                        <a href="#" class="btn btn-cta">Call now or request a free quote!</a>
                     </div>
 
                     <!-- Abstract Background Elements -->
