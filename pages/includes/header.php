@@ -46,7 +46,6 @@
                 <hr>
                 
                     <?php if ($_SESSION['role'] === 'client'): ?>
-                        <hr>
                         <li><a class="dropdown-item" href="client-profile.php" class="<?= $current_page == 'profile_user.php' ? 'active' : '' ?>">Profile</a></li>
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>
                         <li><a class="dropdown-item" href="provider-profile.php" class="<?= $current_page == 'profile_provider.php' ? 'active' : '' ?>">Profile</a></li>

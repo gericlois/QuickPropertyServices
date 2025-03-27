@@ -1774,7 +1774,7 @@ section,
   margin-bottom: 25px;
   color: color-mix(in srgb, var(--default-color), transparent 25%);
   font-size: 15px;
-  line-height: .5;
+  line-height: 1;
 }
 
 .services .service-card .read-more {
