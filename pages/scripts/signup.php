@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $user_id = $conn->insert_id; // Get last inserted user_id
-    $status = "1"; // Default active status
+    $status = ($role === "provider") ? "2" : "1"; // Default status: 2 for provider, 1 for client
 
     if ($role === "client") {
         $stmtClient = $conn->prepare("INSERT INTO clients (user_id, status, created_at) VALUES (?, ?, ?)");
