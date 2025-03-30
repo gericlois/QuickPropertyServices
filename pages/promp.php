@@ -26,7 +26,7 @@
                                             Account Created Successfully!
                                         </h1>
                                         <h4 class="mb-1">
-                                            Welcome to Fixing Tech
+                                            Welcome to Fixing Techs
                                         </h4>
 
                                         <p class="mb-3 mb-md-5">
