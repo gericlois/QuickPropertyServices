@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Quick Property Services</title>
+  <title>Fixing Techs</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
