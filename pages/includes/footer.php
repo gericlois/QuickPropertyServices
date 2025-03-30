@@ -3,7 +3,7 @@
         <div class="row gy-4">
             <div class="col-lg-6 col-md-6 footer-about">
                 <a href="index.php" class="logo d-flex align-items-center">
-                    <span class="sitename">Fixing Tech</span>
+                    <span class="sitename">Fixing Techs</span>
                 </a>
                 <p>"Your Home, Your Vision We Make It a Reality"</p>
             </div>
@@ -35,7 +35,7 @@
                 <h4>Contact Us</h4>
                 <div class="footer-contact pt-">
                     <p class="mt-3"><strong>Phone:</strong> <span>+1 801-613-0482</span></p>
-                    <p><strong>Email:</strong> <span>servicerequest@quickpropertyservices.com</span></p>
+                    <p><strong>Email:</strong> <span>servicerequest@Fixing Techs.com</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
                     <a href="#"><i class="bi bi-twitter-x"></i></a>
@@ -50,11 +50,11 @@
     <div class="container copyright text-center mt-4">
         <p>© <span>Copyright</span> <strong class="px-1 sitename">
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'provider'): ?>
-                <a href="provider-dashboard.php">Fixing Tech</a>
+                <a href="provider-dashboard.php">Fixing Techs</a>
             <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'user'): ?>
-                <a href="client-dashboard.php">Fixing Tech</a>
+                <a href="client-dashboard.php">Fixing Techs</a>
             <?php else: ?>
-                <a href="index.php">Fixing Tech</a>
+                <a href="index.php">Fixing Techs</a>
             <?php endif; ?>
         </strong> <span>All Rights Reserved 2025</span></p>
 
