@@ -121,10 +121,13 @@ $result = $stmt->get_result();
                                                         echo '<span class="badge bg-primary">Accepted</span>';
                                                         break;
                                                     case 3:
-                                                        echo '<span class="badge bg-danger">Done</span>';
+                                                        echo '<span class="badge bg-success">Done</span>';
+                                                        break;
+                                                    case 4:
+                                                        echo '<span class="badge bg-danger">Declined</span>';
                                                         break;
                                                     default:
-                                                        echo '<span class="badge bg-secondary">Declined</span>';
+                                                        echo '<span class="badge bg-secondary">Unknown</span>';
                                                 }
                                                 ?>
                                             </td>
@@ -132,14 +135,18 @@ $result = $stmt->get_result();
                                             <td><?php echo htmlspecialchars($row['created_at']); ?></td>
                                             <td>
                                                 <form action="scripts/update-booking.php" method="POST">
-                                                    <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($row['booking_id']); ?>">
+                                                    <input type="hidden" name="booking_id"
+                                                        value="<?php echo htmlspecialchars($row['booking_id']); ?>">
 
                                                     <?php if ((int)$row['status'] === 1) { ?>
-                                                        <button type="submit" name="action" value="accepted" class="btn btn-primary btn-sm">Accept</button>
-                                                        <button type="submit" name="action" value="declined" class="btn btn-danger btn-sm">Decline</button>
+                                                        <button type="submit" name="action" value="accepted"
+                                                            class="btn btn-primary btn-sm">Accept</button>
+                                                        <button type="submit" name="action" value="declined"
+                                                            class="btn btn-danger btn-sm">Decline</button>
 
                                                     <?php } elseif ((int)$row['status'] === 2) { ?>
-                                                        <button type="submit" name="action" value="done" class="btn btn-primary btn-sm">Done</button>
+                                                        <button type="submit" name="action" value="done"
+                                                            class="btn btn-primary btn-sm">Done</button>
 
                                                     <?php } else { ?>
                                                         <a href="view-booking.php?booking_id=<?php echo htmlspecialchars($row['booking_id']); ?>"

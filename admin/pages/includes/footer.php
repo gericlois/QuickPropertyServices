@@ -1,6 +1,6 @@
 <footer id="footer" class="footer">
     <div class="copyright">
-        &copy; Copyright <strong><span><a href="../../index.php">Quick Property Services, LLC</a></span></strong>. All
+        &copy; Copyright <strong><span><a href="../../index.php">Fixing Tech</a></span></strong>. All
         Rights Reserved
     </div>
     <div class="credits">

@@ -1,9 +1,9 @@
 <footer id="footer" class="footer">
     <div class="container footer-top">
         <div class="row gy-4">
-            <div class="col-lg-7 col-md-6 footer-about">
+            <div class="col-lg-6 col-md-6 footer-about">
                 <a href="index.php" class="logo d-flex align-items-center">
-                    <span class="sitename">Quick Property Services LLC</span>
+                    <span class="sitename">Fixing Tech</span>
                 </a>
                 <p>"Your Home, Your Vision We Make It a Reality"</p>
             </div>
@@ -31,7 +31,7 @@
                 </ul>
             </div>
 
-            <div class="col-lg-3 col-md-3 footer-links">
+            <div class="col-lg-4 col-md-3 footer-links">
                 <h4>Contact Us</h4>
                 <div class="footer-contact pt-">
                     <p class="mt-3"><strong>Phone:</strong> <span>+1 801-613-0482</span></p>
@@ -50,11 +50,11 @@
     <div class="container copyright text-center mt-4">
         <p>© <span>Copyright</span> <strong class="px-1 sitename">
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'provider'): ?>
-                <a href="provider-dashboard.php">Quick Property Services LLC</a>
+                <a href="provider-dashboard.php">Fixing Tech</a>
             <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'user'): ?>
-                <a href="client-dashboard.php">Quick Property Services LLC</a>
+                <a href="client-dashboard.php">Fixing Tech</a>
             <?php else: ?>
-                <a href="index.php">Quick Property Services LLC</a>
+                <a href="index.php">Fixing Tech</a>
             <?php endif; ?>
         </strong> <span>All Rights Reserved 2025</span></p>
 

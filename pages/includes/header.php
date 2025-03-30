@@ -2,7 +2,7 @@
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
         <a href="index.php" class="logo d-flex align-items-center me-auto me-xl-0">
-            <h1 class="sitename">Quick Property Services</h1>
+            <h1 class="sitename">Fixing Tech</h1>
         </a>
 
         <?php 

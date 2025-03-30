@@ -19,8 +19,8 @@
 
                     <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
                         <span class="about-meta">MORE ABOUT US</span>
-                        <h2 class="about-title">Quick Property Services LLC</h2>
-                        <p class="about-description">Quick Property Services LLC is a family-owned business, based in Utah County, with our head office in Highland. Established in 2017, The founder with experience in property management, new cosntruction, home improvement and home repair fully understands the needs of each of our clients therefore has made “Excellence in Maintenance and repairs” our mission and core philosophy. We take our business seriously and our philosophy of “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every project.</p>
+                        <h2 class="about-title">Fixing Tech</h2>
+                        <p class="about-description">Fixing Tech is a family-owned business, based in Utah County, with our head office in Highland. Established in 2017, The founder with experience in property management, new cosntruction, home improvement and home repair fully understands the needs of each of our clients therefore has made “Excellence in Maintenance and repairs” our mission and core philosophy. We take our business seriously and our philosophy of “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every project.</p>
 
                         <div class="row feature-list-wrapper">
                             <div class="col-md-6">

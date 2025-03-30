@@ -25,7 +25,7 @@ include "includes/head.php";
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
                                 <i class="bi bi-gear-fill me-2"></i>
-                                Quick Property Services
+                                Fixing Tech
                             </div>
 
                             <h1 class="mb-4">
@@ -34,7 +34,7 @@ include "includes/head.php";
                             </h1>
 
                             <p class="mb-4 mb-md-5">
-                                <b>Quick Property Services LLC</b> is a family-owned business, based in Utah County,
+                                <b>Fixing Tech</b> is a family-owned business, based in Utah County,
                                 with our head office in Highland. We take our business seriously and our philosophy of
                                 “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every
                                 project.

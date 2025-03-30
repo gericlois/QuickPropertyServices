@@ -22,11 +22,11 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Users</h1>
+            <h1>Banned Users</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Users</li>
+                    <li class="breadcrumb-item active">Banned Users</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -55,7 +55,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">User Data Table</h5>
+                            <h5 class="card-title">Banned User Data Table</h5>
                             <p>View and manage registered users in a structured table format. This table allows sorting,
                                 searching, and pagination, making it easier to track user information and perform
                                 administrative actions efficiently.</p>
@@ -77,7 +77,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                     $sql = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.address, u.created_at, c.status, c.client_id 
                                     FROM users u
                                     LEFT JOIN clients c ON u.user_id = c.user_id
-                                    WHERE u.role = 'client' and c.status = 1;";
+                                    WHERE u.role = 'client' and c.status = 3;";
 
                                     $result = $conn->query($sql);
 
@@ -109,17 +109,11 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                         <td>
                                             <a href='users-profile.php?id=<?php echo $row['user_id']; ?>'
                                                 class='btn btn-sm btn-success'>View</a>
-                                            <a href='users-edit.php?id=<?php echo $row['user_id']; ?>'
-                                                class='btn btn-sm btn-warning'>Edit</a>
 
-                                            <?php if ($row['status'] == "1") { ?>
-                                            <a href='scripts/user-update.php?id=<?php echo $row['client_id']; ?>&status=2'
-                                                class='btn btn-sm btn-dark'
-                                                onclick='return confirm("Are you sure you want to deactivate this user?")'>Deactivate</a>
-                                            <?php } else if ($row['status'] == "2") { ?>
+                                            <?php if ($row['status'] == "2") { ?>
                                             <a href='scripts/user-update.php?id=<?php echo $row['client_id']; ?>&status=1'
                                                 class='btn btn-sm btn-primary'
-                                                onclick='return confirm("Are you sure you want to activate this user?")'>Activate</a>
+                                                onclick='return confirm("Are you sure you want to Unban this user?")'>Unban</a>
                                             <?php } ?>
                                         </td>
                                     </tr>

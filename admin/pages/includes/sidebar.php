@@ -20,8 +20,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="users-accordion.html">
-                        <i class="bi bi-circle"></i><span>Accordion</span>
+                    <a href="users-inactive.php">
+                        <i class="bi bi-circle"></i><span>Inactive Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="users-banned.php">
+                        <i class="bi bi-circle"></i><span>Banned Users</span>
                     </a>
                 </li>
             </ul>
@@ -38,48 +43,49 @@
                     </a>
                 </li>
                 <li>
-                    <a href="providers-accordion.html">
-                        <i class="bi bi-circle"></i><span>Accordion</span>
+                    <a href="providers-pending.php">
+                        <i class="bi bi-circle"></i><span>Pending Providers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="providers-inactive.php">
+                        <i class="bi bi-circle"></i><span>Inactive Providers</span>
                     </a>
                 </li>
             </ul>
         </li><!-- End Providers Nav -->
 
-<li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Services </span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="services-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="services.php">
-                <i class="bi bi-circle"></i><span>Services </span>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Services </span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-        </li>
-        <li>
-            <a href="services-accordion.html">
-                <i class="bi bi-circle"></i><span>Accordion</span>
-            </a>
-        </li>
-    </ul>
-</li><!-- End Services Nav -->
+            <ul id="services-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="services.php">
+                        <i class="bi bi-circle"></i><span>Services </span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Services Nav -->
 
-<li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#transactions-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Transactions </span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="transactions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="transactions.php">
-                <i class="bi bi-circle"></i><span>Transactions </span>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#bookings-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Bookings </span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
-        </li>
-        <li>
-            <a href="transactions-accordion.html">
-                <i class="bi bi-circle"></i><span>Accordion</span>
-            </a>
-        </li>
-    </ul>
-</li><!-- End Transactions Nav -->
+            <ul id="bookings-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="bookings.php">
+                        <i class="bi bi-circle"></i><span>Bookings </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transactions-accordion.html">
+                        <i class="bi bi-circle"></i><span>Accordion</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Transactions Nav -->
 
 
 
