@@ -10,9 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = trim($_POST['role']); // Ensure no unwanted spaces
     $created_at = date("Y-m-d"); // Date format for consistency
 
-    // Debugging
-    echo "Role before insertion: " . $role . "<br>";
-    print_r($_POST);
+    // Handle optional fields
+    $phone = !empty(trim($_POST['phone'])) ? trim($_POST['phone']) : NULL;
+    $address = !empty(trim($_POST['address'])) ? trim($_POST['address']) : NULL;
 
     // Check if email already exists
     $checkEmail = $conn->prepare("SELECT email FROM users WHERE email = ?");
@@ -25,13 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Insert into users table
-    $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, role, created_at) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $first_name, $last_name, $email, $password, $role, $created_at);
+    // Insert into users table (including address & phone)
+    $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password, phone, address, role, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssss", $first_name, $last_name, $email, $password, $phone, $address, $role, $created_at);
 
     if (!$stmt->execute()) {
-        echo "Error inserting user: " . $stmt->error;
-        exit();
+        die("Error inserting user: " . $stmt->error);
     }
 
     $user_id = $conn->insert_id; // Get last inserted user_id
@@ -41,17 +40,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtClient = $conn->prepare("INSERT INTO clients (user_id, status, created_at) VALUES (?, ?, ?)");
         $stmtClient->bind_param("iss", $user_id, $status, $created_at);
         if (!$stmtClient->execute()) {
-            echo "Error inserting client: " . $stmtClient->error;
-            exit();
+            die("Error inserting client: " . $stmtClient->error);
         }
         $stmtClient->close();
     } elseif ($role === "provider") {
-        $business_name = trim($_POST['business_name']);
+        $business_name = isset($_POST['business_name']) ? trim($_POST['business_name']) : NULL;
+
         $stmtProvider = $conn->prepare("INSERT INTO providers (user_id, business_name, status, created_at) VALUES (?, ?, ?, ?)");
         $stmtProvider->bind_param("isss", $user_id, $business_name, $status, $created_at);
         if (!$stmtProvider->execute()) {
-            echo "Error inserting provider: " . $stmtProvider->error;
-            exit();
+            die("Error inserting provider: " . $stmtProvider->error);
         }
         $stmtProvider->close();
     }

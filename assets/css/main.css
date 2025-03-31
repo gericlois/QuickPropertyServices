@@ -1147,6 +1147,10 @@ section,
   padding-top: 160px;
 }
 
+.features .card p {
+  line-height: 0.5;
+}
+
 .features .nav-tabs {
   border: 0;
   background-color: color-mix(in srgb, var(--default-color), transparent 96%);
@@ -1777,7 +1781,7 @@ section,
 }
 
 .services .service-card p {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   color: color-mix(in srgb, var(--default-color), transparent 25%);
   font-size: 15px;
   line-height: 1;

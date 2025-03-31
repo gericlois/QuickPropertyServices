@@ -22,7 +22,8 @@ $result = $stmt->get_result();
     <?php include "includes/header.php"; ?>
 
     <main class="main">
-        <section id="dashboard" class="section light-background">
+
+        <section id="features" class="features section light-background">
 
             <div class="container section-title" data-aos="fade-up">
                 <h2>Client Dashboard</h2>
@@ -56,67 +57,53 @@ $result = $stmt->get_result();
                         </div>
                     </div>
                 </div>
-
+                <hr>
                 <div class="row mt-4">
-                    <!-- Booking History -->
                     <div class="col-lg-12">
-                        <div class="card p-3 shadow">
-                            <h4>My Bookings</h4>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Service Name</th>
-                                        <th>Appointment Date</th>
-                                        <th>Status</th>
-                                        <th>Total Price</th>
-                                        <th>Created At</th>
-                                        <th>Action</th> <!-- Added Action Column -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($row = $result->fetch_assoc()) { ?>
-                                        <tr>
-                                            <td><?php echo $row['booking_id']; ?></td>
-                                            <td><?php echo htmlspecialchars($row['service_name']); ?></td>
-                                            <td><?php echo $row['appointment_date']; ?></td>
-                                            <td>
-                                                <?php
-                                                switch ($row['status']) {
-                                                    case '1':
-                                                        echo '<span class="badge bg-success">Pending</span>';
-                                                        break;
-                                                    case '2':
-                                                        echo '<span class="badge bg-primary">Accepted</span>';
-                                                        break;
-                                                    case '3':
-                                                        echo '<span class="badge bg-danger">Done</span>';
-                                                        break;
-                                                    default:
-                                                        echo '<span class="badge bg-secondary">Declined</span>';
-                                                }
-                                                ?>
-                                            </td>
-                                            <td>$<?php echo number_format($row['total_price'], 2); ?></td>
-                                            <td><?php echo $row['created_at']; ?></td>
-                                            <td>
-                                                <?php if ($row['status'] == '3') { ?>
-                                                    <a href="rate-booking.php?booking_id=<?php echo $row['booking_id']; ?>"
-                                                        class="btn btn-warning btn-sm">Rate</a>
-                                                <?php } else { ?>
-                                                    <a href="client-bookservices-view.php?service_id=<?php echo $row['service_id']; ?>"
-                                                        class="btn btn-info btn-sm">View</a>
-                                                <?php } ?>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-
-                        </div>
+                        <h4>My Bookings</h4>
                     </div>
 
+                    <?php while ($row = $result->fetch_assoc()) { ?>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="card p-3 shadow">
+                            <p>Booking # <?php echo htmlspecialchars($row['booking_id']); ?> |
+                                <?php
+                                    switch ((int)$row['status']) {
+                                        case 1:
+                                            echo '<span class="badge bg-warning">Pending</span>';
+                                            break;
+                                        case 2:
+                                            echo '<span class="badge bg-primary">Accepted</span>';
+                                            break;
+                                        case 3:
+                                            echo '<span class="badge bg-success">Done</span>';
+                                            break;
+                                        case 4:
+                                            echo '<span class="badge bg-danger">Declined</span>';
+                                            break;
+                                        default:
+                                            echo '<span class="badge bg-secondary">Unknown</span>';
+                                    }
+                                    ?> | <?php echo htmlspecialchars($row['created_at']); ?></p>
+                            <h5 class="card-title"><?php echo htmlspecialchars($row['service_name']); ?></h5>
+                            <p><strong>Total Price:</strong> $<?php echo number_format($row['total_price'], 2); ?></p>
+                            <p><strong>Created At:</strong> <?php echo $row['created_at']; ?></p>
+
+                            <!-- Buttons -->
+                            <div class="d-flex justify-content-between">
+                                <?php if ($row['status'] == '3') { ?>
+                                <a href="rate-booking.php?booking_id=<?php echo $row['booking_id']; ?>"
+                                    class="btn btn-warning btn-sm">Rate</a>
+                                <?php } else { ?>
+                                <a href="client-bookservices-view.php?service_id=<?php echo $row['service_id']; ?>"
+                                    class="btn btn-info btn-sm">View</a>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
+
             </div>
         </section>
     </main>
