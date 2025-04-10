@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
 
     if (empty($user_id) || empty($first_name) || empty($last_name) || empty($email)) {
-        header("Location: ../users.php?error=MissingFields");
+        header("Location: ../clients.php?error=MissingFields");
         exit();
     }
 
@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($stmt->execute()) {
-        header("Location: ../users.php?success=UserUpdated&user_id=" . urlencode($user_id));
+        header("Location: ../clients.php?success=UserUpdated&user_id=" . urlencode($user_id));
     } else {
-        header("Location: ../users.php?error=UpdateFailed");
+        header("Location: ../clients.php?error=UpdateFailed");
     }
 
     $stmt->close();

@@ -68,7 +68,7 @@
                                         <input type="text" class="form-control" name="address" placeholder="Address">
                                     </div>
 
-                                    <input type="hidden" name="role" value="client">
+                                    <input type="hidden" name="role" value="provider">
 
                                     <div class="col-12 d-none" id="businessField">
                                         <input type="text" class="form-control" name="business_name"

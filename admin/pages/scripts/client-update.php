@@ -11,10 +11,10 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
     $stmt->bind_param("si", $status, $client_id); // Fixed variable name
 
     if ($stmt->execute()) {
-        header("Location: ../users.php?success=StatusUpdated&user_id=" . urlencode($client_id)); 
+        header("Location: ../clients.php?success=StatusUpdated&user_id=" . urlencode($client_id)); 
         exit();
     } else {
-        header("Location: ../users.php?error=UpdateFailed"); 
+        header("Location: ../clients.php?error=UpdateFailed"); 
         exit();
     }
 

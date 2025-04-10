@@ -22,11 +22,11 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Users</h1>
+            <h1>Clients</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Users</li>
+                    <li class="breadcrumb-item active">Clients</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -55,9 +55,9 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">User Data Table</h5>
-                            <p>View and manage registered users in a structured table format. This table allows sorting,
-                                searching, and pagination, making it easier to track user information and perform
+                            <h5 class="card-title">Clients Data Table</h5>
+                            <p>View and manage registered client in a structured table format. This table allows sorting,
+                                searching, and pagination, making it easier to track client information and perform
                                 administrative actions efficiently.</p>
 
                             <!-- Table with stripped rows -->
@@ -77,7 +77,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                     $sql = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.address, u.created_at, c.status 
                                     FROM users u
                                     LEFT JOIN clients c ON u.user_id = c.user_id
-                                    WHERE u.role = 'user';";
+                                    WHERE u.role = 'client';";
 
                                     $result = $conn->query($sql);
 
@@ -107,9 +107,9 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                                 class="badge <?php echo $status_class; ?>"><?php echo $status_text; ?></span>
                                         </td>
                                         <td>
-                                            <a href='users-profile.php?id=<?php echo $row['user_id']; ?>'
+                                            <a href='clients-profile.php?id=<?php echo $row['user_id']; ?>'
                                                 class='btn btn-sm btn-success'>View</a>
-                                            <a href='users-edit.php?id=<?php echo $row['user_id']; ?>'
+                                            <a href='clients-edit.php?id=<?php echo $row['user_id']; ?>'
                                                 class='btn btn-sm btn-warning'>Edit</a>
 
                                             <?php if ($row['status'] == "1") { ?>
@@ -127,7 +127,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                     <?php
                                                 }
                                             } else {
-                                                echo "<tr><td colspan='7' class='text-center'>No users found</td></tr>";
+                                                echo "<tr><td colspan='7' class='text-center'>No Clients found</td></tr>";
                                             }
                                             ?>
                                 </tbody>

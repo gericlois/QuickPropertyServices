@@ -1,99 +1,104 @@
+<?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
+
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="index.php">
+            <a class="nav-link <?= $currentPage == 'index.php' ? '' : 'collapsed' ?>" href="index.php">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li>
 
+        <!-- Clients Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link <?= in_array($currentPage, ['clients.php', 'clients-blocked.php']) ? '' : 'collapsed' ?>"
+               data-bs-target="#clients-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="clients-nav" class="nav-content collapse <?= in_array($currentPage, ['clients.php', 'clients-blocked.php']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="users.php">
-                        <i class="bi bi-circle"></i><span>Users</span>
+                    <a href="clients.php" class="<?= $currentPage == 'clients.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Clients</span>
                     </a>
                 </li>
                 <li>
-                    <a href="users-accordion.html">
-                        <i class="bi bi-circle"></i><span>Accordion</span>
+                    <a href="clients-blocked.php" class="<?= $currentPage == 'clients-blocked.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Blocked Clients</span>
                     </a>
                 </li>
             </ul>
-        </li><!-- End Users Nav -->
+        </li>
 
+        <!-- Providers Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#providers-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link <?= in_array($currentPage, ['providers.php', 'providers-blocked.php']) ? '' : 'collapsed' ?>"
+               data-bs-target="#providers-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Providers</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="providers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="providers-nav" class="nav-content collapse <?= in_array($currentPage, ['providers.php', 'providers-blocked.php']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="providers.php">
+                    <a href="providers.php" class="<?= $currentPage == 'providers.php' ? 'active' : '' ?>">
                         <i class="bi bi-circle"></i><span>Providers</span>
                     </a>
                 </li>
                 <li>
-                    <a href="providers-accordion.html">
+                    <a href="providers-blocked.php" class="<?= $currentPage == 'providers-blocked.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Blocked Providers</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Services Menu -->
+        <li class="nav-item">
+            <a class="nav-link <?= in_array($currentPage, ['services.php', 'services-inactive.php']) ? '' : 'collapsed' ?>"
+               data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="services-nav" class="nav-content collapse <?= in_array($currentPage, ['services.php', 'services-inactive.php']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="services.php" class="<?= $currentPage == 'services.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Services</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="services-inactive.php" class="<?= $currentPage == 'services-inactive.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Inactive Services</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Transactions Menu -->
+        <li class="nav-item">
+            <a class="nav-link <?= in_array($currentPage, ['transactions.php', 'transactions-accordion.html']) ? '' : 'collapsed' ?>"
+               data-bs-target="#transactions-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Transactions</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="transactions-nav" class="nav-content collapse <?= in_array($currentPage, ['transactions.php', 'transactions-accordion.html']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="transactions.php" class="<?= $currentPage == 'transactions.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Transactions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transactions-accordion.html" class="<?= $currentPage == 'transactions-accordion.html' ? 'active' : '' ?>">
                         <i class="bi bi-circle"></i><span>Accordion</span>
                     </a>
                 </li>
             </ul>
-        </li><!-- End Providers Nav -->
-
-<li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Services </span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="services-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="services.php">
-                <i class="bi bi-circle"></i><span>Services </span>
-            </a>
         </li>
-        <li>
-            <a href="services-accordion.html">
-                <i class="bi bi-circle"></i><span>Accordion</span>
-            </a>
-        </li>
-    </ul>
-</li><!-- End Services Nav -->
-
-<li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#transactions-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Transactions </span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="transactions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="transactions.php">
-                <i class="bi bi-circle"></i><span>Transactions </span>
-            </a>
-        </li>
-        <li>
-            <a href="transactions-accordion.html">
-                <i class="bi bi-circle"></i><span>Accordion</span>
-            </a>
-        </li>
-    </ul>
-</li><!-- End Transactions Nav -->
-
-
-
 
         <li class="nav-heading">Users</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="admin.php">
+            <a class="nav-link <?= $currentPage == 'admin.php' ? '' : 'collapsed' ?>" href="admin.php">
                 <i class="bi bi-person"></i>
                 <span>Admin</span>
             </a>
-        </li><!-- End Admin Nav -->
-
-
+        </li>
 
     </ul>
 

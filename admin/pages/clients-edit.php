@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
 }
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: ../users.php?error=NoUserID");
+    header("Location: ../clients.php?error=NoUserID");
     exit();
 }
 
@@ -25,7 +25,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    header("Location: ../users.php?error=UserNotFound");
+    header("Location: ../clients.php?error=UserNotFound");
     exit();
 }
 
@@ -52,7 +52,7 @@ $stmt->close();
             <nav>
             <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="users.php">Users</a></li>
+                    <li class="breadcrumb-item"><a href="clients.php">Clients</a></li>
                     <li class="breadcrumb-item active">Edit Profile</li>
                 </ol>
             </nav>
@@ -65,7 +65,7 @@ $stmt->close();
                         <div class="card-body">
                             <h5 class="card-title">Edit User</h5>
 
-                            <form action="scripts/user-edit.php" method="POST">
+                            <form action="scripts/client-edit.php" method="POST">
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
                                 <div class="row mb-3">
@@ -152,7 +152,7 @@ $stmt->close();
                                 <div class="row mb-3">
                                     <div class="col-sm-10 offset-sm-2">
                                         <button type="submit" class="btn btn-success">Update User</button>
-                                        <a href="../users.php" class="btn btn-secondary">Cancel</a>
+                                        <a href="../clients.php" class="btn btn-secondary">Cancel</a>
                                     </div>
                                 </div>
                             </form>

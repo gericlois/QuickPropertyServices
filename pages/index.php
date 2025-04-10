@@ -20,7 +20,7 @@ if (isset($_SESSION['role'])) {
     }
 } else {
     // If no session role, redirect to login page
-    header("Location: ../login.php?error=PleaseLogin");
+    header("Location: login.php");
     exit();
 }
 ?>
