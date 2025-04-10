@@ -16,7 +16,7 @@
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Testimonials</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <p>See what our satisfied clients have to say about our services!</p>
             </div><!-- End Section Title -->
 
             <div class="container">
@@ -26,7 +26,7 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="testimonial-item">
                             <img src="../assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                            <h3>Saul Goodman</h3>
+                            <h3>Curtis Cooper</h3>
                             <h4>Ceo &amp; Founder</h4>
                             <div class="stars">
                                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -35,9 +35,13 @@
                             </div>
                             <p>
                                 <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                    risus at semper.</span>
+                                <span>"5 stars for Julian From QPS ! I was scheduled for 136 pt inspection to document
+                                    the conditions of the property I am renting. Very intimidating yes, but Julian set
+                                    me at ease within the first minute of saying hello. Julian is so professional,
+                                    patient, knowledgeable, and was not condescending nor did he speak above me. I am
+                                    very impressed with his skills and how he managed the experience. When I buy my next
+                                    home, I want Julian to do all the inspections. He is that good, and I trust him.
+                                    Thank you Julian.."</span>
                                 <i class="bi bi-quote quote-icon-right"></i>
                             </p>
                         </div>
@@ -46,7 +50,7 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="testimonial-item">
                             <img src="../assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                            <h3>Sara Wilsson</h3>
+                            <h3>You have Infinite Worth</h3>
                             <h4>Designer</h4>
                             <div class="stars">
                                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -55,9 +59,13 @@
                             </div>
                             <p>
                                 <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                    cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                    legam anim culpa.</span>
+                                <span>"Had a great experience with Julian Guarra from QPS , as he conducted a property
+                                    review after 3 years as a tenet. He was methodical in his review, which can be a
+                                    little stressful for a tenet, and offered great advice for easily maintaining the
+                                    property when I had questions. I know he did a great job for the company, but made
+                                    me feel at ease about the process. Really appreciate his professionalism and just a
+                                    great part of PMI and the good people there I get to work with. Always responsive
+                                    when I need help of a problem. Thank you!."</span>
                                 <i class="bi bi-quote quote-icon-right"></i>
                             </p>
                         </div>
@@ -66,7 +74,7 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="testimonial-item">
                             <img src="../assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                            <h3>Jena Karlis</h3>
+                            <h3>Adonay Barahona</h3>
                             <h4>Store Owner</h4>
                             <div class="stars">
                                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -75,9 +83,10 @@
                             </div>
                             <p>
                                 <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                    veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                    minim.</span>
+                                <span>"PMI is awesome!!! always attemptive to our needs and prompt to respond in
+                                    repairs. I've seen their growth in the last 7 years. Is clear that improve has been
+                                    made. You will be happy if you chose to work with them. Julian from QPS the
+                                    Inspector was respectful and professional Keep up the good work."</span>
                                 <i class="bi bi-quote quote-icon-right"></i>
                             </p>
                         </div>
@@ -86,7 +95,7 @@
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="testimonial-item">
                             <img src="../assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                            <h3>Matt Brandon</h3>
+                            <h3>danny Pobieglo</h3>
                             <h4>Freelancer</h4>
                             <div class="stars">
                                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -95,9 +104,65 @@
                             </div>
                             <p>
                                 <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                    fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem
-                                    dolore labore illum veniam.</span>
+                                <span>"Great to work with! Got my application processed quickly. Julian with QPS came
+                                    and fixed an issue I had super fast and he was friendly and made me laugh. Great
+                                    company all together."</span>
+                                <i class="bi bi-quote quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="testimonial-item">
+                            <img src="../assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                            <h3>Johnathan Doe</h3>
+                            <h4>Freelancer</h4>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                <i class="bi bi-quote quote-icon-left"></i>
+                                <span>"This 5 star is for Julian Guerra From QPS. Although we do enjoy PMI and they did
+                                    get a hold of this vendor, it took over a week to do so while we waited in this 100
+                                    degree weather in a 3rd floor apartment building. We haven't had any issues with
+                                    them before this, but we definitely were upset about this. My wife and I had a
+                                    broken AC unit and we have been asking property management to get this fixed as soon
+                                    as we realized it was broken for sure. A week passed and about 10 phone calls
+                                    later..finally they called Julian and he got ahold of us immediately. He wasn't even
+                                    able to come all the way out to us because he was working at a job site already. He
+                                    ended up video chatting me and talked me through everything for troubleshooting the
+                                    AC. He was willing to come down to see the problem after his current job if
+                                    troubleshooting didn't work, but after some looking and testing different things
+                                    out, we got it to work! All we needed was a phone call, but all of the other vendors
+                                    apparently were ignoring the work orders and didn't bother to call according to the
+                                    office. We really appreciate Julian, he isn't even a guy who works on AC units
+                                    typically. 11/10 I would recommend Julian. I hope he continues to work with
+                                    PMI."</span>
+                                <i class="bi bi-quote quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="testimonial-item">
+                            <img src="../assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                            <h3>Lauren Palmer-Merrill</h3>
+                            <h4>CEO</h4>
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p>
+                                <i class="bi bi-quote quote-icon-left"></i>
+                                <span>"We worked with Julian From QPS and Danna from Keyrenter for our routine
+                                    inspection this week. Communication from Danna was impeccable: she texted and
+                                    emailed with plenty of warning and a concrete time frame for our inspection. Julian
+                                    was prompt, professional, and polite. It isn’t always comfortable to have someone in
+                                    your home inspecting it, but Julian was very respectful and it was a great
+                                    experience. Like."</span>
                                 <i class="bi bi-quote quote-icon-right"></i>
                             </p>
                         </div>
@@ -109,7 +174,7 @@
 
         </section><!-- /Testimonials Section -->
 
-        
+
         <!-- Clients Section -->
         <section id="clients" class="clients section">
 

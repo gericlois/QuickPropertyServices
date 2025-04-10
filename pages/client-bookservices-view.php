@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'provider') {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'client') {
     header("Location: login.php?error=AccessDenied");
     exit();
 }
@@ -46,7 +46,7 @@ if (!$service) {
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row g-4">
-                    <div class="col-lg-7">
+                    <div class="col-lg-8">
                         <div class="service-card">
 
                             <h3>Service Details</h3>
@@ -59,51 +59,20 @@ if (!$service) {
                             <p><strong>Business Name:</strong> <?= htmlspecialchars($service['business_name']) ?></p>
                             <p><strong>Price:</strong> $<?= number_format($service['base_price'], 2) ?></p>
                             <p><strong>Description:</strong> <?= nl2br(htmlspecialchars($service['description'])) ?></p>
-                            <a href="provider-services.php" class="btn btn-secondary">Back to Services</a>
+                            <a href="client-dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
                         </div>
                     </div>
 
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <div class="service-card">
-                            <h3>Clients Who Availed</h3>
+                            <h3>Provider Details</h3>
                             <hr>
-                            <ul>
-
-                                <?php
-                                $sql_clients = "SELECT u.first_name, u.last_name, b.appointment_date, b.rate
-                            FROM bookings b
-                            JOIN clients c ON b.client_id = c.user_id
-                            JOIN users u ON c.user_id = u.user_id
-                            WHERE b.service_id = ? 
-                            ORDER BY b.appointment_date DESC;";
-
-                                $stmt_clients = $conn->prepare($sql_clients);
-                                $stmt_clients->bind_param('i', $service_id);
-                                $stmt_clients->execute();
-                                $result_clients = $stmt_clients->get_result();
-
-                                if ($result_clients->num_rows > 0) {
-                                    while ($client = $result_clients->fetch_assoc()) {
-                                        $full_name = htmlspecialchars($client['first_name'] . " " . $client['last_name']); 
-                                        $appointment_date = htmlspecialchars($client['appointment_date']);
-                                        $rating = $client['rate'] !== null ? intval($client['rate']) : 0;
-
-                                        echo "<li><strong>$full_name</strong> | $appointment_date | ";
-                                        for ($i = 1; $i <= 5; $i++) {
-                                            echo $i <= $rating ? "⭐" : "☆"; // Filled star if within rating, empty otherwise
-                                        }
-                                        echo "</li>";
-                                    }
-                                } else {
-                                    echo "<li>No clients have availed this service yet.</li>";
-                                }
-
-                                $stmt_clients->close();
-                                ?>
-                            </ul>
+                            <p><strong>Name:</strong>
+                                <?= htmlspecialchars($service['first_name'] . ' ' . $service['last_name']) ?></p>
+                            <p><strong>Email:</strong> <?= htmlspecialchars($service['email']) ?></p>
+                            <p><strong>Phone:</strong> <?= htmlspecialchars($service['phone']) ?></p>
                         </div>
                     </div>
-
                 </div>
             </div>
 

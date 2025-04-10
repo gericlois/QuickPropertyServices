@@ -57,7 +57,7 @@
 
                                     <div class="col-12">
                                         <input type="password" class="form-control" name="password"
-                                            placeholder="Password" required>
+                                            placeholder="Password" required minlength="6">
                                     </div>
 
                                     <div class="col-12">

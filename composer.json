@@ -1,0 +1,17 @@
+{
+    "name": "gericloiscasugay/quick-property",
+    "autoload": {
+        "psr-4": {
+            "Gericloiscasugay\\QuickProperty\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "gericlois",
+            "email": "gericlois.casugay@lorma.edu"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

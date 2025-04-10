@@ -14,13 +14,23 @@ $limit = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
+<<<<<<< HEAD
 $query = "SELECT * FROM services WHERE status = 1 ORDER BY created_at DESC LIMIT ? OFFSET ?";
+=======
+// Fetch services where status = 1 with pagination
+$query = "SELECT * FROM services s inner join providers p ON s.provider_id = p.provider_id inner join users u ON p.user_id = u.user_id WHERE s.status = 1 ORDER BY s.created_at DESC LIMIT ? OFFSET ?";
+>>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
 $stmt = $conn->prepare($query);
 $stmt->bind_param("ii", $limit, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
 
+<<<<<<< HEAD
 $count_query = "SELECT COUNT(*) AS total FROM services WHERE status = 1";
+=======
+// Count total services with status = 1 for pagination
+$count_query = "SELECT COUNT(*) AS total FROM services s inner join providers p ON s.provider_id = p.provider_id inner join users u ON p.user_id = u.user_id WHERE s.status = 1";
+>>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
 $count_stmt = $conn->prepare($count_query);
 $count_stmt->execute();
 $count_result = $count_stmt->get_result();
@@ -64,15 +74,74 @@ $total_pages = ceil($total_services / $limit);
                     }
                 }
                 ?>
+
+                <?php
+                if (isset($_GET['error'])) {
+                    if ($_GET["error"] == "AlreadyBooked") {
+                        echo '
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                        <b>Thank you for booking a service with us! Your appointment has been successfully scheduled. You can check your bookings here: <a href="">LINK </a></b>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                        </div>';
+                    }
+                }
+                ?>
             </div>
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row g-4" id="serviceList">
+<<<<<<< HEAD
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <div class="col-lg-6 service-item" data-aos="fade-up" data-aos-delay="100">
                             <div class="service-card d-flex">
                                 <div class="icon flex-shrink-0">
                                     <i class="bi bi-diagram-3"></i>
+=======
+                    <?php while ($row = $result->fetch_assoc()) : ?>
+                    <div class="col-lg-6 service-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-card d-flex">
+                            <div class="icon flex-shrink-0">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                            <div class="w-100">
+                                <h3><?= htmlspecialchars($row['service_name']) ?></h3>
+                                <p><strong>$<?= number_format($row['base_price'], 2) ?></strong> ||
+                                    <?= htmlspecialchars($row['first_name']) ?>
+                                    <?= htmlspecialchars($row['last_name']) ?></p>
+                                <p class="mb-4 mb-md-3"><?= (htmlspecialchars($row['description'])) ?></p>
+
+
+                                <a href="client-services-view.php?service_id=<?= $row['service_id'] ?>"
+                                    class="btn btn-sm btn-primary">View</a>
+                                <!-- Accordion Button -->
+                                <button class="btn btn-sm btn-primary toggle-form"
+                                    data-target="form-<?= $row['service_id']; ?>">
+                                    Purchase
+                                </button>
+
+                                <!-- Accordion Form -->
+                                <div class="accordion-content" id="form-<?= $row['service_id']; ?>"
+                                    style="display: none;">
+                                    <form action="scripts/process_purchase.php" method="POST" class="mt-3">
+                                        <input type="hidden" name="service_id"
+                                            value="<?= htmlspecialchars($row['service_id']); ?>">
+
+                                        <label for="date_<?= $row['service_id']; ?>">Select Date:</label>
+                                        <input type="date" id="date_<?= $row['service_id']; ?>" name="date"
+                                            class="form-control" required>
+
+                                        <label for="time_<?= $row['service_id']; ?>" class="mt-2">Select Time:</label>
+                                        <input type="time" id="time_<?= $row['service_id']; ?>" name="time"
+                                            class="form-control" required>
+
+
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary">Confirm Purchase</button>
+                                            <button type="button" class="btn btn-danger cancel-form"
+                                                data-target="form-<?= $row['service_id']; ?>">Cancel</button>
+                                        </div>
+                                    </form>
+>>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
                                 </div>
                                 <div class="w-100">
                                     <h3><?= htmlspecialchars($row['service_name']) ?></h3>
@@ -111,6 +180,7 @@ $total_pages = ceil($total_services / $limit);
                 </div>
             </div>
 
+<<<<<<< HEAD
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
                     document.querySelectorAll(".toggle-form").forEach(button => {
@@ -118,8 +188,22 @@ $total_pages = ceil($total_services / $limit);
                             let target = document.getElementById(this.getAttribute("data-target"));
                             target.style.display = target.style.display === "none" ? "block" : "none";
                         });
+=======
+            <!-- JavaScript for Toggle & Validation -->
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Toggle Form Functionality
+                document.querySelectorAll(".toggle-form").forEach(button => {
+                    button.addEventListener("click", function() {
+                        let target = document.getElementById(this.getAttribute("data-target"));
+                        if (target) {
+                            target.style.display = (target.style.display === "none" || target
+                                .style.display === "") ? "block" : "none";
+                        }
+>>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
                     });
 
+<<<<<<< HEAD
                     document.querySelectorAll(".cancel-form").forEach(button => {
                         button.addEventListener("click", function () {
                             let target = document.getElementById(this.getAttribute("data-target"));
@@ -131,6 +215,33 @@ $total_pages = ceil($total_services / $limit);
                     const today = new Date().toISOString().split('T')[0];
                     document.querySelectorAll(".service-date").forEach(input => {
                         input.setAttribute("min", today);
+=======
+                document.querySelectorAll(".cancel-form").forEach(button => {
+                    button.addEventListener("click", function() {
+                        let target = document.getElementById(this.getAttribute("data-target"));
+                        if (target) target.style.display = "none";
+                    });
+                });
+
+                // Date and Time Validation
+                document.querySelectorAll("input[type='date']").forEach(dateInput => {
+                    let timeInput = dateInput.parentElement.querySelector("input[type='time']");
+
+                    let today = new Date().toISOString().split("T")[0];
+                    dateInput.setAttribute("min", today);
+
+                    dateInput.addEventListener("change", function() {
+                        let selectedDate = new Date(dateInput.value);
+                        let now = new Date();
+
+                        if (dateInput.value === today) {
+                            let currentTime = now.getHours().toString().padStart(2, "0") + ":" +
+                                now.getMinutes().toString().padStart(2, "0");
+                            timeInput.setAttribute("min", currentTime);
+                        } else {
+                            timeInput.removeAttribute("min");
+                        }
+>>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
                     });
                 });
             </script>

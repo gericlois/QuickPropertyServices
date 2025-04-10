@@ -950,6 +950,7 @@ section,
 --------------------------------------------------------------*/
 .about {
   padding-top: 160px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 95%) 50%, color-mix(in srgb, var(--accent-color), transparent 98%) 25%, transparent 50%);
 }
 
 .about .about-meta {
@@ -1144,6 +1145,10 @@ section,
 --------------------------------------------------------------*/
 .features {
   padding-top: 160px;
+}
+
+.features .card p {
+  line-height: 0.5;
 }
 
 .features .nav-tabs {
@@ -1384,6 +1389,11 @@ section,
 /*--------------------------------------------------------------
 # Call To Action Section
 --------------------------------------------------------------*/
+.call-to-action {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 95%) 50%, color-mix(in srgb, var(--accent-color), transparent 98%) 25%, transparent 50%);
+}
+
+
 .call-to-action .container {
   background: var(--accent-color);
   color: var(--contrast-color);
@@ -1771,10 +1781,10 @@ section,
 }
 
 .services .service-card p {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   color: color-mix(in srgb, var(--default-color), transparent 25%);
   font-size: 15px;
-  line-height: .5;
+  line-height: 1;
 }
 
 .services .service-card .read-more {

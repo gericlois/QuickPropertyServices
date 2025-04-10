@@ -5,6 +5,7 @@
 session_start();
 include "includes/head.php";
 
+<<<<<<< HEAD
 // Check if the user is logged in and redirect based on role
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role'];
@@ -23,6 +24,9 @@ if (isset($_SESSION['role'])) {
     header("Location: login.php");
     exit();
 }
+=======
+// If no one is logged in, just show the page normally
+>>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
 ?>
 
 
@@ -42,7 +46,7 @@ if (isset($_SESSION['role'])) {
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
                                 <i class="bi bi-gear-fill me-2"></i>
-                                Quick Property Services
+                                Fixing Techs
                             </div>
 
                             <h1 class="mb-4">
@@ -51,7 +55,7 @@ if (isset($_SESSION['role'])) {
                             </h1>
 
                             <p class="mb-4 mb-md-5">
-                                <b>Quick Property Services LLC</b> is a family-owned business, based in Utah County,
+                                <b>Fixing Techs</b> is a family-owned business, based in Utah County,
                                 with our head office in Highland. We take our business seriously and our philosophy of
                                 “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every
                                 project.

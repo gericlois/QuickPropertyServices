@@ -22,19 +22,16 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Providers
-                <a href="providers-add.php" class="btn btn-primary rounded-pill">
-                    <i class="bi bi-plus-circle me-1"></i> Add Provider
-                </a>
+            <h1>Inactive Providers
             </h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Providers</li>
+                    <li class="breadcrumb-item active">Inactive Providers</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-        <?php
+                            <?php
                             if (isset($_GET['success'])) {
                                 if (isset($_GET["success"]) && $_GET["success"] == "ProviderAddedSuccessfully") {
                                     echo '
@@ -73,7 +70,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>Provider ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
@@ -100,7 +97,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                         p.created_at AS provider_created_at
                                     FROM users u
                                     LEFT JOIN providers p ON u.user_id = p.user_id 
-                                    where u.role = 'provider' and p.status != 2";
+                                    where u.role = 'provider' and p.status = 3";
 
                             $result = $conn->query($sql);
 
@@ -113,11 +110,11 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                         $status_class = "bg-primary";
                                         $status_text = "Active";
                                     } elseif ($row['status'] == "2") { 
-                                        $status_class = "bg-success";
-                                        $status_text = "Pending";
+                                        $status_class = "bg-danger";
+                                        $status_text = "Inactive";
                                     } elseif ($row['status'] == "3") {
                                         $status_class = "bg-warning";
-                                        $status_text = "Inactive";
+                                        $status_text = "Pending";
                                     }
                             ?>
                                     <tr>
@@ -142,10 +139,6 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                                 class='btn btn-sm btn-dark'
                                                 onclick='return confirm("Are you sure you want to deactivate this provider?")'>Deactivate</a>
                                             <?php } else if ($row['status'] == "2") { ?>
-                                            <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=1'
-                                                class='btn btn-sm btn-primary'
-                                                onclick='return confirm("Are you sure you want to confirm this provider?")'>Confirm</a>
-                                            <?php } else if ($row['status'] == "3") { ?>
                                             <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=1'
                                                 class='btn btn-sm btn-primary'
                                                 onclick='return confirm("Are you sure you want to activate this provider?")'>Activate</a>

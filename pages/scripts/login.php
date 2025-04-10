@@ -26,10 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get status for provider or client
         $status = null;
         $provider_id = null;
+        $client_id = null;
 
         if ($role === 'provider') {
             $status_stmt = $conn->prepare("SELECT provider_id, status FROM providers WHERE user_id = ?");
-        } elseif ($role === 'client') {  // Ensure this matches your database roles
+        } elseif ($role === 'client') {
             $status_stmt = $conn->prepare("SELECT client_id, status FROM clients WHERE user_id = ?");
         } else {
             $status_stmt = null;
@@ -44,13 +45,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $status = $status_data['status'];
                 if ($role === 'provider') {
                     $provider_id = $status_data['provider_id']; 
+                } elseif ($role === 'client') {
+                    $client_id = $status_data['client_id'];
                 }
             }
             $status_stmt->close();
         }
 
-        // If status is 2, deny access
+        // Handle account statuses
         if ($status == 2) {
+            header("Location: ../login.php?error=AccountPendingApproval");
+            exit();
+        } elseif ($status == 3) {
             header("Location: ../login.php?error=AccountDeactivated");
             exit();
         }
@@ -63,12 +69,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $role;
 
-
             if ($role === 'provider') {
-                $_SESSION['provider_id'] = $provider_id ?? null;
+                $_SESSION['provider_id'] = $provider_id;
                 header("Location: ../provider-dashboard.php?success=LoginSuccessfully");
             } elseif ($role === 'client') {
-                $_SESSION['client_id'] = $client_id ?? null;
+                $_SESSION['client_id'] = $client_id;
                 header("Location: ../client-services.php?success=LoginSuccessfully");
             } else {
                 header("Location: ../login.php?error=RoleNotAllowed");

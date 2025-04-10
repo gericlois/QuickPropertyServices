@@ -2,7 +2,7 @@
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
         <a href="index.php" class="logo d-flex align-items-center me-auto me-xl-0">
-            <h1 class="sitename">Quick Property Services</h1>
+            <h1 class="sitename">Fixing Techs</h1>
         </a>
 
         <?php 
@@ -46,7 +46,6 @@
                 <hr>
                 
                     <?php if ($_SESSION['role'] === 'client'): ?>
-                        <hr>
                         <li><a class="dropdown-item" href="client-profile.php" class="<?= $current_page == 'profile_user.php' ? 'active' : '' ?>">Profile</a></li>
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>
                         <li><a class="dropdown-item" href="provider-profile.php" class="<?= $current_page == 'profile_provider.php' ? 'active' : '' ?>">Profile</a></li>
