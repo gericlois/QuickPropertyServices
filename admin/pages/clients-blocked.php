@@ -77,11 +77,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                     $sql = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.address, u.created_at, c.status, c.client_id 
                                     FROM users u
                                     LEFT JOIN clients c ON u.user_id = c.user_id
-<<<<<<< HEAD:admin/pages/clients-blocked.php
                                     WHERE u.role = 'client' and c.status = 3 ;";
-=======
-                                    WHERE u.role = 'client' and c.status = 1;";
->>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1:admin/pages/users.php
 
                                     $result = $conn->query($sql);
 

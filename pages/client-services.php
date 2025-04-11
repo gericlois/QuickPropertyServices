@@ -90,58 +90,11 @@ $total_pages = ceil($total_services / $limit);
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row g-4" id="serviceList">
-<<<<<<< HEAD
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <div class="col-lg-6 service-item" data-aos="fade-up" data-aos-delay="100">
                             <div class="service-card d-flex">
                                 <div class="icon flex-shrink-0">
                                     <i class="bi bi-diagram-3"></i>
-=======
-                    <?php while ($row = $result->fetch_assoc()) : ?>
-                    <div class="col-lg-6 service-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-diagram-3"></i>
-                            </div>
-                            <div class="w-100">
-                                <h3><?= htmlspecialchars($row['service_name']) ?></h3>
-                                <p><strong>$<?= number_format($row['base_price'], 2) ?></strong> ||
-                                    <?= htmlspecialchars($row['first_name']) ?>
-                                    <?= htmlspecialchars($row['last_name']) ?></p>
-                                <p class="mb-4 mb-md-3"><?= (htmlspecialchars($row['description'])) ?></p>
-
-
-                                <a href="client-services-view.php?service_id=<?= $row['service_id'] ?>"
-                                    class="btn btn-sm btn-primary">View</a>
-                                <!-- Accordion Button -->
-                                <button class="btn btn-sm btn-primary toggle-form"
-                                    data-target="form-<?= $row['service_id']; ?>">
-                                    Purchase
-                                </button>
-
-                                <!-- Accordion Form -->
-                                <div class="accordion-content" id="form-<?= $row['service_id']; ?>"
-                                    style="display: none;">
-                                    <form action="scripts/process_purchase.php" method="POST" class="mt-3">
-                                        <input type="hidden" name="service_id"
-                                            value="<?= htmlspecialchars($row['service_id']); ?>">
-
-                                        <label for="date_<?= $row['service_id']; ?>">Select Date:</label>
-                                        <input type="date" id="date_<?= $row['service_id']; ?>" name="date"
-                                            class="form-control" required>
-
-                                        <label for="time_<?= $row['service_id']; ?>" class="mt-2">Select Time:</label>
-                                        <input type="time" id="time_<?= $row['service_id']; ?>" name="time"
-                                            class="form-control" required>
-
-
-                                        <div class="mt-3">
-                                            <button type="submit" class="btn btn-primary">Confirm Purchase</button>
-                                            <button type="button" class="btn btn-danger cancel-form"
-                                                data-target="form-<?= $row['service_id']; ?>">Cancel</button>
-                                        </div>
-                                    </form>
->>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
                                 </div>
                                 <div class="w-100">
                                     <h3><?= htmlspecialchars($row['service_name']) ?></h3>

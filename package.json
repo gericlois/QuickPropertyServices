@@ -4,7 +4,7 @@
   "description": "Thanks for downloading this template!",
   "main": "index.js",
   "scripts": {
-    "dev": "C:\\xampp2\\php\\php.exe -S localhost:8000 -t .",
+    "dev": "C:\\xampp\\php\\php.exe -S localhost:8000 -t .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "browser-sync start --proxy localhost:8000 --files '**/*.php, **/*.html, **/*.css, **/*.js'"
   },

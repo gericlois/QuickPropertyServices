@@ -3,11 +3,7 @@
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.php" class="logo d-flex align-items-center">
             <img src="../assets/img/logo.png" alt="">
-<<<<<<< HEAD
             <span class="d-none d-lg-block">Fixing Techs Admin</span>
-=======
-            <span class="d-none d-lg-block">Fixing Tech Admin</span>
->>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
