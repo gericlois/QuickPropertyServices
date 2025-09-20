@@ -22,11 +22,15 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Inactive Users</h1>
+            <h1>Admin Users
+                <a href="users-add.php" class="btn btn-primary rounded-pill">
+                    <i class="bi bi-plus-circle me-1"></i> Add Admin
+                </a>
+            </h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Inactive Users</li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active">Admin Users</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -54,8 +58,8 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Inactive User Data Table</h5>
-                            <p>View and manage registered users in a structured table format. This table allows sorting,
+                            <h5 class="card-title"> Admin User Data Table</h5>
+                            <p>View and manage registered Admin Users in a structured table format. This table allows sorting,
                                 searching, and pagination, making it easier to track user information and perform
                                 administrative actions efficiently.</p>
 
@@ -74,8 +78,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                 <tbody>
                                     <?php
                                     $sql = "SELECT user_id, first_name, last_name, email, phone, address, status, created_at from users
-                                    WHERE role = 'admin' and status = 3;";
-
+                                    WHERE role = 'admin';";
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {
@@ -91,7 +94,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                                 $status_text = "Inactive";
                                             } elseif ($row['status'] == "3") {
                                                 $status_class = "bg-warning";
-                                                $status_text = "Banned";
+                                                $status_text = "";
                                             }
                                     ?>
                                             <tr>
@@ -110,7 +113,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                                     <?php if ($row['status'] == "2") { ?>
                                                         <a href='scripts/user-update.php?id=<?php echo $row['client_id']; ?>&status=1'
                                                             class='btn btn-sm btn-primary'
-                                                            onclick='return confirm("Are you sure you want to Activate this user?")'>Activate</a>
+                                                            onclick='return confirm("Are you sure you want to Unban this user?")'>Unban</a>
                                                     <?php } ?>
                                                 </td>
                                             </tr>

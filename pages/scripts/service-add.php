@@ -1,5 +1,4 @@
 <?php
-session_start();
 require '../../admin/pages/scripts/connection.php';
 
 

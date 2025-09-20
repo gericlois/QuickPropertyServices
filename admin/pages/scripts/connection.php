@@ -3,7 +3,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "quickproperty";
+$database = "quicdqyj_quickproperty";
 
 // create a new MySQLi object and connect to the database
 $conn  = new mysqli($server, $username, $password, $database);

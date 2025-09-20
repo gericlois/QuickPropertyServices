@@ -14,23 +14,15 @@ $limit = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
-<<<<<<< HEAD
-$query = "SELECT * FROM services WHERE status = 1 ORDER BY created_at DESC LIMIT ? OFFSET ?";
-=======
 // Fetch services where status = 1 with pagination
 $query = "SELECT * FROM services s inner join providers p ON s.provider_id = p.provider_id inner join users u ON p.user_id = u.user_id WHERE s.status = 1 ORDER BY s.created_at DESC LIMIT ? OFFSET ?";
->>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
 $stmt = $conn->prepare($query);
 $stmt->bind_param("ii", $limit, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
 
-<<<<<<< HEAD
-$count_query = "SELECT COUNT(*) AS total FROM services WHERE status = 1";
-=======
 // Count total services with status = 1 for pagination
 $count_query = "SELECT COUNT(*) AS total FROM services s inner join providers p ON s.provider_id = p.provider_id inner join users u ON p.user_id = u.user_id WHERE s.status = 1";
->>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
 $count_stmt = $conn->prepare($count_query);
 $count_stmt->execute();
 $count_result = $count_stmt->get_result();
@@ -38,7 +30,10 @@ $total_services = $count_result->fetch_assoc()['total'];
 $total_pages = ceil($total_services / $limit);
 ?>
 
-<body>
+<?php
+$role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
+?>
+<body class="index-page <?php echo $role; ?>">
 
     <?php include "includes/header.php" ?>
 
@@ -133,15 +128,6 @@ $total_pages = ceil($total_services / $limit);
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    document.querySelectorAll(".toggle-form").forEach(button => {
-                        button.addEventListener("click", function () {
-                            let target = document.getElementById(this.getAttribute("data-target"));
-                            target.style.display = target.style.display === "none" ? "block" : "none";
-                        });
-=======
             <!-- JavaScript for Toggle & Validation -->
             <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -153,22 +139,8 @@ $total_pages = ceil($total_services / $limit);
                             target.style.display = (target.style.display === "none" || target
                                 .style.display === "") ? "block" : "none";
                         }
->>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
                     });
 
-<<<<<<< HEAD
-                    document.querySelectorAll(".cancel-form").forEach(button => {
-                        button.addEventListener("click", function () {
-                            let target = document.getElementById(this.getAttribute("data-target"));
-                            target.style.display = "none";
-                        });
-                    });
-
-                    // Set min date to today on all service date pickers
-                    const today = new Date().toISOString().split('T')[0];
-                    document.querySelectorAll(".service-date").forEach(input => {
-                        input.setAttribute("min", today);
-=======
                 document.querySelectorAll(".cancel-form").forEach(button => {
                     button.addEventListener("click", function() {
                         let target = document.getElementById(this.getAttribute("data-target"));
@@ -194,7 +166,6 @@ $total_pages = ceil($total_services / $limit);
                         } else {
                             timeInput.removeAttribute("min");
                         }
->>>>>>> 8e5adf97b8dfe4aaff6b269ca0bc333d2fcd55d1
                     });
                 });
             </script>

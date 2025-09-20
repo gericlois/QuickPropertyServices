@@ -34,7 +34,10 @@ $total_services = $count_result->fetch_assoc()['total'];
 $total_pages = ceil($total_services / $limit);
 ?>
 
-<body>
+<?php
+$role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
+?>
+<body class="index-page <?php echo $role; ?>">
 
     <?php include "includes/header.php" ?>
 

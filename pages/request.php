@@ -6,6 +6,7 @@
 <?php
 $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
 ?>
+
 <body class="index-page <?php echo $role; ?>">
 
     <?php include "includes/header.php" ?>
@@ -17,25 +18,25 @@ $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>We’d love to hear from you!</p>
+                <h2>Request a Job</h2>
+                <p>Submit your job details below and our team will review your request promptly.</p>
             </div><!-- End Section Title -->
+
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row g-4 g-lg-5">
                     <div class="col-lg-5">
                         <div class="info-box" data-aos="fade-up" data-aos-delay="200">
-                            <h3>Contact Info</h3>
-                            <p> Whether you need a quick repair, home improvement, or have any questions, our team is
-                                here to help.</p>
+                            <h3>Job Request Information</h3>
+                            <p>If you’re submitting a job request, please fill out the form. For additional help or urgent requests, you can also reach us directly below:</p>
 
                             <div class="info-item" data-aos="fade-up" data-aos-delay="300">
                                 <div class="icon-box">
                                     <i class="bi bi-geo-alt"></i>
                                 </div>
                                 <div class="content">
-                                    <h4>Our Location</h4>
+                                    <h4>Service Area</h4>
                                     <p>Highland, Utah County</p>
                                 </div>
                             </div>
@@ -45,7 +46,7 @@ $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
                                     <i class="bi bi-telephone"></i>
                                 </div>
                                 <div class="content">
-                                    <h4>Phone Number</h4>
+                                    <h4>Call Us for Immediate Assistance</h4>
                                     <p>+801-613-0482</p>
                                 </div>
                             </div>
@@ -55,52 +56,101 @@ $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
                                     <i class="bi bi-envelope"></i>
                                 </div>
                                 <div class="content">
-                                    <h4>Email Address</h4>
+                                    <h4>Submit Job Details via Email</h4>
                                     <p>servicerequest@quickpropertyservices.com</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+
                     <div class="col-lg-7">
                         <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
                             <h3>Get In Touch</h3>
                             <p>Send us your message.</p>
 
-                            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                                data-aos-delay="200">
+                            <?php
+                            if (isset($_GET['error'])) {
+                                if ($_GET["error"] == "EmailAlreadyExists" || $_GET["error"] == "emailtaken") {
+                                    echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <b>Email has been taken, select another email!</b>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+                                }
+                            }
+
+                            if (isset($_GET['success']) && $_GET["success"] == "JobRequestSubmitted") {
+                                echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <b>Your job request has been submitted successfully!</b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+                            }
+                            ?>
+
+                           <form action="scripts/request.php" method="post" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
+
                                 <div class="row gy-4">
 
+                                    <!-- Home Owner Information -->
+                                    <h5>Home Owner Information</h5>
+                                    <!-- Hidden input, only if session client_id is set -->
+                                    <?php if (isset($_SESSION['client_id'])): ?>
+                                        <input type="hidden" name="client_id" value="<?php echo $_SESSION['client_id']; ?>">
+                                    <?php endif; ?>
+
+                                    <div class="col-12">
+                                        <input type="text" name="contact_source" class="form-control" placeholder="Contact Source" required>
+                                    </div>
+
                                     <div class="col-md-6">
-                                        <input type="text" name="name" class="form-control" placeholder="Your Name"
-                                            required="">
+                                        <input type="text" name="homeowner_name" class="form-control" placeholder="Name" required>
                                     </div>
 
-                                    <div class="col-md-6 ">
-                                        <input type="email" class="form-control" name="email" placeholder="Your Email"
-                                            required="">
+                                    <div class="col-md-6">
+                                        <input type="text" name="address" class="form-control" placeholder="Address" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input type="text" name="phone1" class="form-control" placeholder="Phone Number 1" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input type="text" name="phone2" class="form-control" placeholder="Phone Number 2">
                                     </div>
 
                                     <div class="col-12">
-                                        <input type="text" class="form-control" name="subject" placeholder="Subject"
-                                            required="">
+                                        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
                                     </div>
 
                                     <div class="col-12">
-                                        <textarea class="form-control" name="message" rows="6" placeholder="Message"
-                                            required=""></textarea>
+                                        <textarea class="form-control" name="work_description" rows="4" placeholder="Work Description" required></textarea>
                                     </div>
 
+                                    <div class="col-12">
+                                        <textarea class="form-control" name="estimator_notes" rows="4" placeholder="Estimator Notes"></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <textarea class="form-control" name="crew_instructions" rows="4" placeholder="Instruction to Working Crew"></textarea>
+                                    </div>
+
+                                    <!-- Upload Images -->
+                                    <div class="col-12">
+                                        <label class="form-label">Upload Images (Max 5)</label>
+                                        <input type="file" name="images[]" class="form-control" accept="image/*" multiple required onchange="if(this.files.length > 5){ alert('You can only upload a maximum of 5 images'); this.value=''; }">
+                                    </div>
+
+                                    <!-- Submit -->
                                     <div class="col-12 text-center">
-                                        <div class="loading">Loading</div>
-                                        <div class="error-message"></div>
-                                        <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                                        <button type="submit" class="btn">Send Message</button>
+                                        <button type="submit" class="btn">Submit Job Request</button>
                                     </div>
 
                                 </div>
                             </form>
+
+
 
                         </div>
                     </div>

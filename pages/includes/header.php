@@ -5,7 +5,7 @@
             <h1 class="sitename">Fixing Techs</h1>
         </a>
 
-        <?php 
+        <?php
         $current_page = basename($_SERVER['PHP_SELF']); // Get current page filename
         ?>
 
@@ -13,14 +13,18 @@
             <ul>
                 <?php if (isset($_SESSION['role'])): ?>
                     <?php if ($_SESSION['role'] === 'client'): ?>
-                        <li><a href="client-dashboard.php" class="<?= $current_page == 'client-dashboard.php' ? 'active' : '' ?>">Dashboard</a></li>
                         <li><a href="client-services.php" class="<?= $current_page == 'client-services.php' ? 'active' : '' ?>">Services</a></li>
+                        <li><a href="client-dashboard.php" class="<?= $current_page == 'client-dashboard.php' ? 'active' : '' ?>">Dashboard</a></li>
+                        <li><a href="client-messages.php" class="<?= $current_page == 'client-messages.php' ? 'active' : '' ?>">Messages</a></li>
                         <li><a href="client-profile.php" class="<?= $current_page == 'client-profile.php' ? 'active' : '' ?>">Profile</a></li>
+
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>
                         <li><a href="provider-dashboard.php" class="<?= $current_page == 'provider-dashboard.php' ? 'active' : '' ?>">My Dashboard</a></li>
                         <li><a href="provider-services.php" class="<?= $current_page == 'provider-services.php' ? 'active' : '' ?>">My Services</a></li>
+                        <li><a href="provider-messages.php" class="<?= $current_page == 'provider-messages.php' ? 'active' : '' ?>">Messages</a></li>
                         <li><a href="provider-profile.php" class="<?= $current_page == 'provider-profile.php' ? 'active' : '' ?>">My Profile</a></li>
                     <?php endif; ?>
+
                 <?php else: ?>
                     <li><a href="index.php" class="<?= $current_page == 'index.php' ? 'active' : '' ?>">Home</a></li>
                     <li><a href="about.php" class="<?= $current_page == 'about.php' ? 'active' : '' ?>">About</a></li>
@@ -36,15 +40,15 @@
             <!-- User Dropdown when logged in -->
             <div class="dropdown">
                 <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle me-2"></i> 
+                    <i class="bi bi-person-circle me-2"></i>
                     <span><?php echo $_SESSION['first_name']; ?> <?php echo $_SESSION['last_name']; ?></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    
-                <li><a class="dropdown-item" href="#"><?php echo $_SESSION['first_name']; ?> <?php echo $_SESSION['last_name']; ?></a></li>
-                <li><a class="dropdown-item" href="#"> <span class="badge text-bg-primary "><?php echo $_SESSION['role']; ?> #<?php echo $_SESSION['user_id']; ?></span></a></li>
-                <hr>
-                
+
+                    <li><a class="dropdown-item" href="#"><?php echo $_SESSION['first_name']; ?> <?php echo $_SESSION['last_name']; ?></a></li>
+                    <li><a class="dropdown-item" href="#"> <span class="badge text-bg-primary "><?php echo $_SESSION['role']; ?> #<?php echo $_SESSION['user_id']; ?></span></a></li>
+                    <hr>
+
                     <?php if ($_SESSION['role'] === 'client'): ?>
                         <li><a class="dropdown-item" href="client-profile.php" class="<?= $current_page == 'profile_user.php' ? 'active' : '' ?>">Profile</a></li>
                     <?php elseif ($_SESSION['role'] === 'provider'): ?>

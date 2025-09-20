@@ -5,7 +5,7 @@
 session_start();
 include "includes/head.php";
 
-// Check if the user is logged in and redirect based on role
+// Check if the user is logged in
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role'];
 
@@ -18,15 +18,17 @@ if (isset($_SESSION['role'])) {
         header("Location: client-services.php?success=LoginSuccessfully");
         exit();
     }
-} else {
-    // If no session role, redirect to login page
-    header("Location: login.php");
-    exit();
 }
+
+// If no session or guest user, do nothing
+// Page continues to load for optional login users (guests)
 ?>
 
 
-<body class="index-page">
+<?php
+$role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
+?>
+<body class="index-page <?php echo $role; ?>">
 
     <?php include "includes/header.php" ?>
 

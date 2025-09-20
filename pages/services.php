@@ -13,7 +13,10 @@ include "../admin/pages/scripts/connection.php";
 ?>
 
 
-<body class="index-page">
+<?php
+$role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
+?>
+<body class="index-page <?php echo $role; ?>">
 
     <?php include "includes/header.php" ?>
 

@@ -16,7 +16,7 @@
         <!-- Clients Menu -->
         <li class="nav-item">
             <a class="nav-link <?= in_array($currentPage, ['clients.php', 'clients-blocked.php']) ? '' : 'collapsed' ?>"
-               data-bs-target="#clients-nav" data-bs-toggle="collapse" href="#">
+                data-bs-target="#clients-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="clients-nav" class="nav-content collapse <?= in_array($currentPage, ['clients.php', 'clients-blocked.php']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
@@ -36,7 +36,7 @@
         <!-- Providers Menu -->
         <li class="nav-item">
             <a class="nav-link <?= in_array($currentPage, ['providers.php', 'providers-blocked.php']) ? '' : 'collapsed' ?>"
-               data-bs-target="#providers-nav" data-bs-toggle="collapse" href="#">
+                data-bs-target="#providers-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Providers</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="providers-nav" class="nav-content collapse <?= in_array($currentPage, ['providers.php', 'providers-blocked.php']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
@@ -56,7 +56,7 @@
         <!-- Services Menu -->
         <li class="nav-item">
             <a class="nav-link <?= in_array($currentPage, ['services.php', 'services-inactive.php']) ? '' : 'collapsed' ?>"
-               data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
+                data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="services-nav" class="nav-content collapse <?= in_array($currentPage, ['services.php', 'services-inactive.php']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
@@ -76,7 +76,7 @@
         <!-- Transactions Menu -->
         <li class="nav-item">
             <a class="nav-link <?= in_array($currentPage, ['transactions.php', 'transactions-accordion.html']) ? '' : 'collapsed' ?>"
-               data-bs-target="#transactions-nav" data-bs-toggle="collapse" href="#">
+                data-bs-target="#transactions-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Transactions</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="transactions-nav" class="nav-content collapse <?= in_array($currentPage, ['transactions.php', 'transactions-accordion.html']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
@@ -96,11 +96,30 @@
         <li class="nav-heading">Users</li>
 
         <li class="nav-item">
-            <a class="nav-link <?= $currentPage == 'admin.php' ? '' : 'collapsed' ?>" href="admin.php">
-                <i class="bi bi-person"></i>
-                <span>Admin</span>
+            <a class="nav-link <?= in_array($currentPage, ['users.php', 'users-banned.php', 'users-inactive.php']) ? '' : 'collapsed' ?>"
+                data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-people"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="users-nav" class="nav-content collapse <?= in_array($currentPage, ['users.php', 'users-banned.php', 'users-inactive.php']) ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="users.php" class="<?= $currentPage == 'users.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>All Admin Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="users-banned.php" class="<?= $currentPage == 'users-banned.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Banned Admin Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="users-inactive.php" class="<?= $currentPage == 'users-inactive.php' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Inactive Admin Users</span>
+                    </a>
+                </li>
+            </ul>
         </li>
+
+
 
     </ul>
 

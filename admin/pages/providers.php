@@ -3,11 +3,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
-  header("Location: login.php?error=AccessDenied");
+    header("Location: login.php?error=AccessDenied");
 } else {
     include "includes/head.php";
     include "scripts/connection.php";
-}?>
+} ?>
 
 <body>
 
@@ -35,32 +35,31 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
             </nav>
         </div><!-- End Page Title -->
         <?php
-                            if (isset($_GET['success'])) {
-                                if (isset($_GET["success"]) && $_GET["success"] == "ProviderAddedSuccessfully") {
-                                    echo '
+        if (isset($_GET['success'])) {
+            if (isset($_GET["success"]) && $_GET["success"] == "ProviderAddedSuccessfully") {
+                echo '
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <b>A Provider Account  #00' . htmlspecialchars($_GET["provider_id"]) . ' has been successfully added! Please review the changes.</b>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>';
-                                }
-                                
-                                if ($_GET["success"] == "ProviderUpdated") {
-                                    echo '
+            }
+
+            if ($_GET["success"] == "ProviderUpdated") {
+                echo '
                                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                             <b>The Provider Account #00' . htmlspecialchars($_GET["provider_id"]) . ' has been successfully updated!</b> Review the updated details to ensure accuracy.
                                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                         </div>';
-                                }
-                                if ($_GET["success"] == "StatusUpdated") {
-                                    echo '
+            }
+            if ($_GET["success"] == "StatusUpdated") {
+                echo '
                                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                             <b>The Provider Account #00' . htmlspecialchars($_GET["provider_id"]) . ' has been successfully updated its STATUS!</b> Review the updated details to ensure accuracy.
                                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                         </div>';
-                                }
-                               
-                            }
-                            ?>
+            }
+        }
+        ?>
         <section class="section dashboard">
             <div class="row">
                 <div class="col-lg-12">
@@ -85,7 +84,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                 <tbody>
                                     <?php
 
-                            $sql = "SELECT 
+                                    $sql = "SELECT 
                                         u.user_id, 
                                         u.first_name, 
                                         u.last_name, 
@@ -102,62 +101,62 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                     LEFT JOIN providers p ON u.user_id = p.user_id 
                                     where u.role = 'provider' and p.status != 2";
 
-                            $result = $conn->query($sql);
+                                    $result = $conn->query($sql);
 
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    $status_class = "bg-secondary"; 
-                                    $status_text = "Unknown"; // Default text in case of unexpected values
-                            
-                                    if ($row['status'] == "1") {
-                                        $status_class = "bg-primary";
-                                        $status_text = "Active";
-                                    } elseif ($row['status'] == "2") { 
-                                        $status_class = "bg-success";
-                                        $status_text = "Pending";
-                                    } elseif ($row['status'] == "3") {
-                                        $status_class = "bg-warning";
-                                        $status_text = "Inactive";
-                                    }
-                            ?>
-                                    <tr>
-                                        <td><?php echo $row['provider_id']; ?></td>
-                                        <td><?php echo $row['first_name'] . " " . $row['last_name']; ?></td>
-                                        <td><?php echo $row['email']; ?></td>
-                                        <td><?php echo $row['phone']; ?></td>
-                                        <td><?php echo $row['business_name'] ? $row['business_name'] : 'N/A'; ?></td>
-                                        <td>
-                                            <span class="badge <?php echo $status_class; ?>">
-                                                <?php echo $status_text; ?>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <a href='providers-profile.php?id=<?php echo $row['provider_id']; ?>'
-                                                class='btn btn-sm btn-success'>View</a>
-                                            <a href='providers-edit.php?id=<?php echo $row['provider_id']; ?>'
-                                                class='btn btn-sm btn-warning'>Edit</a>
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $status_class = "bg-secondary";
+                                            $status_text = "Unknown"; // Default text in case of unexpected values
 
-                                            <?php if ($row['status'] == "1") { ?>
-                                            <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=2'
-                                                class='btn btn-sm btn-dark'
-                                                onclick='return confirm("Are you sure you want to deactivate this provider?")'>Deactivate</a>
-                                            <?php } else if ($row['status'] == "2") { ?>
-                                            <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=1'
-                                                class='btn btn-sm btn-primary'
-                                                onclick='return confirm("Are you sure you want to confirm this provider?")'>Confirm</a>
-                                            <?php } else if ($row['status'] == "3") { ?>
-                                            <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=1'
-                                                class='btn btn-sm btn-primary'
-                                                onclick='return confirm("Are you sure you want to activate this provider?")'>Activate</a>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
+                                            if ($row['status'] == "1") {
+                                                $status_class = "bg-primary";
+                                                $status_text = "Active";
+                                            } elseif ($row['status'] == "2") {
+                                                $status_class = "bg-success";
+                                                $status_text = "Pending";
+                                            } elseif ($row['status'] == "3") {
+                                                $status_class = "bg-warning";
+                                                $status_text = "Inactive";
+                                            }
+                                    ?>
+                                            <tr>
+                                                <td><?php echo $row['provider_id']; ?></td>
+                                                <td><?php echo $row['first_name'] . " " . $row['last_name']; ?></td>
+                                                <td><?php echo $row['email']; ?></td>
+                                                <td><?php echo $row['phone']; ?></td>
+                                                <td><?php echo $row['business_name'] ? $row['business_name'] : 'N/A'; ?></td>
+                                                <td>
+                                                    <span class="badge <?php echo $status_class; ?>">
+                                                        <?php echo $status_text; ?>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <a href='providers-profile.php?id=<?php echo $row['provider_id']; ?>'
+                                                        class='btn btn-sm btn-success'>View</a>
+                                                    <a href='providers-edit.php?id=<?php echo $row['provider_id']; ?>'
+                                                        class='btn btn-sm btn-warning'>Edit</a>
+
+                                                    <?php if ($row['status'] == "1") { ?>
+                                                        <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=2'
+                                                            class='btn btn-sm btn-dark'
+                                                            onclick='return confirm("Are you sure you want to deactivate this provider?")'>Deactivate</a>
+                                                    <?php } else if ($row['status'] == "2") { ?>
+                                                        <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=1'
+                                                            class='btn btn-sm btn-primary'
+                                                            onclick='return confirm("Are you sure you want to confirm this provider?")'>Confirm</a>
+                                                    <?php } else if ($row['status'] == "3") { ?>
+                                                        <a href='scripts/provider-update.php?id=<?php echo $row['provider_id']; ?>&status=1'
+                                                            class='btn btn-sm btn-primary'
+                                                            onclick='return confirm("Are you sure you want to activate this provider?")'>Activate</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
                                     <?php
-                                }
-                            } else {
-                                echo "<tr><td colspan='10' class='text-center'>No providers found</td></tr>";
-                            }
-                            ?>
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='10' class='text-center'>No providers found</td></tr>";
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                             <!-- End Table -->

@@ -34,7 +34,10 @@ $category_query = "SELECT category_id, name FROM category";
 $category_result = $conn->query($category_query);
 ?>
 
-<body class="index-page">
+<?php
+$role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
+?>
+<body class="index-page <?php echo $role; ?>">
 
     <?php include "includes/header.php" ?>
 

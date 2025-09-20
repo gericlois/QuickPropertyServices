@@ -23,28 +23,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        // Get status for provider or client
-        $status = null;
+        // Default IDs
         $provider_id = null;
-        $client_id = null;
+        $client_id   = null;
+        $status      = null;
 
+        // Fetch provider or client details
         if ($role === 'provider') {
             $status_stmt = $conn->prepare("SELECT provider_id, status FROM providers WHERE user_id = ?");
         } elseif ($role === 'client') {
             $status_stmt = $conn->prepare("SELECT client_id, status FROM clients WHERE user_id = ?");
-        } else {
-            $status_stmt = null;
         }
 
-        if ($status_stmt) {
+        if (!empty($status_stmt)) {
             $status_stmt->bind_param("i", $user_id);
             $status_stmt->execute();
             $status_result = $status_stmt->get_result();
+
             if ($status_result->num_rows === 1) {
                 $status_data = $status_result->fetch_assoc();
                 $status = $status_data['status'];
+
                 if ($role === 'provider') {
-                    $provider_id = $status_data['provider_id']; 
+                    $provider_id = $status_data['provider_id'];
                 } elseif ($role === 'client') {
                     $client_id = $status_data['client_id'];
                 }
@@ -63,16 +64,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verify password
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user_id;
+            $_SESSION['user_id']    = $user_id;
             $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['last_name'] = $user['last_name'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['role'] = $role;
+            $_SESSION['last_name']  = $user['last_name'];
+            $_SESSION['email']      = $user['email'];
+            $_SESSION['role']       = $role;
 
             if ($role === 'provider') {
+                if (!$provider_id) {
+                    header("Location: ../login.php?error=ProviderNotFound");
+                    exit();
+                }
                 $_SESSION['provider_id'] = $provider_id;
                 header("Location: ../provider-dashboard.php?success=LoginSuccessfully");
             } elseif ($role === 'client') {
+                if (!$client_id) {
+                    header("Location: ../login.php?error=ClientNotFound");
+                    exit();
+                }
                 $_SESSION['client_id'] = $client_id;
                 header("Location: ../client-services.php?success=LoginSuccessfully");
             } else {

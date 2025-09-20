@@ -40,8 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
 
         // Insert into Providers table
-        $stmt = $conn->prepare("INSERT INTO providers (user_id, business_name, password, status, created_at) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("issss", $user_id, $business_name, $password, $status, $created_at);
+        $stmt = $conn->prepare("INSERT INTO providers (user_id, business_name, status, created_at) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("isss", $user_id, $business_name, $status, $created_at);
+
         $stmt->execute();
         $stmt->close();
 
@@ -58,4 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../providers.php?error=InvalidRequest");
     exit();
 }
-?>

@@ -3,11 +3,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
-  header("Location: login.php?error=AccessDenied");
+    header("Location: login.php?error=AccessDenied");
 } else {
     include "includes/head.php";
     include "scripts/connection.php";
-}?>
+} ?>
 
 <body>
 
@@ -31,25 +31,24 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
             </nav>
         </div><!-- End Page Title -->
         <?php
-                            if (isset($_GET['success'])) {
-                                if (isset($_GET["success"]) && $_GET["success"] == "UserUpdated") {
-                                    echo '
+        if (isset($_GET['success'])) {
+            if (isset($_GET["success"]) && $_GET["success"] == "UserUpdated") {
+                echo '
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <b>The User Account #00' . htmlspecialchars($_GET["user_id"]) . ' has been successfully updated! Please review the changes.</b>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>';
-                                }
-                                
-                                if ($_GET["success"] == "StatusUpdated") {
-                                    echo '
+            }
+
+            if ($_GET["success"] == "StatusUpdated") {
+                echo '
                                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                             <b>The  User Account #00' . htmlspecialchars($_GET["user_id"]) . ' has been successfully updated!</b> Review the updated details to ensure accuracy.
                                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                         </div>';
-                                }
-                               
-                            }
-                            ?>
+            }
+        }
+        ?>
         <section class="section dashboard">
             <div class="row">
                 <div class="col-lg-12">
@@ -74,22 +73,20 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.address, u.created_at, c.status, c.client_id 
-                                    FROM users u
-                                    LEFT JOIN clients c ON u.user_id = c.user_id
-                                    WHERE u.role = 'client' and c.status = 3;";
+                                    $sql = "SELECT user_id, first_name, last_name, email, phone, address, status, created_at from users
+                                    WHERE role = 'admin' and status = 2;";
 
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            $status_class = "bg-secondary"; 
+                                            $status_class = "bg-secondary";
                                             $status_text = "Unknown"; // Default text in case of unexpected values
-                                    
+
                                             if ($row['status'] == "1") {
                                                 $status_class = "bg-primary";
                                                 $status_text = "Active";
-                                            } elseif ($row['status'] == "2") { 
+                                            } elseif ($row['status'] == "2") {
                                                 $status_class = "bg-danger";
                                                 $status_text = "Inactive";
                                             } elseif ($row['status'] == "3") {
@@ -97,33 +94,33 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                                 $status_text = "Banned";
                                             }
                                     ?>
-                                    <tr>
-                                        <td><?php echo $row['user_id']; ?></td>
-                                        <td><?php echo $row['first_name'] . " " . $row['last_name']; ?></td>
-                                        <!-- Fix: Concatenate first and last name -->
-                                        <td><?php echo $row['email']; ?></td>
-                                        <td><?php echo $row['created_at']; ?></td> <!-- Fix: Correct column name -->
-                                        <td><span
-                                                class="badge <?php echo $status_class; ?>"><?php echo $status_text; ?></span>
-                                        </td>
-                                        <td>
-                                            <a href='users-profile.php?id=<?php echo $row['user_id']; ?>'
-                                                class='btn btn-sm btn-success'>View</a>
+                                            <tr>
+                                                <td><?php echo $row['user_id']; ?></td>
+                                                <td><?php echo $row['first_name'] . " " . $row['last_name']; ?></td>
+                                                <!-- Fix: Concatenate first and last name -->
+                                                <td><?php echo $row['email']; ?></td>
+                                                <td><?php echo $row['created_at']; ?></td> <!-- Fix: Correct column name -->
+                                                <td><span
+                                                        class="badge <?php echo $status_class; ?>"><?php echo $status_text; ?></span>
+                                                </td>
+                                                <td>
+                                                    <a href='users-profile.php?id=<?php echo $row['user_id']; ?>'
+                                                        class='btn btn-sm btn-success'>View</a>
 
-                                            <?php if ($row['status'] == "2") { ?>
-                                            <a href='scripts/user-update.php?id=<?php echo $row['client_id']; ?>&status=1'
-                                                class='btn btn-sm btn-primary'
-                                                onclick='return confirm("Are you sure you want to Unban this user?")'>Unban</a>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
+                                                    <?php if ($row['status'] == "2") { ?>
+                                                        <a href='scripts/user-update.php?id=<?php echo $row['client_id']; ?>&status=1'
+                                                            class='btn btn-sm btn-primary'
+                                                            onclick='return confirm("Are you sure you want to Unban this user?")'>Unban</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
 
                                     <?php
-                                                }
-                                            } else {
-                                                echo "<tr><td colspan='7' class='text-center'>No users found</td></tr>";
-                                            }
-                                            ?>
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='7' class='text-center'>No users found</td></tr>";
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
 
