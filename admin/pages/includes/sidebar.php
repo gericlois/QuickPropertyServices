@@ -33,6 +33,78 @@
             </ul>
         </li>
 
+        <!-- Requests Menu -->
+        <li class="nav-item">
+            <a class="nav-link <?= strpos($currentPage, 'request') !== false ? '' : 'collapsed' ?>"
+                data-bs-target="#requests-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Requests</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="requests-nav" class="nav-content collapse <?= strpos($currentPage, 'request') !== false ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="requests.php" class="<?= ($currentPage == 'requests.php' && !isset($_GET['id'])) ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>All Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=hotleads" class="<?= ($_GET['id'] ?? '') == 'hotleads' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Hot Leads</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=appointment" class="<?= ($_GET['id'] ?? '') == 'appointment' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Appointment for Estimate</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=needed" class="<?= ($_GET['id'] ?? '') == 'needed' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Estimate Needed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=inprogress" class="<?= ($_GET['id'] ?? '') == 'inprogress' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Estimate in Progress</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=followup" class="<?= ($_GET['id'] ?? '') == 'followup' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Estimate Follow Up</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=vendor" class="<?= ($_GET['id'] ?? '') == 'vendor' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Assigned to Vendor</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=approved" class="<?= ($_GET['id'] ?? '') == 'approved' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Estimate Approved</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=projectprogress" class="<?= ($_GET['id'] ?? '') == 'projectprogress' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Project in Progress</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=completed" class="<?= ($_GET['id'] ?? '') == 'completed' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Project Completed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=invoiced" class="<?= ($_GET['id'] ?? '') == 'invoiced' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Project Invoiced</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="requests.php?id=done" class="<?= ($_GET['id'] ?? '') == 'done' ? 'active' : '' ?>">
+                        <i class="bi bi-circle"></i><span>Project Done</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+
         <!-- Providers Menu -->
         <li class="nav-item">
             <a class="nav-link <?= in_array($currentPage, ['providers.php', 'providers-blocked.php']) ? '' : 'collapsed' ?>"

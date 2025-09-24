@@ -14,7 +14,7 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <a href="index.php" class="logo d-flex align-items-center w-auto">
                                     <span class="d-none d-lg-block">QPS Admin</span>
                                 </a>
                             </div><!-- End Logo -->
