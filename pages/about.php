@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/head.php" ?>
-
 <?php
 $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
 ?>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>About Us | Fixing Techs</title>
+  <meta name="description" content="Family-owned Utah home repair and remodeling company offering insured services, fair pricing, and guaranteed satisfaction – Fixing Techs.">
+  <meta name="keywords" content="Fixing Techs, Utah home repair, family owned contractor, property maintenance, insured remodeling, home improvement business, maintenance service">
+
+  <!-- Favicons -->
+  <link href="../assets/img/logo.jpg" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+
 <body class="index-page <?php echo $role; ?>">
 
     <?php include "includes/header.php" ?>
@@ -23,7 +49,7 @@ $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
                     <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
                         <span class="about-meta">MORE ABOUT US</span>
                         <h2 class="about-title">Fixing Techs</h2>
-                        <p class="about-description">Fixing Techs is a family-owned business, based in Utah County, with our head office in Highland. Established in 2017, The founder with experience in property management, new cosntruction, home improvement and home repair fully understands the needs of each of our clients therefore has made “Excellence in Maintenance and repairs” our mission and core philosophy. We take our business seriously and our philosophy of “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every project.</p>
+                        <p class="about-description">Fixing Techs is a family-owned business, based in Utah County, with our head office in Highland. Established in 2017, The founder with experience in property management, new construction, home improvement and home repair fully understands the needs of each of our clients therefore has made “Excellence in Maintenance and repairs” our mission and core philosophy. We take our business seriously and our philosophy of “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every project.</p>
 
                         <div class="row feature-list-wrapper">
                             <div class="col-md-6">
