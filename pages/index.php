@@ -27,8 +27,8 @@ if (isset($_SESSION['role'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Fixing Techs</title>
-  <meta name="description" content="fixing php here">
-  <meta name="keywords" content="this contents">
+  <meta name="description" content="Fixing Techs, a family-owned Utah remodeling and repair company, provides expert craftsmanship, fair pricing, insured service, and guaranteed satisfaction.">
+  <meta name="keywords" content="home remodeling, home repair, residential renovation, maintenance services, insured contractors, Utah remodeling company, family owned contractor, transparent pricing, free consultation">
 
   <!-- Favicons -->
   <link href="../assets/img/logo.jpg" rel="icon">
