@@ -74,21 +74,59 @@ $statusClass = $statusColors[$request['status']] ?? "bg-secondary";
         <section class="section profile">
             <div class="row">
                 <div class="col-xl-4">
-
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                             <i class="bi bi-journal-text fs-1"></i>
-                            <h2>Request #<?php echo htmlspecialchars($request['request_id']); ?> | <?php echo $request['homeowner_name']; ?></h2>
+                            <h2>
+                                Request #<?php echo htmlspecialchars($request['request_id']); ?> |
+                                <?php echo $request['homeowner_name']; ?>
+                            </h2>
+
+                            <!-- Current Status Badge -->
                             <h3>
                                 <span class="badge <?php echo $statusClass; ?>">
                                     <?php echo htmlspecialchars($request['status']); ?>
                                 </span>
                             </h3>
-                            <p class="text-muted">Submitted: <?php echo htmlspecialchars($request['created_at']); ?></p>
+                            <p class="text-muted">
+                                Submitted: <?php echo htmlspecialchars($request['created_at']); ?>
+                            </p>
+
+                            <!-- Dropdown to Update Status -->
+                            <form method="post" action="scripts/update-status.php" class="mt-3" id="statusForm">
+                                <input type="hidden" name="request_id" value="<?php echo $request['request_id']; ?>">
+
+                                <select name="status" class="form-select" id="statusSelect">
+                                    <option disabled selected>Change Status</option>
+                                    <option value="Hot Leads">Hot Leads</option>
+                                    <option value="Appointment for Estimate">Appointment for Estimate</option>
+                                    <option value="Estimate Needed">Estimate Needed</option>
+                                    <option value="Estimate in Progress">Estimate in Progress</option>
+                                    <option value="Estimate Follow Up">Estimate Follow Up</option>
+                                    <option value="Assigned to Vendor">Assigned to Vendor</option>
+                                    <option value="Estimate Approved">Estimate Approved</option>
+                                    <option value="Project in Progress">Project in Progress</option>
+                                    <option value="Project Completed">Project Completed</option>
+                                    <option value="Project Invoiced">Project Invoiced</option>
+                                    <option value="Project Done">Project Done</option>
+                                </select>
+                            </form>
                         </div>
                     </div>
-
                 </div>
+
+                <script>
+                    document.getElementById('statusSelect').addEventListener('change', function() {
+                        let selectedStatus = this.value;
+                        if (confirm("Are you sure you want to change the status to: " + selectedStatus + "?")) {
+                            document.getElementById('statusForm').submit();
+                        } else {
+                            this.selectedIndex = 0; // Reset back to "Change Status"
+                        }
+                    });
+                </script>
+
+
 
                 <div class="col-xl-8">
 
@@ -209,4 +247,5 @@ $statusClass = $statusColors[$request['status']] ?? "bg-secondary";
     <?php include "includes/scripts.php" ?>
 
 </body>
+
 </html>
