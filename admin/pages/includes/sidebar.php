@@ -165,6 +165,7 @@
             </ul>
         </li>
 
+               <!-- Users Menu -->
         <li class="nav-heading">Users</li>
 
         <li class="nav-item">
@@ -189,6 +190,13 @@
                     </a>
                 </li>
             </ul>
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link <?= $currentPage == 'history.php' ? '' : 'collapsed' ?>" href="history.php">
+                <i class="bi bi-grid"></i>
+                <span>History</span>
+            </a>
         </li>
 
 
