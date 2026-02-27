@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Property Services - System Manual</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            color: #1a1a2e;
+            line-height: 1.7;
+            font-size: 13px;
+            background: #fff;
+        }
+
+        @media print {
+            body { font-size: 11pt; }
+            .page-break { page-break-before: always; }
+            .no-print { display: none; }
+            .cover { height: 100vh; }
+        }
+
+        /* Cover Page */
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%);
+            color: #fff;
+            padding: 40px;
+        }
+        .cover-logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        .cover-logo span { color: #e0a526; }
+        .cover-tagline {
+            font-size: 16px;
+            font-weight: 300;
+            color: #a8b2c1;
+            margin-bottom: 50px;
+        }
+        .cover-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border-top: 3px solid #e0a526;
+            padding-top: 30px;
+        }
+        .cover-subtitle {
+            font-size: 16px;
+            color: #a8b2c1;
+            font-weight: 300;
+        }
+        .cover-date {
+            margin-top: 60px;
+            font-size: 13px;
+            color: #778da9;
+        }
+        .cover-version {
+            font-size: 12px;
+            color: #778da9;
+            margin-top: 5px;
+        }
+
+        /* Content */
+        .content { max-width: 800px; margin: 0 auto; padding: 40px 30px; }
+
+        /* Table of Contents */
+        .toc { padding: 40px 30px; max-width: 800px; margin: 0 auto; }
+        .toc h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0d1b2a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e0a526;
+        }
+        .toc-list { list-style: none; }
+        .toc-list li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #ccc;
+            display: flex;
+            justify-content: space-between;
+        }
+        .toc-list li a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+        }
+        .toc-list li a:hover { color: #e0a526; }
+        .toc-list .toc-section { font-weight: 600; font-size: 14px; }
+        .toc-list .toc-sub { padding-left: 25px; font-size: 13px; color: #555; }
+
+        /* Headings */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0d1b2a;
+            margin-bottom: 8px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e0a526;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1b263b;
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #415a77;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        p { margin-bottom: 12px; }
+
+        /* Info boxes */
+        .info-box {
+            background: #f0f4f8;
+            border-left: 4px solid #415a77;
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .info-box.tip {
+            background: #fef9e7;
+            border-left-color: #e0a526;
+        }
+        .info-box.warning {
+            background: #fdecea;
+            border-left-color: #d32f2f;
+        }
+        .info-box strong { display: block; margin-bottom: 4px; }
+
+        /* Steps */
+        .steps { counter-reset: step; margin: 16px 0; }
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+        .step-number {
+            background: #0d1b2a;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .step-content { flex: 1; }
+        .step-content strong { color: #1b263b; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+        th {
+            background: #0d1b2a;
+            color: #fff;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 9px 14px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:nth-child(even) { background: #f8f9fa; }
+
+        /* Status badges */
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .badge-new { background: #2196F3; }
+        .badge-progress { background: #FF9800; }
+        .badge-done { background: #4CAF50; }
+        .badge-paid { background: #9C27B0; }
+        .badge-sent { background: #00BCD4; }
+
+        /* Flow diagram */
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+        .flow-item {
+            background: #e8edf2;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .flow-item.active { background: #0d1b2a; color: #fff; }
+        .flow-arrow { color: #999; font-size: 16px; }
+
+        /* Screenshot placeholder */
+        .screenshot {
+            background: #f0f4f8;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            color: #888;
+            margin: 16px 0;
+            font-style: italic;
+        }
+
+        /* Field list */
+        .field-list { margin: 12px 0; }
+        .field-item {
+            display: flex;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .field-name {
+            font-weight: 600;
+            min-width: 160px;
+            color: #1b263b;
+        }
+        .field-req {
+            color: #d32f2f;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        ul, ol { margin: 10px 0 14px 22px; }
+        li { margin-bottom: 5px; }
+
+        /* Print button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0d1b2a;
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+        .print-btn:hover { background: #1b263b; }
+    </style>
+</head>
+<body>
+
+<!-- Print to PDF Button -->
+<button class="print-btn no-print" onclick="window.print()">Save as PDF</button>
+
+<!-- ==================== COVER PAGE ==================== -->
+<div class="cover">
+    <div class="cover-logo">Quick<span>Property</span>Services</div>
+    <div class="cover-tagline">"Your Home, Your Vision &mdash; We Make It a Reality"</div>
+    <div class="cover-title">System Tutorial &amp; User Manual</div>
+    <div class="cover-subtitle">Complete guide for Homeowners, Vendors, and Administrators</div>
+    <div class="cover-date">February 2026</div>
+    <div class="cover-version">Version 2.0</div>
+</div>
+
+<!-- ==================== TABLE OF CONTENTS ==================== -->
+<div class="toc page-break">
+    <h2>Table of Contents</h2>
+    <ul class="toc-list">
+        <li class="toc-section"><a href="#s1">1. Introduction</a></li>
+        <li class="toc-sub"><a href="#s1-1">1.1 About Quick Property Services</a></li>
+        <li class="toc-sub"><a href="#s1-2">1.2 User Roles</a></li>
+        <li class="toc-sub"><a href="#s1-3">1.3 System Requirements</a></li>
+        <li class="toc-section"><a href="#s2">2. Getting Started</a></li>
+        <li class="toc-sub"><a href="#s2-1">2.1 Accessing the System</a></li>
+        <li class="toc-sub"><a href="#s2-2">2.2 Login Instructions</a></li>
+        <li class="toc-section"><a href="#s3">3. Homeowner Guide</a></li>
+        <li class="toc-sub"><a href="#s3-1">3.1 Submitting a Service Request</a></li>
+        <li class="toc-sub"><a href="#s3-2">3.2 Tracking Your Request</a></li>
+        <li class="toc-sub"><a href="#s3-3">3.3 Reviewing &amp; Accepting Estimates</a></li>
+        <li class="toc-sub"><a href="#s3-4">3.4 Homeowner Dashboard</a></li>
+        <li class="toc-section"><a href="#s4">4. Vendor Guide</a></li>
+        <li class="toc-sub"><a href="#s4-1">4.1 Vendor Dashboard</a></li>
+        <li class="toc-sub"><a href="#s4-2">4.2 Viewing Assigned Requests</a></li>
+        <li class="toc-sub"><a href="#s4-3">4.3 Submitting Estimates</a></li>
+        <li class="toc-sub"><a href="#s4-4">4.4 Submitting Completion Reports</a></li>
+        <li class="toc-section"><a href="#s5">5. Admin Guide</a></li>
+        <li class="toc-sub"><a href="#s5-1">5.1 Admin Dashboard</a></li>
+        <li class="toc-sub"><a href="#s5-2">5.2 Managing Requests</a></li>
+        <li class="toc-sub"><a href="#s5-3">5.3 Assigning Vendors</a></li>
+        <li class="toc-sub"><a href="#s5-4">5.4 Handling Estimates &amp; Markup</a></li>
+        <li class="toc-sub"><a href="#s5-5">5.5 Managing Vendors</a></li>
+        <li class="toc-sub"><a href="#s5-6">5.6 Managing Users</a></li>
+        <li class="toc-sub"><a href="#s5-7">5.7 Activity History</a></li>
+        <li class="toc-section"><a href="#s6">6. Request Lifecycle &amp; Statuses</a></li>
+        <li class="toc-section"><a href="#s7">7. Payment Workflow</a></li>
+        <li class="toc-section"><a href="#s8">8. Frequently Asked Questions</a></li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 1: INTRODUCTION ==================== -->
+<div class="content page-break">
+    <h1 id="s1">1. Introduction</h1>
+
+    <h2 id="s1-1">1.1 About Quick Property Services</h2>
+    <p>Quick Property Services (QPS) is a web-based platform that connects homeowners with qualified vendors for home repair and remodeling projects. The system streamlines the entire process from service request submission to project completion and payment.</p>
+
+    <div class="info-box">
+        <strong>How It Works</strong>
+        Homeowners submit service requests &rarr; Admins assign qualified vendors &rarr; Vendors submit competitive estimates &rarr; Admin selects the best estimate and applies markup &rarr; Homeowner accepts &rarr; Work is completed &rarr; Payment is released.
+    </div>
+
+    <h2 id="s1-2">1.2 User Roles</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Description</th>
+                <th>Access</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Homeowner</strong></td>
+                <td>Property owners who submit service requests and track project progress</td>
+                <td>Public website &amp; Homeowner Portal</td>
+            </tr>
+            <tr>
+                <td><strong>Vendor</strong></td>
+                <td>Service providers who receive assignments, submit estimates, and complete work</td>
+                <td>Vendor Portal</td>
+            </tr>
+            <tr>
+                <td><strong>Admin</strong></td>
+                <td>System administrators who manage requests, assign vendors, and oversee operations</td>
+                <td>Admin Dashboard</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="s1-3">1.3 System Requirements</h2>
+    <ul>
+        <li>A modern web browser (Chrome, Firefox, Edge, or Safari)</li>
+        <li>Stable internet connection</li>
+        <li>Valid email address for account registration</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 2: GETTING STARTED ==================== -->
+<div class="content page-break">
+    <h1 id="s2">2. Getting Started</h1>
+
+    <h2 id="s2-1">2.1 Accessing the System</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Portal</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Public Website</strong></td>
+                <td>http://yourdomain.com/pages/index.php</td>
+            </tr>
+            <tr>
+                <td><strong>Homeowner Login</strong></td>
+                <td>http://yourdomain.com/pages/homeowner-login.php</td>
+            </tr>
+            <tr>
+                <td><strong>Vendor Login</strong></td>
+                <td>http://yourdomain.com/pages/vendor-login.php</td>
+            </tr>
+            <tr>
+                <td><strong>Admin Login</strong></td>
+                <td>http://yourdomain.com/admin/pages/login.php</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="s2-2">2.2 Login Instructions</h2>
+
+    <h3>For Homeowners</h3>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Navigate to the <strong>Homeowner Login</strong> page.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Enter your <strong>email address</strong> and <strong>password</strong> (created during your first request submission).</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Click <strong>"Login"</strong> to access your dashboard.</div>
+        </div>
+    </div>
+    <div class="info-box tip">
+        <strong>Tip</strong>
+        Your account is automatically created when you submit your first service request. Use the same email and password to log in later.
+    </div>
+
+    <h3>For Vendors</h3>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Navigate to the <strong>Vendor Login</strong> page.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Enter your <strong>email</strong> and <strong>password</strong> (provided by the administrator).</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Click <strong>"Login"</strong> to access your vendor dashboard.</div>
+        </div>
+    </div>
+
+    <h3>For Admins</h3>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Navigate to the <strong>Admin Login</strong> page.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Enter your <strong>email</strong> and <strong>password</strong>.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Click <strong>"Sign In"</strong> to access the admin dashboard.</div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 3: HOMEOWNER GUIDE ==================== -->
+<div class="content page-break">
+    <h1 id="s3">3. Homeowner Guide</h1>
+
+    <h2 id="s3-1">3.1 Submitting a Service Request</h2>
+    <p>To request a home service, follow these steps:</p>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>Go to "Submit Request"</strong><br>
+                Click the "Submit Request" link from the homepage or navigation menu.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>Fill in Your Information</strong><br>
+                Complete the form with the required details.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>Upload Photos/Videos (Optional)</strong><br>
+                Attach images or videos showing the issue. Max 10MB per image, 50MB per video.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>Submit the Request</strong><br>
+                Click "Submit Request" to send your request. You will receive a unique <strong>tracking code</strong> (e.g., QPS-A1B2C3D4).
+            </div>
+        </div>
+    </div>
+
+    <h3>Request Form Fields</h3>
+    <div class="field-list">
+        <div class="field-item">
+            <span class="field-name">Full Name</span>
+            <span>Your complete name <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Email Address</span>
+            <span>Valid email for account and notifications <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Phone Number</span>
+            <span>Contact phone number <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Password</span>
+            <span>Minimum 6 characters (creates your account) <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Property Address</span>
+            <span>Full address of the property <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Service Category</span>
+            <span>Plumbing, Electrical, Painting, Carpentry, Roofing, HVAC, Landscaping, Cleaning, Flooring, or General Maintenance</span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Description</span>
+            <span>Detailed description of the work needed <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Photos/Videos</span>
+            <span>Upload images or videos of the issue (optional)</span>
+        </div>
+    </div>
+
+    <div class="info-box warning">
+        <strong>Important</strong>
+        Save your tracking code! You will need it to track your request status and view estimates.
+    </div>
+
+    <h2 id="s3-2">3.2 Tracking Your Request</h2>
+    <p>You can track your request at any time using your tracking code:</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Go to the <strong>"Track Request"</strong> page from the navigation menu.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Enter your <strong>tracking code</strong> (e.g., QPS-A1B2C3D4).</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">View your request status, estimate details, and completion information.</div>
+        </div>
+    </div>
+
+    <div class="info-box tip">
+        <strong>Tip</strong>
+        You can also log in to your Homeowner Dashboard to see all your requests in one place without needing tracking codes.
+    </div>
+
+    <h2 id="s3-3">3.3 Reviewing &amp; Accepting Estimates</h2>
+    <p>Once the admin sends you an estimate, you can review and respond:</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Track your request or log into your dashboard.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Review the estimate details including <strong>price</strong>, <strong>work description</strong>, and <strong>timeline</strong>.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Click <strong>"Accept Estimate"</strong> to approve or <strong>"Decline"</strong> to reject.</div>
+        </div>
+    </div>
+
+    <h2 id="s3-4">3.4 Homeowner Dashboard</h2>
+    <p>The Homeowner Dashboard provides an overview of all your service requests with their current statuses. From here you can:</p>
+    <ul>
+        <li>View all submitted requests</li>
+        <li>Check the current status of each request</li>
+        <li>View estimates and accept/decline them</li>
+        <li>See completion reports with photos and videos</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 4: VENDOR GUIDE ==================== -->
+<div class="content page-break">
+    <h1 id="s4">4. Vendor Guide</h1>
+
+    <h2 id="s4-1">4.1 Vendor Dashboard</h2>
+    <p>After logging in, the Vendor Dashboard displays all your assigned service requests. Each request card shows:</p>
+    <ul>
+        <li>Homeowner name and property address</li>
+        <li>Service description and category</li>
+        <li>Attached photos/videos from the homeowner</li>
+        <li>Current request status</li>
+    </ul>
+
+    <h2 id="s4-2">4.2 Viewing Assigned Requests</h2>
+    <p>When an admin assigns you to a request, it will appear on your dashboard. Click on a request to see the full details including:</p>
+    <ul>
+        <li>Complete description of the work needed</li>
+        <li>Property address and homeowner contact info</li>
+        <li>Photos and videos of the issue</li>
+    </ul>
+
+    <h2 id="s4-3">4.3 Submitting Estimates</h2>
+    <p>For each assigned request, you can submit a competitive estimate:</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>Open the Request</strong><br>
+                Click on an assigned request from your dashboard.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>Fill in the Estimate Form</strong><br>
+                Provide a detailed work description, your estimated price, and the expected timeline.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>Attach Supporting Media (Optional)</strong><br>
+                Upload photos or videos to support your estimate.
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>Submit</strong><br>
+                Click "Submit Estimate" to send your estimate to the admin for review.
+            </div>
+        </div>
+    </div>
+
+    <h3>Estimate Form Fields</h3>
+    <div class="field-list">
+        <div class="field-item">
+            <span class="field-name">Work Description</span>
+            <span>Detailed description of the proposed work <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Estimated Price</span>
+            <span>Your cost for completing the work <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Timeline</span>
+            <span>Expected duration (e.g., "5-7 business days") <span class="field-req">Required</span></span>
+        </div>
+        <div class="field-item">
+            <span class="field-name">Photos/Videos</span>
+            <span>Supporting media for your estimate (optional)</span>
+        </div>
+    </div>
+
+    <h2 id="s4-4">4.4 Submitting Completion Reports</h2>
+    <p>Once the work is finished, submit a completion report as proof:</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Navigate to the completed request from your dashboard.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Click <strong>"Submit Completion Report"</strong>.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Provide a detailed <strong>description</strong> of the work completed.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">Upload <strong>photos and/or videos</strong> showing the completed work (before &amp; after).</div>
+        </div>
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">Click <strong>"Submit"</strong>. The request status will automatically update to "Completed".</div>
+        </div>
+    </div>
+
+    <div class="info-box tip">
+        <strong>Tip</strong>
+        Always include clear before-and-after photos to help verify work completion and expedite payment release.
+    </div>
+</div>
+
+<!-- ==================== SECTION 5: ADMIN GUIDE ==================== -->
+<div class="content page-break">
+    <h1 id="s5">5. Admin Guide</h1>
+
+    <h2 id="s5-1">5.1 Admin Dashboard</h2>
+    <p>The Admin Dashboard provides a complete overview of system activity:</p>
+
+    <h3>Key Statistics Cards</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Card</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>New Requests</strong></td><td>Number of requests awaiting review</td></tr>
+            <tr><td><strong>In Progress</strong></td><td>Number of requests currently being worked on</td></tr>
+            <tr><td><strong>Completed</strong></td><td>Number of completed requests</td></tr>
+            <tr><td><strong>Pending Payments</strong></td><td>Number of requests awaiting payment processing</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Dashboard Charts &amp; Reports</h3>
+    <ul>
+        <li><strong>Request Status Report</strong> &mdash; Bar chart showing requests grouped by status</li>
+        <li><strong>Vendor Statistics</strong> &mdash; Pie chart of active vs. inactive vendors</li>
+        <li><strong>Requests Per Month</strong> &mdash; Monthly trend chart</li>
+        <li><strong>Recent Activity Log</strong> &mdash; Last 8 admin actions</li>
+        <li><strong>Latest Requests Table</strong> &mdash; 10 most recent requests</li>
+    </ul>
+
+    <h2 id="s5-2">5.2 Managing Requests</h2>
+    <p>Navigate to <strong>Requests</strong> in the sidebar to view all service requests.</p>
+
+    <h3>Filtering Requests</h3>
+    <p>Use the filter tabs to view requests by status:</p>
+    <div class="flow">
+        <span class="flow-item active">All</span>
+        <span class="flow-item">New</span>
+        <span class="flow-item">Reviewing</span>
+        <span class="flow-item">Vendors Assigned</span>
+        <span class="flow-item">Estimates Received</span>
+        <span class="flow-item">Estimate Sent</span>
+        <span class="flow-item">Homeowner Accepted</span>
+        <span class="flow-item">Payment Received</span>
+        <span class="flow-item">In Progress</span>
+        <span class="flow-item">Completed</span>
+        <span class="flow-item">Vendor Paid</span>
+    </div>
+
+    <h3>Request Details View</h3>
+    <p>Click <strong>"View"</strong> on any request to see full details, manage vendor assignments, review estimates, and update statuses.</p>
+
+    <h2 id="s5-3">5.3 Assigning Vendors</h2>
+    <p>From the request detail page:</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Open a request with <strong>"New"</strong> status.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">In the <strong>"Assign Vendors"</strong> section, select a vendor from the dropdown list.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Click <strong>"Assign"</strong>. You can assign up to <strong>5 vendors</strong> per request.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">The request status will automatically update to <strong>"Vendors Assigned"</strong>.</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>Note</strong>
+        You can remove a vendor assignment only if they have not yet submitted an estimate.
+    </div>
+
+    <h2 id="s5-4">5.4 Handling Estimates &amp; Markup</h2>
+    <p>After vendors submit their estimates:</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content"><strong>Review all estimates</strong> submitted by assigned vendors (price, description, timeline).</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content"><strong>Select the best estimate</strong> by clicking "Select" next to it.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content"><strong>Apply markup percentage</strong> to determine the homeowner's final price.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">Click <strong>"Send Estimate to Homeowner"</strong> to share the final price.</div>
+        </div>
+    </div>
+
+    <h3>Markup Calculation</h3>
+    <div class="info-box">
+        <strong>Formula</strong>
+        Final Price = Vendor Price + (Vendor Price &times; Markup %)
+        <br><br>
+        <em>Example:</em> If the vendor estimates $1,000 and you apply a 20% markup:<br>
+        Final Price = $1,000 + ($1,000 &times; 0.20) = <strong>$1,200</strong>
+    </div>
+</div>
+
+<div class="content page-break">
+    <h2 id="s5-5">5.5 Managing Vendors</h2>
+    <p>Navigate to <strong>Vendors</strong> in the sidebar to manage vendor accounts.</p>
+
+    <h3>Adding a New Vendor</h3>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Click <strong>"Add Vendor"</strong> from the Vendors page.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Fill in vendor details: name, email, phone, business name, and specialty.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Set a temporary password for the vendor.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">Click <strong>"Save"</strong> to create the vendor account.</div>
+        </div>
+    </div>
+
+    <h3>Vendor Actions</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>View Profile</strong></td><td>See full vendor details and assignment history</td></tr>
+            <tr><td><strong>Edit</strong></td><td>Update vendor information (name, email, specialty, etc.)</td></tr>
+            <tr><td><strong>Activate / Deactivate</strong></td><td>Toggle vendor account status</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="s5-6">5.6 Managing Users</h2>
+    <p>Navigate to <strong>Users</strong> in the sidebar to manage admin user accounts.</p>
+    <ul>
+        <li><strong>Add User</strong> &mdash; Create new admin accounts</li>
+        <li><strong>Edit User</strong> &mdash; Update user information</li>
+        <li><strong>Inactive Users</strong> &mdash; View deactivated accounts</li>
+        <li><strong>Banned Users</strong> &mdash; View banned accounts</li>
+    </ul>
+
+    <h2 id="s5-7">5.7 Activity History</h2>
+    <p>Navigate to <strong>History</strong> in the sidebar to view a complete audit log of all admin actions. Each entry records:</p>
+    <ul>
+        <li>Admin who performed the action</li>
+        <li>Type of action (e.g., Assigned Vendor, Updated Status, Selected Estimate)</li>
+        <li>Affected request or entity</li>
+        <li>Timestamp of the action</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 6: REQUEST LIFECYCLE ==================== -->
+<div class="content page-break">
+    <h1 id="s6">6. Request Lifecycle &amp; Statuses</h1>
+    <p>Every service request progresses through the following statuses:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Action By</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><span class="badge badge-new">New</span></td>
+                <td>Request submitted, awaiting admin review</td>
+                <td>Homeowner</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><span class="badge badge-progress">Reviewing</span></td>
+                <td>Admin is reviewing the request details</td>
+                <td>Admin</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><span class="badge badge-progress">Vendors Assigned</span></td>
+                <td>Admin has assigned vendors to the request</td>
+                <td>Admin</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><span class="badge badge-sent">Estimates Received</span></td>
+                <td>Vendors have submitted their estimates</td>
+                <td>Vendor</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><span class="badge badge-sent">Estimate Sent</span></td>
+                <td>Admin selected an estimate and sent it to the homeowner</td>
+                <td>Admin</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><span class="badge badge-done">Homeowner Accepted</span></td>
+                <td>Homeowner accepted the estimate</td>
+                <td>Homeowner</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><span class="badge badge-done">Payment Received</span></td>
+                <td>Payment received and held in escrow</td>
+                <td>Admin</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td><span class="badge badge-progress">In Progress</span></td>
+                <td>Vendor is actively working on the project</td>
+                <td>Admin</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td><span class="badge badge-done">Completed</span></td>
+                <td>Vendor submitted completion report</td>
+                <td>Vendor</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td><span class="badge badge-paid">Vendor Paid</span></td>
+                <td>Payment released to vendor &mdash; request is finalized</td>
+                <td>Admin</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Visual Flow</h3>
+    <div class="flow">
+        <span class="flow-item">New</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Reviewing</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Vendors Assigned</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Estimates Received</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Estimate Sent</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Homeowner Accepted</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Payment Received</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">In Progress</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Completed</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item active">Vendor Paid</span>
+    </div>
+</div>
+
+<!-- ==================== SECTION 7: PAYMENT WORKFLOW ==================== -->
+<div class="content page-break">
+    <h1 id="s7">7. Payment Workflow</h1>
+    <p>The system uses an escrow-style payment model to protect both homeowners and vendors:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Payment Status</th>
+                <th>Description</th>
+                <th>What Happens</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Pending</strong></td>
+                <td>Awaiting homeowner payment</td>
+                <td>Homeowner has accepted estimate but not yet paid</td>
+            </tr>
+            <tr>
+                <td><strong>Paid (Escrow)</strong></td>
+                <td>Payment received and held</td>
+                <td>Payment is held securely until work is completed and verified</td>
+            </tr>
+            <tr>
+                <td><strong>Released</strong></td>
+                <td>Payment sent to vendor</td>
+                <td>Admin releases payment after verifying completion report</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>How Escrow Protects Everyone</strong>
+        <ul style="margin-top:8px;">
+            <li><strong>Homeowners:</strong> Payment is only released after work is verified as complete</li>
+            <li><strong>Vendors:</strong> Payment is guaranteed once the work is done and approved</li>
+        </ul>
+    </div>
+
+    <h3>Payment Flow</h3>
+    <div class="flow">
+        <span class="flow-item">Estimate Accepted</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Homeowner Pays</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Held in Escrow</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item">Work Completed</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-item active">Payment Released</span>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8: FAQ ==================== -->
+<div class="content page-break">
+    <h1 id="s8">8. Frequently Asked Questions</h1>
+
+    <h3>Q: How do I get my tracking code?</h3>
+    <p>Your tracking code is displayed immediately after you submit a service request. It follows the format <strong>QPS-XXXXXXXX</strong>. Make sure to save it for future reference.</p>
+
+    <h3>Q: Can I track my request without logging in?</h3>
+    <p>Yes. Go to the "Track Request" page and enter your tracking code. No login is required to view your request status.</p>
+
+    <h3>Q: How many vendors can be assigned to my request?</h3>
+    <p>Up to <strong>5 vendors</strong> can be assigned to a single request. This ensures competitive estimates and gives the admin options to choose the best one for you.</p>
+
+    <h3>Q: As a vendor, how do I receive new assignments?</h3>
+    <p>New assignments appear automatically on your Vendor Dashboard after an admin assigns you. Log in regularly to check for new requests.</p>
+
+    <h3>Q: How is the final price determined?</h3>
+    <p>The admin selects the best vendor estimate and applies a service markup percentage. The final price shown to the homeowner includes both the vendor's cost and the platform fee.</p>
+
+    <h3>Q: What happens if I decline an estimate?</h3>
+    <p>If you decline, the admin will be notified and may send a revised estimate or assign different vendors to provide new estimates.</p>
+
+    <h3>Q: How do I know when my project is complete?</h3>
+    <p>When the vendor submits a completion report with photos/videos, the status updates to "Completed." You can view the completion report on your tracking page or dashboard.</p>
+
+    <h3>Q: How do I add a new vendor to the system?</h3>
+    <p>Admins can add vendors from the Admin Dashboard by navigating to <strong>Vendors &rarr; Add Vendor</strong> and filling in the vendor's details.</p>
+
+    <h3>Q: Is my payment secure?</h3>
+    <p>Yes. The escrow system holds your payment until the work is verified as complete. Funds are only released to the vendor after the admin confirms completion.</p>
+
+    <br><br>
+    <div style="text-align:center; padding: 40px 0; color: #888; border-top: 2px solid #e0e0e0;">
+        <p style="font-size: 16px; font-weight: 600; color: #0d1b2a;">Quick Property Services</p>
+        <p>"Your Home, Your Vision &mdash; We Make It a Reality"</p>
+        <p style="margin-top: 10px;">Phone: +1 801-613-0482 &nbsp;|&nbsp; Email: servicerequest@fixingtechs.com</p>
+        <p style="margin-top: 20px; font-size: 11px;">&copy; 2026 Quick Property Services. All Rights Reserved.</p>
+    </div>
+</div>
+
+</body>
+</html>
