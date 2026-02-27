@@ -15,6 +15,7 @@
                     <li><a href="track.php">Track Request</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php">Contact</a></li>
+                    <li><a href="../admin/pages/login.php">Admin</a></li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-3 footer-links">
