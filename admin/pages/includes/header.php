@@ -1,137 +1,74 @@
-<header id="header" class="header fixed-top d-flex align-items-center">
+<?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
 
-    <div class="d-flex align-items-center justify-content-between">
-        <a href="index.php" class="logo d-flex align-items-center">
-            <img src="../assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">Fixing Techs Admin</span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-
-    <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-    </div><!-- End Search Bar -->
-
-    <nav class="header-nav ms-auto">
-    <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle" href="#">
-                <i class="bi bi-search"></i>
+<nav class="nxl-navigation">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a href="index.php" class="b-brand">
+                <span class="logo logo-lg" style="font-size:16px;font-weight:700;color:#333;">QuickPropertyServices</span>
+                <span class="logo logo-sm" style="font-size:14px;font-weight:700;color:#333;">QPS</span>
             </a>
-        </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-bell"></i>
-                <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                <li class="dropdown-header">
-                    You have 4 new notifications
-                    <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-
-                <li class="notification-item">
-                    <i class="bi bi-exclamation-circle text-warning"></i>
-                    <div>
-                        <h4>Lorem Ipsum</h4>
-                        <p>Quae dolorem earum veritatis oditseno</p>
-                        <p>30 min. ago</p>
-                    </div>
+        </div>
+        <div class="navbar-content">
+            <ul class="nxl-navbar">
+                <li class="nxl-item nxl-caption">
+                    <label>Navigation</label>
                 </li>
 
-                <li><hr class="dropdown-divider"></li>
-
-                <li class="notification-item">
-                    <i class="bi bi-x-circle text-danger"></i>
-                    <div>
-                        <h4>Atque rerum nesciunt</h4>
-                        <p>Quae dolorem earum veritatis oditseno</p>
-                        <p>1 hr. ago</p>
-                    </div>
-                </li>
-
-                <li><hr class="dropdown-divider"></li>
-
-                <li class="notification-item">
-                    <i class="bi bi-check-circle text-success"></i>
-                    <div>
-                        <h4>Sit rerum fuga</h4>
-                        <p>Quae dolorem earum veritatis oditseno</p>
-                        <p>2 hrs. ago</p>
-                    </div>
-                </li>
-
-                <li><hr class="dropdown-divider"></li>
-
-                <li class="notification-item">
-                    <i class="bi bi-info-circle text-primary"></i>
-                    <div>
-                        <h4>Dicta reprehenderit</h4>
-                        <p>Quae dolorem earum veritatis oditseno</p>
-                        <p>4 hrs. ago</p>
-                    </div>
-                </li>
-
-                <li><hr class="dropdown-divider"></li>
-                <li class="dropdown-footer">
-                    <a href="#">Show all notifications</a>
-                </li>
-            </ul><!-- End Notification Dropdown Items -->
-        </li><!-- End Notification Nav -->
-
-        <li class="nav-item dropdown pe-3">
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-person-circle fs-4"></i>
-                <span class="d-none d-md-block dropdown-toggle ps-2">
-                    <?php echo isset($_SESSION['first_name']) ? $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] : 'Guest'; ?>
-                </span>
-            </a><!-- End Profile Image Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                <li class="dropdown-header">
-                    <h6>
-                        <?php echo isset($_SESSION['first_name']) ? $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] : 'Guest'; ?>
-                    </h6>
-                    <span>
-                        <?php echo isset($_SESSION['role']) ? ucfirst($_SESSION['role']) : 'User'; ?>
-                    </span>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-
-                <li>
-                    <a class="dropdown-item d-flex align-items-center" href="admin-profile.php">
-                        <i class="bi bi-person"></i>
-                        <span>My Profile</span>
+                <!-- Dashboard -->
+                <li class="nxl-item <?= $currentPage == 'index.php' ? 'active' : '' ?>">
+                    <a href="index.php" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-airplay"></i></span>
+                        <span class="nxl-mtext">Dashboard</span>
                     </a>
                 </li>
-                <li><hr class="dropdown-divider"></li>
 
-                <li>
-                    <a class="dropdown-item d-flex align-items-center" href="admin-profile.php">
-                        <i class="bi bi-gear"></i>
-                        <span>Account Settings</span>
+                <!-- Requests -->
+                <li class="nxl-item <?= $currentPage == 'requests.php' || $currentPage == 'request-view.php' ? 'active' : '' ?>">
+                    <a href="requests.php" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-file-text"></i></span>
+                        <span class="nxl-mtext">Requests</span>
                     </a>
                 </li>
-                <li><hr class="dropdown-divider"></li>
 
-                <li>
-                    <a class="dropdown-item d-flex align-items-center" href="logout.php">
-                        <i class="bi bi-box-arrow-right"></i>
-                        <span>Sign Out</span>
+                <!-- Vendors -->
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-tool"></i></span>
+                        <span class="nxl-mtext">Vendors</span>
+                        <span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link <?= $currentPage == 'vendors.php' ? 'active' : '' ?>" href="vendors.php">All Vendors</a></li>
+                        <li class="nxl-item"><a class="nxl-link <?= $currentPage == 'vendor-add.php' ? 'active' : '' ?>" href="vendor-add.php">Add Vendor</a></li>
+                    </ul>
+                </li>
+
+                <li class="nxl-item nxl-caption">
+                    <label>Administration</label>
+                </li>
+
+                <!-- Admin Users -->
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-shield"></i></span>
+                        <span class="nxl-mtext">Admin Users</span>
+                        <span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link <?= $currentPage == 'users.php' ? 'active' : '' ?>" href="users.php">All Admin Users</a></li>
+                        <li class="nxl-item"><a class="nxl-link <?= $currentPage == 'users-banned.php' ? 'active' : '' ?>" href="users-banned.php">Banned Users</a></li>
+                        <li class="nxl-item"><a class="nxl-link <?= $currentPage == 'users-inactive.php' ? 'active' : '' ?>" href="users-inactive.php">Inactive Users</a></li>
+                    </ul>
+                </li>
+
+                <!-- History -->
+                <li class="nxl-item <?= $currentPage == 'history.php' ? 'active' : '' ?>">
+                    <a href="history.php" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-clock"></i></span>
+                        <span class="nxl-mtext">History</span>
                     </a>
                 </li>
-            </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-    </ul>
-</nav><!-- End Icons Navigation -->
-
-
-</header>
+            </ul>
+        </div>
+    </div>
+</nav>

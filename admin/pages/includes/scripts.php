@@ -1,11 +1,30 @@
-<script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/vendor/chart.js/chart.umd.js"></script>
-<script src="../assets/vendor/echarts/echarts.min.js"></script>
-<script src="../assets/vendor/quill/quill.js"></script>
-<script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
-<script src="../assets/vendor/tinymce/tinymce.min.js"></script>
-<script src="../assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="../assets/js/main.js"></script>
+<!-- Vendors JS -->
+<script src="../assets/vendors/js/vendors.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="../assets/vendors/js/bootstrap.min.js"></script>
+<!-- ApexCharts JS -->
+<script src="../assets/vendors/js/apexcharts.min.js"></script>
+<!-- DataTables JS -->
+<script src="../assets/vendors/js/dataTables.min.js"></script>
+<script src="../assets/vendors/js/dataTables.bs5.min.js"></script>
+<!-- Fullscreen Helper -->
+<script src="../assets/vendors/js/full-screen-helper.min.js"></script>
+<!-- Common Init JS -->
+<script src="../assets/js/common-init.min.js"></script>
+<!-- Theme Customizer -->
+<script src="../assets/js/theme-customizer-init.min.js"></script>
+<!-- DataTable Auto Init -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.datatable').forEach(function(table) {
+        if (!$.fn.DataTable.isDataTable(table)) {
+            $(table).DataTable({
+                pageLength: 10,
+                lengthMenu: [5, 10, 25, 50],
+                responsive: true,
+                order: [[0, 'desc']]
+            });
+        }
+    });
+});
+</script>

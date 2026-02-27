@@ -4,738 +4,394 @@
 session_start();
 if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php?error=AccessDenied");
+    exit();
 } else {
     include "includes/head.php";
     include "scripts/connection.php";
+    include "scripts/helpers.php";
 } ?>
 
 <body>
 
-    <!-- ======= Header ======= -->
     <?php include "includes/header.php" ?>
-    <!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
     <?php include "includes/sidebar.php" ?>
-    <!-- End Sidebar-->
 
-    <main id="main" class="main">
+    <div class="main-content">
+        <div class="row">
 
-        <div class="pagetitle">
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-
-        <section class="section dashboard">
-            <div class="row">
-
-                <!-- Left side columns -->
-                <div class="col-lg-8">
-                    <div class="row">
-                        <!-- Hot Leads Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="?filter=today">Today</a></li>
-                                        <li><a class="dropdown-item" href="?filter=month">This Month</a></li>
-                                        <li><a class="dropdown-item" href="?filter=year">This Year</a></li>
-                                    </ul>
+            <!-- New Requests Card -->
+            <div class="col-xxl-3 col-md-6">
+                <div class="card stretch stretch-full">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start justify-content-between mb-4">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-danger bg-opacity-10 rounded">
+                                    <i class="feather-alert-triangle text-danger fs-4"></i>
                                 </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Hot Leads
-                                        <?php if (isset($_GET['filter'])): ?>
-                                            <span>| <?php echo ucfirst($_GET['filter']); ?></span>
-                                        <?php endif; ?>
-                                    </h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-fire text-danger"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <?php
-                                            // Example DB query
-                                            require '../../admin/pages/scripts/connection.php';
-
-                                            // Base query
-                                            $sql = "SELECT COUNT(*) AS total FROM job_requests WHERE status = 'Hot Lead'";
-
-                                            // Optional filter
-                                            if (isset($_GET['filter'])) {
-                                                if ($_GET['filter'] === 'today') {
-                                                    $sql .= " AND DATE(created_at) = CURDATE()";
-                                                } elseif ($_GET['filter'] === 'month') {
-                                                    $sql .= " AND MONTH(created_at) = MONTH(CURDATE()) AND YEAR(created_at) = YEAR(CURDATE())";
-                                                } elseif ($_GET['filter'] === 'year') {
-                                                    $sql .= " AND YEAR(created_at) = YEAR(CURDATE())";
-                                                }
-                                            }
-
-                                            $result = $conn->query($sql);
-                                            $row = $result->fetch_assoc();
-                                            $hotLeadCount = $row['total'];
-                                            ?>
-
-                                            <h6><?php echo $hotLeadCount; ?></h6>
-                                            <span class="text-muted small pt-2 ps-1">Active Leads</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Hot Leads Card -->
-
-
-                        <!-- Project in Progress Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card revenue-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="?filter=today">Today</a></li>
-                                        <li><a class="dropdown-item" href="?filter=month">This Month</a></li>
-                                        <li><a class="dropdown-item" href="?filter=year">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Project in Progress
-                                        <?php if (isset($_GET['filter'])): ?>
-                                            <span>| <?php echo ucfirst($_GET['filter']); ?></span>
-                                        <?php else: ?>
-                                            <span>| All Time</span>
-                                        <?php endif; ?>
-                                    </h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-hammer text-warning"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <?php
-                                            // DB Connection
-                                            require '../../admin/pages/scripts/connection.php';
-
-                                            // Base query for Project in Progress
-                                            $sql = "SELECT COUNT(*) AS total FROM job_requests WHERE status = 'Project in Progress'";
-
-                                            // Apply filter
-                                            if (isset($_GET['filter'])) {
-                                                if ($_GET['filter'] === 'today') {
-                                                    $sql .= " AND DATE(created_at) = CURDATE()";
-                                                } elseif ($_GET['filter'] === 'month') {
-                                                    $sql .= " AND MONTH(created_at) = MONTH(CURDATE()) AND YEAR(created_at) = YEAR(CURDATE())";
-                                                } elseif ($_GET['filter'] === 'year') {
-                                                    $sql .= " AND YEAR(created_at) = YEAR(CURDATE())";
-                                                }
-                                            }
-
-                                            $result = $conn->query($sql);
-                                            $row = $result->fetch_assoc();
-                                            $progressCount = $row['total'];
-                                            ?>
-
-                                            <h6><?php echo $progressCount; ?></h6>
-                                            <span class="text-muted small pt-2 ps-1">Ongoing Projects</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Project in Progress Card -->
-
-
-                        <!-- Project Done Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card revenue-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="?filter=today">Today</a></li>
-                                        <li><a class="dropdown-item" href="?filter=month">This Month</a></li>
-                                        <li><a class="dropdown-item" href="?filter=year">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Project Done
-                                        <?php if (isset($_GET['filter'])): ?>
-                                            <span>| <?php echo ucfirst($_GET['filter']); ?></span>
-                                        <?php else: ?>
-                                            <span>| All Time</span>
-                                        <?php endif; ?>
-                                    </h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-check2-circle text-success"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <?php
-                                            // Example DB query
-                                            require '../../admin/pages/scripts/connection.php';
-
-                                            // Base query
-                                            $sql = "SELECT COUNT(*) AS total FROM job_requests WHERE status = 'Project Done'";
-
-                                            // Optional filter
-                                            if (isset($_GET['filter'])) {
-                                                if ($_GET['filter'] === 'today') {
-                                                    $sql .= " AND DATE(created_at) = CURDATE()";
-                                                } elseif ($_GET['filter'] === 'month') {
-                                                    $sql .= " AND MONTH(created_at) = MONTH(CURDATE()) AND YEAR(created_at) = YEAR(CURDATE())";
-                                                } elseif ($_GET['filter'] === 'year') {
-                                                    $sql .= " AND YEAR(created_at) = YEAR(CURDATE())";
-                                                }
-                                            }
-
-                                            $result = $conn->query($sql);
-                                            $row = $result->fetch_assoc();
-                                            $doneCount = $row['total'];
-                                            ?>
-
-                                            <h6><?php echo $doneCount; ?></h6>
-                                            <span class="text-muted small pt-2 ps-1">Completed Projects</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Project Done Card -->
-
-
-                        <!-- Reports -->
-                        <div class="col-12">
-                            <div class="card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="?filter=year">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Requests <span>| Per Month</span></h5>
-
-                                    <!-- Line Chart -->
-                                    <div id="reportsChart"></div>
-
+                                <div>
                                     <?php
-                                    require '../../admin/pages/scripts/connection.php';
-
-                                    // Query: count requests per month for current year
-                                    $sql = "SELECT DATE_FORMAT(created_at, '%Y-%m') AS month, COUNT(*) AS total
-                    FROM job_requests
-                    WHERE YEAR(created_at) = YEAR(CURDATE())
-                    GROUP BY month
-                    ORDER BY month ASC";
-
+                                    $sql = "SELECT COUNT(*) AS total FROM service_requests WHERE status = 'new'";
                                     $result = $conn->query($sql);
-
-                                    $months = [];
-                                    $totals = [];
-
-                                    while ($row = $result->fetch_assoc()) {
-                                        // Format month as YYYY-MM-01 (so ApexCharts treats it as a date)
-                                        $months[] = $row['month'] . "-01";
-                                        $totals[] = $row['total'];
-                                    }
+                                    $newCount = $result->fetch_assoc()['total'];
                                     ?>
-
-                                    <script>
-                                        document.addEventListener("DOMContentLoaded", () => {
-                                            new ApexCharts(document.querySelector("#reportsChart"), {
-                                                series: [{
-                                                    name: 'Requests',
-                                                    data: <?php echo json_encode($totals); ?>
-                                                }],
-                                                chart: {
-                                                    height: 350,
-                                                    type: 'area',
-                                                    toolbar: {
-                                                        show: false
-                                                    },
-                                                },
-                                                markers: {
-                                                    size: 4
-                                                },
-                                                colors: ['#4154f1'],
-                                                fill: {
-                                                    type: "gradient",
-                                                    gradient: {
-                                                        shadeIntensity: 1,
-                                                        opacityFrom: 0.3,
-                                                        opacityTo: 0.4,
-                                                        stops: [0, 90, 100]
-                                                    }
-                                                },
-                                                dataLabels: {
-                                                    enabled: false
-                                                },
-                                                stroke: {
-                                                    curve: 'smooth',
-                                                    width: 2
-                                                },
-                                                xaxis: {
-                                                    type: 'datetime',
-                                                    categories: <?php echo json_encode($months); ?>
-                                                },
-                                                tooltip: {
-                                                    x: {
-                                                        format: 'MMM yyyy'
-                                                    },
-                                                }
-                                            }).render();
-                                        });
-                                    </script>
-                                    <!-- End Line Chart -->
-
+                                    <div class="fs-4 fw-bold text-dark"><?php echo $newCount; ?></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">New Requests</h3>
                                 </div>
-
                             </div>
                         </div>
-                        <!-- End Reports -->
-
-
-                        <!-- Latest Requests -->
-                        <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="?filter=today">Today</a></li>
-                                        <li><a class="dropdown-item" href="?filter=month">This Month</a></li>
-                                        <li><a class="dropdown-item" href="?filter=year">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Latest Requests <span>| Recent</span></h5>
-
-                                    <table class="table table-borderless datatable">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Homeowner</th>
-                                                <th scope="col">Contact Source</th>
-                                                <th scope="col">Submitted</th>
-                                                <th scope="col">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            require '../../admin/pages/scripts/connection.php';
-
-                                            // You can change LIMIT 10 to however many rows you want
-                                            $sql = "SELECT request_id, homeowner_name, contact_source, created_at, status 
-                            FROM job_requests 
-                            ORDER BY created_at DESC 
-                            LIMIT 10";
-                                            $result = $conn->query($sql);
-
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    // Pick bootstrap badge class based on status
-                                                    switch ($row['status']) {
-                                                        case 'Hot Lead':
-                                                            $statusClass = 'bg-warning';
-                                                            break;
-                                                        case 'Project in Progress':
-                                                            $statusClass = 'bg-info';
-                                                            break;
-                                                        case 'Project Done':
-                                                            $statusClass = 'bg-success';
-                                                            break;
-                                                        default:
-                                                            $statusClass = 'bg-secondary';
-                                                    }
-                                                    echo "<tr>
-                                <th scope='row'><a href='request.php?id=" . $row['request_id'] . "'>#" . $row['request_id'] . "</a></th>
-                                <td>" . htmlspecialchars($row['homeowner_name']) . "</td>
-                                <td>" . htmlspecialchars($row['contact_source']) . "</td>
-                                <td>" . date('M d, Y H:i', strtotime($row['created_at'])) . "</td>
-                                <td><span class='badge $statusClass'>" . htmlspecialchars($row['status']) . "</span></td>
-                              </tr>";
-                                                }
-                                            } else {
-                                                echo "<tr><td colspan='5' class='text-center'>No requests found</td></tr>";
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End Latest Requests -->
-
-                        <!-- News & Updates Traffic -->
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-                                    <div class="news">
-                                        <div class="post-item clearfix">
-                                            <img src="../assets/img/news-1.jpg" alt="">
-                                            <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                                            <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                                        </div>
-
-                                        <div class="post-item clearfix">
-                                            <img src="../assets/img/news-2.jpg" alt="">
-                                            <h4><a href="#">Quidem autem et impedit</a></h4>
-                                            <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...
-                                            </p>
-                                        </div>
-
-                                        <div class="post-item clearfix">
-                                            <img src="../assets/img/news-3.jpg" alt="">
-                                            <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                            <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...
-                                            </p>
-                                        </div>
-
-                                        <div class="post-item clearfix">
-                                            <img src="../assets/img/news-4.jpg" alt="">
-                                            <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                                            <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...
-                                            </p>
-                                        </div>
-
-                                        <div class="post-item clearfix">
-                                            <img src="../assets/img/news-5.jpg" alt="">
-                                            <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                                            <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos
-                                                eius...</p>
-                                        </div>
-
-                                    </div><!-- End sidebar recent posts-->
-
-                                </div>
-                            </div><!-- End News & Updates -->
-                        </div>
-
-
-
-
+                        <a href="requests.php?status=new" class="fs-12 fw-semibold text-primary">View New <i class="feather-arrow-right fs-11 ms-1"></i></a>
                     </div>
-                </div><!-- End Left side columns -->
+                </div>
+            </div>
 
-                <!-- Right side columns -->
-                <div class="col-lg-4">
-
-                    <!-- Recent Activity -->
-                    <div class="card">
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="card-body">
-                            <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-                            <div class="activity">
-
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">32 min</div>
-                                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                    <div class="activity-content">
-                                        Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a>
-                                        beatae
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">56 min</div>
-                                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                    <div class="activity-content">
-                                        Voluptatem blanditiis blanditiis eveniet
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">2 hrs</div>
-                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                    <div class="activity-content">
-                                        Voluptates corrupti molestias voluptatem
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">1 day</div>
-                                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                                    <div class="activity-content">
-                                        Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati
-                                            voluptatem</a> tempore
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">2 days</div>
-                                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                    <div class="activity-content">
-                                        Est sit eum reiciendis exercitationem
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">4 weeks</div>
-                                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                                    <div class="activity-content">
-                                        Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                                    </div>
-                                </div><!-- End activity item-->
-
+            <!-- In Progress Card -->
+            <div class="col-xxl-3 col-md-6">
+                <div class="card stretch stretch-full">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start justify-content-between mb-4">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-warning bg-opacity-10 rounded">
+                                    <i class="feather-loader text-warning fs-4"></i>
+                                </div>
+                                <div>
+                                    <?php
+                                    $sql = "SELECT COUNT(*) AS total FROM service_requests WHERE status IN ('reviewing','vendors_assigned','estimates_received','estimate_sent','homeowner_accepted','payment_received','in_progress')";
+                                    $result = $conn->query($sql);
+                                    $progressCount = $result->fetch_assoc()['total'];
+                                    ?>
+                                    <div class="fs-4 fw-bold text-dark"><?php echo $progressCount; ?></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">In Progress</h3>
+                                </div>
                             </div>
-
                         </div>
+                        <a href="requests.php?status=in_progress" class="fs-12 fw-semibold text-primary">View Active <i class="feather-arrow-right fs-11 ms-1"></i></a>
                     </div>
-                    <!-- End Recent Activity -->
+                </div>
+            </div>
 
-                    <!-- Request Status Report -->
-                    <div class="card">
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
+            <!-- Completed Card -->
+            <div class="col-xxl-3 col-md-6">
+                <div class="card stretch stretch-full">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start justify-content-between mb-4">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-success bg-opacity-10 rounded">
+                                    <i class="feather-check-circle text-success fs-4"></i>
+                                </div>
+                                <div>
+                                    <?php
+                                    $sql = "SELECT COUNT(*) AS total FROM service_requests WHERE status IN ('completed','vendor_paid')";
+                                    $result = $conn->query($sql);
+                                    $doneCount = $result->fetch_assoc()['total'];
+                                    ?>
+                                    <div class="fs-4 fw-bold text-dark"><?php echo $doneCount; ?></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">Completed</h3>
+                                </div>
+                            </div>
                         </div>
+                        <a href="requests.php?status=completed" class="fs-12 fw-semibold text-primary">View Completed <i class="feather-arrow-right fs-11 ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="card-body pb-0">
-                            <h5 class="card-title">Request Status Report <span>| This Month</span></h5>
+            <!-- Pending Payment Card -->
+            <div class="col-xxl-3 col-md-6">
+                <div class="card stretch stretch-full">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start justify-content-between mb-4">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-info bg-opacity-10 rounded">
+                                    <i class="feather-dollar-sign text-info fs-4"></i>
+                                </div>
+                                <div>
+                                    <?php
+                                    $sql = "SELECT COUNT(*) AS total FROM service_requests WHERE payment_status = 'pending' AND status NOT IN ('new','reviewing')";
+                                    $result = $conn->query($sql);
+                                    $payCount = $result->fetch_assoc()['total'];
+                                    ?>
+                                    <div class="fs-4 fw-bold text-dark"><?php echo $payCount; ?></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">Pending Payment</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="requests.php" class="fs-12 fw-semibold text-primary">View All <i class="feather-arrow-right fs-11 ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
 
-                            <div id="requestRadarChart" style="min-height: 400px;" class="echart"></div>
+            <!-- Request Status Bar Chart -->
+            <div class="col-xxl-8">
+                <div class="card stretch stretch-full">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Request Status Report</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="requestBarChart"></div>
 
-                            <?php
-                            require '../../admin/pages/scripts/connection.php';
+                        <?php
+                        $barSql = "SELECT status, COUNT(*) as total FROM service_requests GROUP BY status";
+                        $barResult = $conn->query($barSql);
 
-                            // Count requests by status
-                            $sql = "SELECT status, COUNT(*) as total FROM job_requests GROUP BY status";
-                            $result = $conn->query($sql);
+                        $allStatuses = [
+                            'new', 'reviewing', 'vendors_assigned', 'estimates_received',
+                            'estimate_sent', 'homeowner_accepted', 'payment_received',
+                            'in_progress', 'completed', 'vendor_paid'
+                        ];
+                        $barCounts = array_fill_keys($allStatuses, 0);
 
-                            $statuses = ["Hot Lead", "Appointment for Estimate", "Estimate Sent", "In Progress", "Project Done"];
-                            $statusCounts = array_fill_keys($statuses, 0);
-
-                            while ($row = $result->fetch_assoc()) {
-                                if (isset($statusCounts[$row['status']])) {
-                                    $statusCounts[$row['status']] = (int)$row['total'];
+                        if ($barResult) {
+                            while ($barRow = $barResult->fetch_assoc()) {
+                                if (isset($barCounts[$barRow['status']])) {
+                                    $barCounts[$barRow['status']] = (int)$barRow['total'];
                                 }
                             }
+                        }
 
-                            // Example Allocated (Plan) values for comparison
-                            $allocated = [50, 40, 35, 30, 25];
+                        $barLabels = array_map('getStatusLabel', array_keys($barCounts));
+                        $barValues = array_values($barCounts);
 
-                            // Actual from DB
-                            $actual = array_values($statusCounts);
-                            ?>
+                        $barColors = [
+                            '#dc3545', '#17a2b8', '#0d6efd', '#ffc107', '#6c757d',
+                            '#198754', '#17a2b8', '#0d6efd', '#198754', '#343a40'
+                        ];
+                        ?>
 
-                            <script>
-                                document.addEventListener("DOMContentLoaded", () => {
-                                    echarts.init(document.querySelector("#requestRadarChart")).setOption({
-                                        legend: {
-                                            data: ['Planned Requests', 'Actual Requests']
-                                        },
-                                        radar: {
-                                            indicator: [{
-                                                    name: 'Hot Lead',
-                                                    max: 100
-                                                },
-                                                {
-                                                    name: 'Appointment',
-                                                    max: 100
-                                                },
-                                                {
-                                                    name: 'Estimate Sent',
-                                                    max: 100
-                                                },
-                                                {
-                                                    name: 'In Progress',
-                                                    max: 100
-                                                },
-                                                {
-                                                    name: 'Project Done',
-                                                    max: 100
-                                                }
-                                            ]
-                                        },
-                                        series: [{
-                                            name: 'Planned vs Actual',
-                                            type: 'radar',
-                                            data: [{
-                                                    value: <?php echo json_encode($allocated); ?>,
-                                                    name: 'Planned Requests'
-                                                },
-                                                {
-                                                    value: <?php echo json_encode($actual); ?>,
-                                                    name: 'Actual Requests'
-                                                }
-                                            ]
-                                        }]
-                                    });
-                                });
-                            </script>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                var barCategories = <?php echo json_encode($barLabels); ?>;
+                                var barStatusKeys = <?php echo json_encode(array_keys($barCounts)); ?>;
+                                new ApexCharts(document.querySelector("#requestBarChart"), {
+                                    series: [{
+                                        name: 'Requests',
+                                        data: <?php echo json_encode($barValues); ?>
+                                    }],
+                                    chart: {
+                                        type: 'bar',
+                                        height: 380,
+                                        toolbar: { show: false },
+                                        events: {
+                                            dataPointSelection: function(event, chartContext, config) {
+                                                var status = barStatusKeys[config.dataPointIndex];
+                                                window.location.href = 'requests.php?status=' + encodeURIComponent(status);
+                                            }
+                                        }
+                                    },
+                                    plotOptions: {
+                                        bar: { distributed: true, borderRadius: 4, columnWidth: '60%' }
+                                    },
+                                    colors: <?php echo json_encode($barColors); ?>,
+                                    dataLabels: {
+                                        enabled: true,
+                                        style: { fontSize: '12px', fontWeight: 'bold' }
+                                    },
+                                    legend: { show: false },
+                                    xaxis: {
+                                        categories: barCategories,
+                                        labels: { rotate: -45, rotateAlways: true, style: { fontSize: '11px' } }
+                                    },
+                                    yaxis: { title: { text: 'Count' } },
+                                    tooltip: {
+                                        y: { formatter: function(val) { return val + " requests (click to view)"; } }
+                                    }
+                                }).render();
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vendor Stats (Donut Chart) -->
+            <div class="col-xxl-4">
+                <div class="card stretch stretch-full">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Vendor Stats</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="vendorChart"></div>
+
+                        <?php
+                        $activeVendors = 0;
+                        $inactiveVendors = 0;
+                        $vSql = "SELECT status, COUNT(*) as total FROM vendors GROUP BY status";
+                        $vResult = $conn->query($vSql);
+                        if ($vResult) {
+                            while ($vRow = $vResult->fetch_assoc()) {
+                                if ($vRow['status'] == 1) $activeVendors = (int)$vRow['total'];
+                                if ($vRow['status'] == 2) $inactiveVendors = (int)$vRow['total'];
+                            }
+                        }
+                        ?>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                new ApexCharts(document.querySelector("#vendorChart"), {
+                                    series: [<?php echo $activeVendors; ?>, <?php echo $inactiveVendors; ?>],
+                                    chart: { type: 'donut', height: 320 },
+                                    labels: ['Active', 'Inactive'],
+                                    colors: ['#28a745', '#6c757d'],
+                                    legend: { position: 'bottom' },
+                                    plotOptions: {
+                                        pie: {
+                                            donut: {
+                                                size: '65%',
+                                                labels: { show: true, total: { show: true, label: 'Total Vendors' } }
+                                            }
+                                        }
+                                    }
+                                }).render();
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requests Per Month Area Chart -->
+            <div class="col-xxl-8">
+                <div class="card stretch stretch-full">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Requests Per Month</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="reportsChart"></div>
+
+                        <?php
+                        $sql = "SELECT DATE_FORMAT(created_at, '%Y-%m') AS month, COUNT(*) AS total
+                            FROM service_requests
+                            WHERE YEAR(created_at) = YEAR(CURDATE())
+                            GROUP BY month ORDER BY month ASC";
+                        $result = $conn->query($sql);
+                        $months = [];
+                        $totals = [];
+                        if ($result) {
+                            while ($row = $result->fetch_assoc()) {
+                                $months[] = $row['month'] . "-01";
+                                $totals[] = $row['total'];
+                            }
+                        }
+                        ?>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                new ApexCharts(document.querySelector("#reportsChart"), {
+                                    series: [{ name: 'Requests', data: <?php echo json_encode($totals); ?> }],
+                                    chart: { height: 350, type: 'area', toolbar: { show: false } },
+                                    markers: { size: 4 },
+                                    colors: ['#3454d1'],
+                                    fill: {
+                                        type: "gradient",
+                                        gradient: { shadeIntensity: 1, opacityFrom: 0.3, opacityTo: 0.4, stops: [0, 90, 100] }
+                                    },
+                                    dataLabels: { enabled: false },
+                                    stroke: { curve: 'smooth', width: 2 },
+                                    xaxis: { type: 'datetime', categories: <?php echo json_encode($months); ?> },
+                                    tooltip: { x: { format: 'MMM yyyy' } }
+                                }).render();
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="col-xxl-4">
+                <div class="card stretch stretch-full">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Recent Activity</h5>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                        $actSql = "SELECT h.action, h.details, h.created_at, u.first_name, u.last_name
+                            FROM admin_history h
+                            JOIN users u ON h.admin_id = u.user_id
+                            ORDER BY h.created_at DESC LIMIT 8";
+                        $actResult = $conn->query($actSql);
+
+                        if ($actResult && $actResult->num_rows > 0) {
+                            while ($actRow = $actResult->fetch_assoc()) {
+                                $diff = time() - strtotime($actRow['created_at']);
+                                if ($diff < 60) $timeAgo = $diff . ' sec ago';
+                                elseif ($diff < 3600) $timeAgo = floor($diff / 60) . ' min ago';
+                                elseif ($diff < 86400) $timeAgo = floor($diff / 3600) . ' hrs ago';
+                                elseif ($diff < 604800) $timeAgo = floor($diff / 86400) . ' days ago';
+                                else $timeAgo = floor($diff / 604800) . ' weeks ago';
+                                ?>
+                                <div class="d-flex align-items-start gap-3 mb-4">
+                                    <div class="avatar-text avatar-md rounded bg-gray-200">
+                                        <i class="feather-activity fs-6"></i>
+                                    </div>
+                                    <div>
+                                        <span class="fw-semibold text-dark d-block fs-13"><?php echo htmlspecialchars($actRow['first_name'] . ' ' . $actRow['last_name']); ?></span>
+                                        <span class="fs-12 text-muted"><?php echo htmlspecialchars($actRow['action']); ?><?php echo $actRow['details'] ? ': ' . htmlspecialchars($actRow['details']) : ''; ?></span>
+                                        <div class="fs-11 text-muted mt-1"><?php echo $timeAgo; ?></div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo '<p class="text-muted text-center">No recent activity</p>';
+                        }
+                        ?>
+                    </div>
+                    <a href="history.php" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">View All History</a>
+                </div>
+            </div>
+
+            <!-- Latest Requests Table -->
+            <div class="col-12">
+                <div class="card stretch stretch-full">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Latest Requests</h5>
+                    </div>
+                    <div class="card-body custom-card-action">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Tracking Code</th>
+                                        <th scope="col">Homeowner</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Payment</th>
+                                        <th scope="col">Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sql = "SELECT request_id, tracking_code, homeowner_name, phone, status, payment_status, created_at
+                                        FROM service_requests ORDER BY created_at DESC LIMIT 10";
+                                    $result = $conn->query($sql);
+
+                                    if ($result && $result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $sc = getStatusBadgeClass($row['status']);
+                                            $pc = getPaymentBadgeClass($row['payment_status']);
+                                            echo "<tr>
+                                                <td><a href='request-view.php?id={$row['request_id']}' class='fw-semibold'>#{$row['request_id']}</a></td>
+                                                <td><code>{$row['tracking_code']}</code></td>
+                                                <td>" . htmlspecialchars($row['homeowner_name']) . "</td>
+                                                <td>" . htmlspecialchars($row['phone']) . "</td>
+                                                <td><span class='badge $sc'>" . getStatusLabel($row['status']) . "</span></td>
+                                                <td><span class='badge $pc'>" . getPaymentLabel($row['payment_status']) . "</span></td>
+                                                <td>" . date('M d, Y', strtotime($row['created_at'])) . "</td>
+                                            </tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='7' class='text-center text-muted'>No requests found</td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <!-- End Request Status Report -->
-
-
-                    <!-- Users by Role -->
-<div class="card">
-    <div class="filter">
-        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <li class="dropdown-header text-start">
-                <h6>Filter</h6>
-            </li>
-            <li><a class="dropdown-item" href="#">Today</a></li>
-            <li><a class="dropdown-item" href="#">This Month</a></li>
-            <li><a class="dropdown-item" href="#">This Year</a></li>
-        </ul>
-    </div>
-
-    <div class="card-body pb-0">
-        <h5 class="card-title">Users by Role <span>| This Month</span></h5>
-
-        <div id="userRoleChart" style="min-height: 400px;" class="echart"></div>
-
-        <?php
-        require '../../admin/pages/scripts/connection.php';
-
-        // Count users by role
-        $sql = "SELECT role, COUNT(*) as total FROM users GROUP BY role";
-        $result = $conn->query($sql);
-
-        $roleCounts = [
-            'admin' => 0,
-            'provider' => 0,
-            'client' => 0
-        ];
-
-        while ($row = $result->fetch_assoc()) {
-            if (isset($roleCounts[$row['role']])) {
-                $roleCounts[$row['role']] = (int)$row['total'];
-            }
-        }
-        ?>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                echarts.init(document.querySelector("#userRoleChart")).setOption({
-                    tooltip: {
-                        trigger: 'item'
-                    },
-                    legend: {
-                        top: '5%',
-                        left: 'center'
-                    },
-                    series: [{
-                        name: 'Users',
-                        type: 'pie',
-                        radius: ['40%', '70%'],
-                        avoidLabelOverlap: false,
-                        label: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            label: {
-                                show: true,
-                                fontSize: '18',
-                                fontWeight: 'bold'
-                            }
-                        },
-                        labelLine: {
-                            show: false
-                        },
-                        data: [
-                            { value: <?php echo $roleCounts['admin']; ?>, name: 'Admin' },
-                            { value: <?php echo $roleCounts['provider']; ?>, name: 'Provider' },
-                            { value: <?php echo $roleCounts['client']; ?>, name: 'Client' }
-                        ]
-                    }]
-                });
-            });
-        </script>
-
-    </div>
-</div>
-<!-- End Users by Role -->
-
-
-
-
-                </div><!-- End Right side columns -->
-
+                    <a href="requests.php" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">View All Requests</a>
+                </div>
             </div>
-        </section>
 
-    </main>
-    <!-- End #main -->
+        </div>
+    </div>
 
-    <!-- ======= Footer ======= -->
     <?php include "includes/footer.php" ?>
-    <!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
     <?php include "includes/scripts.php" ?>
 
 </body>

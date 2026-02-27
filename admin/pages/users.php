@@ -4,6 +4,7 @@
 session_start();
 if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php?error=AccessDenied");
+    exit();
 } else {
     include "includes/head.php";
     include "scripts/connection.php";
@@ -11,29 +12,22 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
 
 <body>
 
-    <!-- ======= Header ======= -->
     <?php include "includes/header.php" ?>
-    <!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
     <?php include "includes/sidebar.php" ?>
-    <!-- End Sidebar-->
 
-    <main id="main" class="main">
+    <div class="main-content">
 
-        <div class="pagetitle">
-            <h1>Admin Users
-                <a href="users-add.php" class="btn btn-primary rounded-pill">
-                    <i class="bi bi-plus-circle me-1"></i> Add Admin
-                </a>
-            </h1>
-            <nav>
-                <ol class="breadcrumb">
+        <div class="page-header">
+            <div class="page-header-left d-flex align-items-center">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Admin Users</h5>
+                </div>
+                <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Admin Users</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
+                    <li class="breadcrumb-item">Admin Users</li>
+                </ul>
+            </div>
+        </div>
         <?php
         if (isset($_GET['success'])) {
             if (isset($_GET["success"]) && $_GET["success"] == "UserUpdated") {
@@ -94,7 +88,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                                 $status_text = "Inactive";
                                             } elseif ($row['status'] == "3") {
                                                 $status_class = "bg-warning";
-                                                $status_text = "";
+                                                $status_text = "Banned";
                                             }
                                     ?>
                                             <tr>
@@ -107,13 +101,14 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                                         class="badge <?php echo $status_class; ?>"><?php echo $status_text; ?></span>
                                                 </td>
                                                 <td>
-                                                    <a href='users-profile.php?id=<?php echo $row['user_id']; ?>'
-                                                        class='btn btn-sm btn-success'>View</a>
-
                                                     <?php if ($row['status'] == "2") { ?>
-                                                        <a href='scripts/user-update.php?id=<?php echo $row['client_id']; ?>&status=1'
+                                                        <a href='scripts/user-update.php?id=<?php echo $row['user_id']; ?>&status=1'
                                                             class='btn btn-sm btn-primary'
-                                                            onclick='return confirm("Are you sure you want to Unban this user?")'>Unban</a>
+                                                            onclick='return confirm("Are you sure you want to activate this user?")'>Activate</a>
+                                                    <?php } elseif ($row['status'] == "1") { ?>
+                                                        <a href='scripts/user-update.php?id=<?php echo $row['user_id']; ?>&status=2'
+                                                            class='btn btn-sm btn-dark'
+                                                            onclick='return confirm("Are you sure you want to deactivate this user?")'>Deactivate</a>
                                                     <?php } ?>
                                                 </td>
                                             </tr>
@@ -136,15 +131,9 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
             </div>
         </section>
 
-    </main>
-    <!-- End #main -->
+    </div>
 
-    <!-- ======= Footer ======= -->
     <?php include "includes/footer.php" ?>
-    <!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <?php include "includes/scripts.php" ?>

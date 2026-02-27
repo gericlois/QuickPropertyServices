@@ -1,32 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php 
+<?php
 session_start();
 
-// Check if the user is logged in
-if (isset($_SESSION['role'])) {
-    $role = $_SESSION['role'];
-
-    if ($role === 'provider') {
-        $_SESSION['provider_id'] = $_SESSION['user_id'] ?? null;
-        header("Location: provider-dashboard.php?success=LoginSuccessfully");
-        exit();
-    } elseif ($role === 'client') {
-        $_SESSION['client_id'] = $_SESSION['user_id'] ?? null;
-        header("Location: client-services.php?success=LoginSuccessfully");
-        exit();
-    }
+// Redirect vendors to their dashboard
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
+    header("Location: vendor-dashboard.php");
+    exit();
 }
-
-// If no session or guest user, do nothing
-// Page continues to load for optional login users (guests)
 ?>
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Fixing Techs</title>
+  <title>Quick Property Services</title>
   <meta name="description" content="Fixing Techs, a family-owned Utah remodeling and repair company, provides expert craftsmanship, fair pricing, insured service, and guaranteed satisfaction.">
   <meta name="keywords" content="home remodeling, home repair, residential renovation, maintenance services, insured contractors, Utah remodeling company, family owned contractor, transparent pricing, free consultation">
 
@@ -50,10 +38,7 @@ if (isset($_SESSION['role'])) {
   <link href="../assets/css/main.css" rel="stylesheet">
 </head>
 
-<?php
-$role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
-?>
-<body class="index-page <?php echo $role; ?>">
+<body class="index-page">
 
     <?php include "includes/header.php" ?>
 
@@ -85,11 +70,10 @@ $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
                             </p>
 
                             <div class="hero-buttons">
-                                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
-                                <a href="#"
-                                    class="btn btn-link mt-2 mt-sm-0 glightbox">
-                                    <i class="bi bi-play-circle me-1"></i>
-                                    Play Video
+                                <a href="submit-request.php" class="btn btn-primary me-0 me-sm-2 mx-1">Submit a Request</a>
+                                <a href="track.php" class="btn btn-link mt-2 mt-sm-0">
+                                    <i class="bi bi-search me-1"></i>
+                                    Track Your Request
                                 </a>
                             </div>
                         </div>
@@ -373,9 +357,9 @@ $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
 
                 <div class="row content justify-content-center align-items-center position-relative">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="display-4 mb-4">Get the Services You Need, Anytime, Anywhere!</h2>
-                        <p class="mb-4">Our platform connects you with top professionals for hassle-free service booking. Enjoy seamless, secure, and efficient solutions at your fingertips.</p>
-                        <a href="#" class="btn btn-cta">Book a Service Now ⟶ </a>
+                        <h2 class="display-4 mb-4">Ready to Start Your Project?</h2>
+                        <p class="mb-4">Submit a service request and we'll connect you with qualified vendors. Get competitive estimates, choose the best one, and watch your vision come to life.</p>
+                        <a href="submit-request.php" class="btn btn-cta">Submit a Service Request</a>
                     </div>
 
                     <!-- Abstract Background Elements -->
@@ -451,54 +435,52 @@ $role = $_SESSION['role'] ?? 'guest'; // fallback if not logged in
                         <div class="faq-container">
 
                             <div class="faq-item faq-active">
-                                <h3>How do I book a service?</h3>
+                                <h3>How does the process work?</h3>
                                 <div class="faq-content">
-                                    <p>Simply visit our services page, choose the service you need, select a date and time, and confirm your booking. Our professionals will take care of the rest!</p>
+                                    <p>Simply submit a service request describing what you need, along with photos or videos. We'll assign qualified vendors who will provide estimates. You'll receive the best estimate with transparent pricing, and once you accept and pay, work begins!</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            </div>
 
                             <div class="faq-item">
-                                <h3>Are the service providers qualified and insured?</h3>
+                                <h3>Do I need to create an account?</h3>
                                 <div class="faq-content">
-                                    <p>Yes! We carefully vet all service providers to ensure they are qualified, experienced, and fully insured for your peace of mind.</p>
+                                    <p>No! You can submit a request as a guest. You'll receive a unique tracking code to monitor your project's progress at any time.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            </div>
 
                             <div class="faq-item">
-                                <h3> How much do the services cost?</h3>
+                                <h3>How is pricing determined?</h3>
                                 <div class="faq-content">
-                                    <p>Prices vary depending on the type of service and complexity of the task. You can view pricing details on each service page before booking.
-                                    </p>
+                                    <p>We collect estimates from multiple qualified vendors and present you with the best option. Pricing is transparent with no hidden fees.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            </div>
 
                             <div class="faq-item">
-                                <h3> What if I need to reschedule or cancel a booking?</h3>
+                                <h3>Is my payment secure?</h3>
                                 <div class="faq-content">
-                                    <p>You can easily reschedule or cancel your booking through your account. Please check our cancellation policy for more details.</p>
+                                    <p>Yes! Your payment is held in escrow until the project is completed to your satisfaction. The vendor only gets paid after the work is done.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            </div>
 
                             <div class="faq-item">
-                                <h3>How can I contact customer support?</h3>
+                                <h3>How can I track my project?</h3>
                                 <div class="faq-content">
-                                    <p> If you have any questions or need assistance, you can reach us via email, phone, or live chat on our website. We're here to help!
-                                    </p>
+                                    <p>Use the tracking code provided when you submitted your request. Visit our "Track Request" page to see real-time updates on your project status.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            </div>
 
                             <div class="faq-item">
-                                <h3>Do you offer same-day services?</h3>
+                                <h3>How can I contact support?</h3>
                                 <div class="faq-content">
-                                    <p> Yes! Depending on availability, we offer same-day service for urgent requests. Check the service details or contact our team to confirm availability.</p>
+                                    <p>You can reach us via phone at +1 801-613-0482 or email at servicerequest@fixingtechs.com. We're here to help!</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            </div>
 
                         </div>
                     </div>

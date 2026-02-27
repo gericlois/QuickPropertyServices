@@ -23,4 +23,10 @@
 
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
+
+  <!-- Sticky Footer -->
+  <style>
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+    main { flex: 1; }
+  </style>
 </head>

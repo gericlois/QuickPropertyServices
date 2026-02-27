@@ -4,219 +4,159 @@
 session_start();
 if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php?error=AccessDenied");
+    exit();
 } else {
     include "includes/head.php";
     include "scripts/connection.php";
+    include "scripts/helpers.php";
 } ?>
 
 <body>
 
-    <!-- ======= Header ======= -->
     <?php include "includes/header.php" ?>
-    <!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
     <?php include "includes/sidebar.php" ?>
-    <!-- End Sidebar-->
 
-    <main id="main" class="main">
+    <div class="main-content">
 
         <?php
-        // status mapping
-        $statusMap = [
-            "hotleads" => "Hot Lead",
-            "appointment" => "Appointment for Estimate",
-            "needed" => "Estimate Needed",
-            "inprogress" => "Estimate in Progress",
-            "followup" => "Estimate Follow Up",
-            "vendor" => "Assigned to Vendor",
-            "approved" => "Estimate Approved",
-            "projectprogress" => "Project in Progress",
-            "completed" => "Project Completed",
-            "invoiced" => "Project Invoiced",
-            "done" => "Project Done"
+        // Valid statuses for filtering
+        $validStatuses = [
+            'new', 'reviewing', 'vendors_assigned', 'estimates_received',
+            'estimate_sent', 'homeowner_accepted', 'payment_received',
+            'in_progress', 'completed', 'vendor_paid'
         ];
 
-        // determine title
-        $currentStatusKey = $_GET['id'] ?? null;
-        $pageTitle = isset($statusMap[$currentStatusKey]) ? $statusMap[$currentStatusKey] . " Requests" : "All Requests";
+        // Determine current filter
+        $currentFilter = isset($_GET['status']) && in_array($_GET['status'], $validStatuses) ? $_GET['status'] : null;
+        $pageTitle = $currentFilter ? getStatusLabel($currentFilter) . " Requests" : "All Requests";
         ?>
-        <div class="pagetitle">
-            <h1><?php echo $pageTitle; ?></h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active"><?php echo $pageTitle; ?></li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-        </div><!-- End Page Title -->
-        <?php
-        if (isset($_GET['success'])) {
-            if (isset($_GET["success"]) && $_GET["success"] == "UserUpdated") {
-                echo '
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <b>The User Account #00' . htmlspecialchars($_GET["user_id"]) . ' has been successfully updated! Please review the changes.</b>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>';
-            }
 
-            if ($_GET["success"] == "StatusUpdated") {
-                echo '
-                                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                            <b>The  User Account #00' . htmlspecialchars($_GET["user_id"]) . ' has been successfully updated!</b> Review the updated details to ensure accuracy.
-                                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                        </div>';
+        <div class="page-header">
+            <div class="page-header-left d-flex align-items-center">
+                <div class="page-header-title">
+                    <h5 class="m-b-10"><?php echo htmlspecialchars($pageTitle); ?></h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><?php echo htmlspecialchars($pageTitle); ?></li>
+                </ul>
+            </div>
+        </div>
+
+        <?php
+        // Success messages
+        if (isset($_GET['success'])) {
+            if ($_GET['success'] === 'StatusUpdated') {
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <b>Request status has been successfully updated!</b> Review the updated details to ensure accuracy.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
             }
         }
         ?>
+
+        <!-- Quick Filter Badges -->
+        <div class="card">
+            <div class="card-body py-3">
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                    <span class="fw-semibold me-2">Filter:</span>
+                    <a href="requests.php" class="badge <?php echo !$currentFilter ? 'bg-dark' : 'bg-light text-dark border'; ?> text-decoration-none p-2">All</a>
+                    <?php foreach ($validStatuses as $s): ?>
+                        <a href="requests.php?status=<?php echo $s; ?>"
+                           class="badge <?php echo ($currentFilter === $s) ? getStatusBadgeClass($s) : 'bg-light text-dark border'; ?> text-decoration-none p-2">
+                            <?php echo getStatusLabel($s); ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
         <section class="section dashboard">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Request Data Table</h5>
-                            <p>View and manage job requests in a structured table format. This table supports sorting,
-                                searching, and pagination, making it easy to monitor request details, track progress,
-                                and take administrative actions efficiently.</p>
+                            <h5 class="card-title"><?php echo htmlspecialchars($pageTitle); ?> Data Table</h5>
+                            <p>View and manage service requests in a structured table format. This table supports sorting,
+                                searching, and pagination for efficient request management.</p>
 
-
-                            <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <th>Request ID</th>
+                                        <th>Tracking Code</th>
                                         <th>Homeowner</th>
-                                        <th>Address</th>
                                         <th>Phone</th>
-                                        <th>Email</th>
-                                        <th>Work Description</th>
+                                        <th>Description</th>
                                         <th>Status</th>
-                                        <th>Created At</th>
+                                        <th>Payment</th>
+                                        <th>Created</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Map URL values to actual ENUM status text
-                                    $statusMap = [
-                                        "hotleads" => "Hot Lead",
-                                        "appointment" => "Appointment for Estimate",
-                                        "needed" => "Estimate Needed",
-                                        "inprogress" => "Estimate in Progress",
-                                        "followup" => "Estimate Follow Up",
-                                        "vendor" => "Assigned to Vendor",
-                                        "approved" => "Estimate Approved",
-                                        "projectprogress" => "Project in Progress",
-                                        "completed" => "Project Completed",
-                                        "invoiced" => "Project Invoiced",
-                                        "done" => "Project Done"
-                                    ];
-
-                                    // Check if ?id= exists in URL and matches one of the keys
-                                    $filter = isset($_GET['id']) && array_key_exists($_GET['id'], $statusMap) ? $statusMap[$_GET['id']] : null;
-
-                                    // Build SQL
-                                    $sql = "SELECT request_id, homeowner_name, address, phone1, email, work_description, status, created_at 
-                                        FROM job_requests ";
-                                    if ($filter) {
-                                        $sql .= "WHERE status = '" . $conn->real_escape_string($filter) . "' ";
+                                    // Build query with optional status filter
+                                    if ($currentFilter) {
+                                        $sql = "SELECT request_id, tracking_code, homeowner_name, phone, description, status, payment_status, created_at
+                                                FROM service_requests WHERE status = ? ORDER BY created_at DESC";
+                                        $stmt = $conn->prepare($sql);
+                                        $stmt->bind_param("s", $currentFilter);
+                                    } else {
+                                        $sql = "SELECT request_id, tracking_code, homeowner_name, phone, description, status, payment_status, created_at
+                                                FROM service_requests ORDER BY created_at DESC";
+                                        $stmt = $conn->prepare($sql);
                                     }
-                                    $sql .= "ORDER BY created_at DESC;";
 
-                                    $result = $conn->query($sql);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
 
                                     if ($result && $result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            // default badge style
-                                            $status_class = "bg-secondary";
-                                            $status_text = $row['status'];
-
-                                            switch ($row['status']) {
-                                                case "Hot Lead":
-                                                    $status_class = "bg-danger";
-                                                    break;
-                                                case "Appointment for Estimate":
-                                                    $status_class = "bg-info";
-                                                    break;
-                                                case "Estimate Needed":
-                                                    $status_class = "bg-warning";
-                                                    break;
-                                                case "Estimate in Progress":
-                                                    $status_class = "bg-primary";
-                                                    break;
-                                                case "Estimate Follow Up":
-                                                    $status_class = "bg-secondary";
-                                                    break;
-                                                case "Assigned to Vendor":
-                                                    $status_class = "bg-dark";
-                                                    break;
-                                                case "Estimate Approved":
-                                                    $status_class = "bg-success";
-                                                    break;
-                                                case "Project in Progress":
-                                                    $status_class = "bg-primary";
-                                                    break;
-                                                case "Project Completed":
-                                                    $status_class = "bg-success";
-                                                    break;
-                                                case "Project Invoiced":
-                                                    $status_class = "bg-warning";
-                                                    break;
-                                                case "Project Done":
-                                                    $status_class = "bg-success";
-                                                    break;
-                                            }
                                     ?>
                                             <tr>
-                                                <td><?php echo $row['request_id']; ?></td>
+                                                <td><?php echo intval($row['request_id']); ?></td>
+                                                <td><code><?php echo htmlspecialchars($row['tracking_code']); ?></code></td>
                                                 <td><?php echo htmlspecialchars($row['homeowner_name']); ?></td>
-                                                <td><?php echo htmlspecialchars($row['address']); ?></td>
-                                                <td><?php echo htmlspecialchars($row['phone1']); ?></td>
-                                                <td><?php echo htmlspecialchars($row['email']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['phone']); ?></td>
                                                 <td>
                                                     <?php
-                                                    $desc = strip_tags($row['work_description']);
-                                                    echo strlen($desc) > 50 ? substr($desc, 0, 50) . "..." : $desc;
+                                                    $desc = strip_tags($row['description']);
+                                                    echo htmlspecialchars(strlen($desc) > 50 ? substr($desc, 0, 50) . "..." : $desc);
                                                     ?>
                                                 </td>
-                                                <td><span class="badge <?php echo $status_class; ?>"><?php echo $status_text; ?></span></td>
-                                                <td><?php echo $row['created_at']; ?></td>
                                                 <td>
-                                                    <a href="request-profile.php?id=<?php echo $row['request_id']; ?>" class="btn btn-sm btn-success">See More</a>
+                                                    <span class="badge <?php echo getStatusBadgeClass($row['status']); ?>">
+                                                        <?php echo getStatusLabel($row['status']); ?>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge <?php echo getPaymentBadgeClass($row['payment_status']); ?>">
+                                                        <?php echo getPaymentLabel($row['payment_status']); ?>
+                                                    </span>
+                                                </td>
+                                                <td data-order="<?php echo date('Y-m-d H:i:s', strtotime($row['created_at'])); ?>"><?php echo date('M d, Y', strtotime($row['created_at'])); ?></td>
+                                                <td>
+                                                    <a href="request-view.php?id=<?php echo intval($row['request_id']); ?>" class="btn btn-sm btn-success">View</a>
                                                 </td>
                                             </tr>
                                     <?php
                                         }
-                                    } else {
-                                        echo "<tr><td colspan='9' class='text-center'>No Requests found</td></tr>";
                                     }
+                                    $stmt->close();
                                     ?>
                                 </tbody>
-
                             </table>
-
-
-                            <!-- End Table with stripped rows -->
 
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-    </main>
-    <!-- End #main -->
+    </div>
 
-    <!-- ======= Footer ======= -->
     <?php include "includes/footer.php" ?>
-    <!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
     <?php include "includes/scripts.php" ?>
 
 </body>

@@ -4,6 +4,7 @@
 session_start();
 if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
   header("Location: login.php?error=AccessDenied");
+  exit();
 } else {
     include "includes/head.php";
     include "scripts/connection.php";
@@ -11,37 +12,30 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
 
 <body>
 
-    <!-- ======= Header ======= -->
     <?php include "includes/header.php" ?>
-    <!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
     <?php include "includes/sidebar.php" ?>
-    <!-- End Sidebar-->
 
-    <main id="main" class="main">
+    <div class="main-content">
 
-        <div class="pagetitle">
-            <h1>Admin User
-                <a href="users.php" class="btn btn-primary rounded-pill">
-                    <i class="bi bi-plus-circle me-1"></i>All Admin User
-                </a>
-            </h1>
-            <nav>
-                <ol class="breadcrumb">
+        <div class="page-header">
+            <div class="page-header-left d-flex align-items-center">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Admin User</h5>
+                </div>
+                <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="providers.php">Admin User</a></li>
-                    <li class="breadcrumb-item active">Add Admin User</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
+                    <li class="breadcrumb-item"><a href="users.php">Admin Users</a></li>
+                    <li class="breadcrumb-item">Add Admin User</li>
+                </ul>
+            </div>
+        </div>
                             <?php
                             if (isset($_GET['error'])) {
                                 
                                 if ($_GET["error"] == "EmailAlreadyExists") {
                                     echo '
                                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                            <b>The Provider Account Email already exists.</b> Add another email!
+                                                            <b>This email already exists.</b> Use a different email address.
                                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                         </div>';
                                 }
@@ -111,7 +105,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
                                 <div class="row mb-3">
                                     <div class="col-sm-9 offset-sm-3">
                                         <button type="submit" class="btn btn-success">Add Admin User</button>
-                                        <a href="../Admin User.php" class="btn btn-secondary">Cancel</a>
+                                        <a href="users.php" class="btn btn-secondary">Cancel</a>
                                     </div>
                                 </div>
                             </form>
@@ -163,15 +157,9 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'admin') {
             </div>
         </section>
 
-    </main>
-    <!-- End #main -->
+    </div>
 
-    <!-- ======= Footer ======= -->
     <?php include "includes/footer.php" ?>
-    <!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <?php include "includes/scripts.php" ?>
