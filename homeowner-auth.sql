@@ -18,3 +18,7 @@ CREATE TABLE IF NOT EXISTS `homeowners` (
 -- Add homeowner_id to service_requests
 ALTER TABLE `service_requests` ADD COLUMN `homeowner_id` INT DEFAULT NULL AFTER `request_id`;
 ALTER TABLE `service_requests` ADD CONSTRAINT `fk_sr_homeowner` FOREIGN KEY (`homeowner_id`) REFERENCES `homeowners`(`homeowner_id`) ON DELETE SET NULL;
+
+-- Seed default homeowner account (password: homeowner123)
+INSERT INTO `homeowners` (`name`, `email`, `phone`, `password`, `status`) VALUES
+('John Homeowner', 'homeowner@quickproperty.com', '09171234567', '$2y$10$9ctOG1claK/yGIKqSKx2dOGFmBcLddeEowthJGHaOqdAuQuR16vHm', 1);

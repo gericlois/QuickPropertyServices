@@ -31,7 +31,13 @@ if ($result->num_rows === 0) {
 $homeowner = $result->fetch_assoc();
 $stmt->close();
 
-// Check if account is active
+// Check if account is pending approval
+if ($homeowner['status'] == 2) {
+    header("Location: ../homeowner-login.php?error=AccountPending");
+    exit;
+}
+
+// Check if account is deactivated/rejected
 if ($homeowner['status'] != 1) {
     header("Location: ../homeowner-login.php?error=AccountDeactivated");
     exit;

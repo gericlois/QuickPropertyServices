@@ -302,12 +302,14 @@
         <li class="toc-sub"><a href="#s1-3">1.3 System Requirements</a></li>
         <li class="toc-section"><a href="#s2">2. Getting Started</a></li>
         <li class="toc-sub"><a href="#s2-1">2.1 Accessing the System</a></li>
-        <li class="toc-sub"><a href="#s2-2">2.2 Login Instructions</a></li>
+        <li class="toc-sub"><a href="#s2-2">2.2 Default Login Credentials</a></li>
+        <li class="toc-sub"><a href="#s2-3">2.3 Login Instructions</a></li>
         <li class="toc-section"><a href="#s3">3. Homeowner Guide</a></li>
-        <li class="toc-sub"><a href="#s3-1">3.1 Submitting a Service Request</a></li>
-        <li class="toc-sub"><a href="#s3-2">3.2 Tracking Your Request</a></li>
-        <li class="toc-sub"><a href="#s3-3">3.3 Reviewing &amp; Accepting Estimates</a></li>
-        <li class="toc-sub"><a href="#s3-4">3.4 Homeowner Dashboard</a></li>
+        <li class="toc-sub"><a href="#s3-0">3.1 Creating an Account</a></li>
+        <li class="toc-sub"><a href="#s3-1">3.2 Submitting a Service Request</a></li>
+        <li class="toc-sub"><a href="#s3-2">3.3 Tracking Your Request</a></li>
+        <li class="toc-sub"><a href="#s3-3">3.4 Reviewing &amp; Accepting Estimates</a></li>
+        <li class="toc-sub"><a href="#s3-4">3.5 Homeowner Dashboard</a></li>
         <li class="toc-section"><a href="#s4">4. Vendor Guide</a></li>
         <li class="toc-sub"><a href="#s4-1">4.1 Vendor Dashboard</a></li>
         <li class="toc-sub"><a href="#s4-2">4.2 Viewing Assigned Requests</a></li>
@@ -318,9 +320,10 @@
         <li class="toc-sub"><a href="#s5-2">5.2 Managing Requests</a></li>
         <li class="toc-sub"><a href="#s5-3">5.3 Assigning Vendors</a></li>
         <li class="toc-sub"><a href="#s5-4">5.4 Handling Estimates &amp; Markup</a></li>
-        <li class="toc-sub"><a href="#s5-5">5.5 Managing Vendors</a></li>
-        <li class="toc-sub"><a href="#s5-6">5.6 Managing Users</a></li>
-        <li class="toc-sub"><a href="#s5-7">5.7 Activity History</a></li>
+        <li class="toc-sub"><a href="#s5-5">5.5 Managing Homeowners</a></li>
+        <li class="toc-sub"><a href="#s5-6">5.6 Managing Vendors</a></li>
+        <li class="toc-sub"><a href="#s5-7">5.7 Managing Users</a></li>
+        <li class="toc-sub"><a href="#s5-8">5.8 Activity History</a></li>
         <li class="toc-section"><a href="#s6">6. Request Lifecycle &amp; Statuses</a></li>
         <li class="toc-section"><a href="#s7">7. Payment Workflow</a></li>
         <li class="toc-section"><a href="#s8">8. Frequently Asked Questions</a></li>
@@ -397,6 +400,10 @@
                 <td>https://fixingtechs.com/pages/homeowner-login.php</td>
             </tr>
             <tr>
+                <td><strong>Homeowner Registration</strong></td>
+                <td>https://fixingtechs.com/pages/homeowner-register.php</td>
+            </tr>
+            <tr>
                 <td><strong>Vendor Login</strong></td>
                 <td>https://fixingtechs.com/pages/vendor-login.php</td>
             </tr>
@@ -449,7 +456,7 @@
             </tr>
             <tr>
                 <td><strong>Homeowner</strong></td>
-                <td colspan="2"><em>Account created automatically on first request submission</em></td>
+                <td colspan="2"><em>Self-register at the registration page, then wait for admin approval</em></td>
             </tr>
         </tbody>
     </table>
@@ -458,7 +465,7 @@
         These are default test credentials. Change all passwords immediately in a production environment.
     </div>
 
-    <h2>2.3 Login Instructions</h2>
+    <h2 id="s2-3">2.3 Login Instructions</h2>
 
     <h3>For Homeowners</h3>
     <div class="steps">
@@ -468,7 +475,7 @@
         </div>
         <div class="step">
             <div class="step-number">2</div>
-            <div class="step-content">Enter your <strong>email address</strong> and <strong>password</strong> (created during your first request submission).</div>
+            <div class="step-content">Enter your <strong>email address</strong> and <strong>password</strong>.</div>
         </div>
         <div class="step">
             <div class="step-number">3</div>
@@ -477,7 +484,7 @@
     </div>
     <div class="info-box tip">
         <strong>Tip</strong>
-        Your account is automatically created when you submit your first service request. Use the same email and password to log in later.
+        You can create an account via the <strong>Registration</strong> page or it will be automatically created when you submit your first service request. Self-registered accounts require <strong>admin approval</strong> before you can log in.
     </div>
 
     <h3>For Vendors</h3>
@@ -517,7 +524,38 @@
 <div class="content page-break">
     <h1 id="s3">3. Homeowner Guide</h1>
 
-    <h2 id="s3-1">3.1 Submitting a Service Request</h2>
+    <h2 id="s3-0">3.1 Creating an Account</h2>
+    <p>There are two ways to create a homeowner account:</p>
+
+    <h3>Option A: Self-Registration (Requires Admin Approval)</h3>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Navigate to the <strong>Registration</strong> page from the login page or click "Create an account".</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Fill in your <strong>Full Name</strong>, <strong>Email</strong>, <strong>Phone Number</strong>, and <strong>Password</strong> (minimum 6 characters).</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Click <strong>"Register"</strong>. Your account will be created with a <strong>Pending</strong> status.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">Wait for the administrator to <strong>approve</strong> your account. You will be able to log in once approved.</div>
+        </div>
+    </div>
+
+    <div class="info-box warning">
+        <strong>Important</strong>
+        Self-registered accounts cannot log in until an administrator approves them. If you try to log in before approval, you will see a "pending approval" message.
+    </div>
+
+    <h3>Option B: Automatic Creation (No Approval Needed)</h3>
+    <p>When you submit your first service request, an account is automatically created and <strong>immediately active</strong> &mdash; no admin approval is needed. Use the same email and password to log in later.</p>
+
+    <h2 id="s3-1">3.2 Submitting a Service Request</h2>
     <p>To request a home service, follow these steps:</p>
 
     <div class="steps">
@@ -858,7 +896,62 @@
 </div>
 
 <div class="content page-break">
-    <h2 id="s5-5">5.5 Managing Vendors</h2>
+    <h2 id="s5-5">5.5 Managing Homeowners</h2>
+    <p>Navigate to <strong>Homeowners</strong> in the sidebar to view and manage homeowner accounts.</p>
+
+    <h3>Account Status Types</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Badge</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Active</strong></td><td><span class="badge badge-new">Active</span></td><td>Account is approved and can log in</td></tr>
+            <tr><td><strong>Pending</strong></td><td><span class="badge badge-progress">Pending</span></td><td>Self-registered, awaiting admin approval</td></tr>
+            <tr><td><strong>Rejected</strong></td><td><span class="badge" style="background:#d32f2f;">Rejected</span></td><td>Account has been rejected or deactivated</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Approving a Homeowner</h3>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">Go to <strong>Homeowners</strong> in the admin sidebar.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">Find accounts with <strong>"Pending"</strong> status in the table.</div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">Click <strong>"Approve"</strong> to activate the account, or <strong>"Reject"</strong> to deny access.</div>
+        </div>
+    </div>
+
+    <h3>Homeowner Actions</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Current Status</th>
+                <th>Available Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Pending</strong></td><td>Approve (activate) or Reject (deny access)</td></tr>
+            <tr><td><strong>Active</strong></td><td>Deactivate (revoke access)</td></tr>
+            <tr><td><strong>Rejected</strong></td><td>Activate (grant access)</td></tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <strong>Note</strong>
+        Homeowner accounts created automatically during request submission are set to <strong>Active</strong> by default and do not require approval. Only self-registered accounts start with <strong>Pending</strong> status.
+    </div>
+
+    <h2 id="s5-6">5.6 Managing Vendors</h2>
     <p>Navigate to <strong>Vendors</strong> in the sidebar to manage vendor accounts.</p>
 
     <h3>Adding a New Vendor</h3>
@@ -896,7 +989,7 @@
         </tbody>
     </table>
 
-    <h2 id="s5-6">5.6 Managing Users</h2>
+    <h2 id="s5-7">5.7 Managing Users</h2>
     <p>Navigate to <strong>Users</strong> in the sidebar to manage admin user accounts.</p>
     <ul>
         <li><strong>Add User</strong> &mdash; Create new admin accounts</li>
@@ -905,7 +998,7 @@
         <li><strong>Banned Users</strong> &mdash; View banned accounts</li>
     </ul>
 
-    <h2 id="s5-7">5.7 Activity History</h2>
+    <h2 id="s5-8">5.8 Activity History</h2>
     <p>Navigate to <strong>History</strong> in the sidebar to view a complete audit log of all admin actions. Each entry records:</p>
     <ul>
         <li>Admin who performed the action</li>
@@ -1077,6 +1170,12 @@
 
     <h3>Q: How do I get my tracking code?</h3>
     <p>Your tracking code is displayed immediately after you submit a service request. It follows the format <strong>QPS-XXXXXXXX</strong>. Make sure to save it for future reference.</p>
+
+    <h3>Q: How do I create a homeowner account?</h3>
+    <p>You have two options: (1) <strong>Self-register</strong> on the Registration page &mdash; your account will need admin approval before you can log in. (2) <strong>Submit a service request</strong> &mdash; an account is automatically created and immediately active.</p>
+
+    <h3>Q: Why can't I log in after registering?</h3>
+    <p>Self-registered accounts require <strong>admin approval</strong>. You will see a "pending approval" message when you try to log in. Once the administrator approves your account, you'll be able to log in normally.</p>
 
     <h3>Q: Can I track my request without logging in?</h3>
     <p>Yes. Go to the "Track Request" page and enter your tracking code. No login is required to view your request status.</p>

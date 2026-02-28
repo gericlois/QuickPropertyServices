@@ -14,9 +14,9 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Quick Property Services</title>
-  <meta name="description" content="Fixing Techs, a family-owned Utah remodeling and repair company, provides expert craftsmanship, fair pricing, insured service, and guaranteed satisfaction.">
-  <meta name="keywords" content="home remodeling, home repair, residential renovation, maintenance services, insured contractors, Utah remodeling company, family owned contractor, transparent pricing, free consultation">
+  <title>Quick Property Services - A Better Way to Take Care of Your Home</title>
+  <meta name="description" content="Quick Property Services connects homeowners with vetted professionals. Get transparent estimates, escrow payment protection, and real-time project tracking.">
+  <meta name="keywords" content="home remodeling, home repair, property services, vetted contractors, transparent pricing, escrow payment, Utah contractor, service request">
 
   <!-- Favicons -->
   <link href="../assets/img/logo.jpg" rel="icon">
@@ -36,6 +36,9 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
 
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
+
+  <!-- Homepage Revamp Override -->
+  <link href="../assets/css/homepage-revamp.css" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -44,391 +47,385 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
 
     <main class="main">
 
-        <!-- Hero Section -->
+        <!-- ==================== HERO SECTION ==================== -->
         <section id="hero" class="hero section">
-
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
-                                <i class="bi bi-gear-fill me-2"></i>
-                                Fixing Techs
+                                <i class="bi bi-house-heart me-2"></i>
+                                Quick Property Services
                             </div>
 
                             <h1 class="mb-4">
-                                Your Home, Your Vision We Make It a Reality<br>
-                                <span class="accent-text"> Transforming Homes, Enhancing Lives</span>
+                                A better way to take care of your home
                             </h1>
 
-                            <p class="mb-4 mb-md-5">
-                                <b>Fixing Techs</b> is a family-owned business, based in Utah County,
-                                with our head office in Highland. We take our business seriously and our philosophy of
-                                “Excellence in Mainteance and repairs” is intrinsic to how we approach each and every
-                                project.
+                            <p class="hero-subtitle mb-5">
+                                Submit a request, get matched with vetted professionals, receive transparent estimates, and pay only when the job is done right.
                             </p>
 
                             <div class="hero-buttons">
-                                <a href="submit-request.php" class="btn btn-primary me-0 me-sm-2 mx-1">Submit a Request</a>
-                                <a href="track.php" class="btn btn-link mt-2 mt-sm-0">
+                                <a href="submit-request.php" class="btn btn-primary btn-lg">Submit a Request</a>
+                                <br>
+                                <a href="track.php" class="btn btn-link mt-3">
                                     <i class="bi bi-search me-1"></i>
                                     Track Your Request
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                            <img src="../assets/img/6.png" alt="Hero Image" class="img-fluid" width="500" height="auto">
-
-
-                            <div class="customers-badge">
-                                <div class="customer-avatars">
-                                    <img src="../assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
-                                    <img src="../assets/img/avatar-2.webp" alt="Customer 2" class="avatar">
-                                    <img src="../assets/img/avatar-3.webp" alt="Customer 3" class="avatar">
-                                    <img src="../assets/img/avatar-4.webp" alt="Customer 4" class="avatar">
-                                    <img src="../assets/img/avatar-5.webp" alt="Customer 5" class="avatar">
-                                    <span class="avatar more">12+</span>
-                                </div>
-                                <p class="mb-0 mt-2">1200+ Satisfied Customers all over the country.</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-people"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>Expert Remodeling Team</h4>
-                                <p class="mb-0"> Skilled professionals with years of experience.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-briefcase"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>Seamless Process</h4>
-                                <p class="mb-0"> From consultation to completion, we handle it all.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-emoji-smile"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>Customer-First Approach</h4>
-                                <p class="mb-0">We listen, plan, and execute to exceed expectations.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h4>Transparent Pricing </h4>
-                                <p class="mb-0">No hidden fees, just honest and fair estimates.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
         </section><!-- /Hero Section -->
 
-        <!-- Choose Us Cards Section -->
-        <section id="features-cards" class="features-cards section">
-
+        <!-- ==================== TRUST CARDS SECTION ==================== -->
+        <section id="trust" class="trust-section section">
             <div class="container">
-                <!-- Section Title -->
-                <div class="container section-title" data-aos="fade-up">
-                    <h2>Why Choose Us?</h2>
-                    <p>Expert Craftsmanship | Seamless Process | Customer-Centric Approach</p>
+                <div class="section-title text-center" data-aos="fade-up">
+                    <h2>Why Homeowners Trust Us</h2>
+                    <p>Built around transparency, quality, and your peace of mind</p>
                 </div>
-                <!-- End Section Title -->
-                <div class="row gy-4">
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="feature-box blue">
-                            <i class="bi bi-alarm"></i>
-                            <h4>Years of Experience</h4>
-                            <p>With a proven track record in home remodeling and renovations, our team brings years of
-                                expertise to every project, ensuring top-quality results that stand the test of time.
-                            </p>
-                        </div>
-                    </div><!-- End Choose Us Box-->
+                <div class="trust-cards-row" data-aos="fade-up" data-aos-delay="200">
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="feature-box blue">
-                            <i class="bi bi-patch-check"></i>
-                            <h4>Fully Insured</h4>
-                            <p>We prioritize your peace of mind. Our company is fully insured, protecting you and your
-                                home throughout every phase of the remodeling process.</p>
+                    <!-- Card 1: Transparent Pricing -->
+                    <div class="trust-card active">
+                        <div class="trust-card-inner">
+                            <div class="trust-card-preview">
+                                <i class="bi bi-currency-dollar"></i>
+                                <h3>Transparent pricing.<br>No surprises.</h3>
+                            </div>
+                            <div class="trust-card-expanded">
+                                <div class="trust-card-image" style="background-image: url('../assets/img/1.png');"></div>
+                                <div class="trust-card-content">
+                                    <h3>Transparent pricing. No surprises.</h3>
+                                    <p>We collect multiple estimates from qualified vendors and present you with the best options. You see exact pricing with no hidden fees -- just honest, competitive quotes you can trust.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- End Choose Us Box-->
+                    </div>
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="feature-box blue">
-                            <i class="bi bi-hammer"></i>
-                            <h4>Cost Control Experts</h4>
-                            <p>We believe in transparency and smart budgeting. Our team works closely with you to ensure
-                                your project stays within budget without compromising on quality.</p>
+                    <!-- Card 2: Home Repairs Made Easy -->
+                    <div class="trust-card">
+                        <div class="trust-card-inner">
+                            <div class="trust-card-preview">
+                                <i class="bi bi-tools"></i>
+                                <h3>Home repairs<br>made easy.</h3>
+                            </div>
+                            <div class="trust-card-expanded">
+                                <div class="trust-card-image" style="background-image: url('../assets/img/2.png');"></div>
+                                <div class="trust-card-content">
+                                    <h3>Home repairs made easy.</h3>
+                                    <p>Describe your project, upload photos, and we handle the rest. From matching you with the right vendor to tracking completion -- the entire process is seamless and stress-free.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- End Choose Us Box-->
+                    </div>
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="feature-box blue">
-                            <i class="bi bi-house-check"></i>
-                            <h4> 100% Satisfaction Guarantee</h4>
-                            <p>Your happiness is our priority. We don’t consider the job done until you’re fully
-                                satisfied with the results.</p>
+                    <!-- Card 3: Professionals You Can Count On -->
+                    <div class="trust-card">
+                        <div class="trust-card-inner">
+                            <div class="trust-card-preview">
+                                <i class="bi bi-shield-check"></i>
+                                <h3>Professionals you<br>can count on.</h3>
+                            </div>
+                            <div class="trust-card-expanded">
+                                <div class="trust-card-image" style="background-image: url('../assets/img/3.png');"></div>
+                                <div class="trust-card-content">
+                                    <h3>Professionals you can count on.</h3>
+                                    <p>Every vendor is vetted and qualified. Your payment is held in escrow until the work is completed to your satisfaction -- so you only pay for results.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- End Choose Us Box-->
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="feature-box blue">
-                            <i class="bi bi-telephone-outbound"></i>
-                            <h4>Free Consultation</h4>
-                            <p>Not sure where to start? We offer free consultations to discuss your vision, provide
-                                expert advice, and help you make the best decisions for your home.</p>
-                        </div>
-                    </div><!-- End Choose Us Box-->
+                    </div>
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="feature-box blue">
-                            <i class="bi bi-people"></i>
-                            <h4>Satisfied Customers</h4>
-                            <p>Our clients love our work! With numerous successful projects and glowing testimonials, we
-                                have built a reputation for excellence and reliability.</p>
-                        </div>
-                    </div><!-- End Choose Us Box-->
+                </div>
+            </div>
+        </section><!-- /Trust Cards Section -->
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="feature-box blue">
-                            <i class="bi bi-briefcase"></i>
-                            <h4>Project Management</h4>
-                            <p>From planning to execution, we handle every detail of your project efficiently, ensuring
-                                a smooth process and timely completion.</p>
-                        </div>
-                    </div><!-- End Choose Us Box-->
+        <!-- ==================== HOW IT WORKS SECTION ==================== -->
+        <section id="how-it-works" class="how-it-works section light-background">
+            <div class="container">
+                <div class="section-title text-center" data-aos="fade-up">
+                    <h2>How It Works</h2>
+                    <p>From request to completion in 5 simple steps</p>
+                </div>
 
-                    <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="feature-box blue">
-                            <i class="bi bi-currency-dollar"></i>
-                            <h4>Affordable Pricing</h4>
-                            <p>High-quality remodeling doesn’t have to break the bank. We offer competitive pricing and
-                                flexible options to fit your budget.</p>
-                        </div>
-                    </div><!-- End Choose Us Box-->
+                <div class="row align-items-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-5">
+                        <div class="steps-list">
 
+                            <div class="step-item active" data-step="1">
+                                <div class="step-number">1</div>
+                                <div class="step-text">
+                                    <h4>Describe Your Project</h4>
+                                    <p>Tell us what you need. Submit a request with photos and details -- no account required.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-item" data-step="2">
+                                <div class="step-number">2</div>
+                                <div class="step-text">
+                                    <h4>Get Matched with Vendors</h4>
+                                    <p>We assign qualified, vetted professionals to review your project and prepare estimates.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-item" data-step="3">
+                                <div class="step-number">3</div>
+                                <div class="step-text">
+                                    <h4>Review Estimates</h4>
+                                    <p>Receive competitive, transparent estimates. Compare pricing and scope before committing.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-item" data-step="4">
+                                <div class="step-number">4</div>
+                                <div class="step-text">
+                                    <h4>Accept &amp; Pay Securely</h4>
+                                    <p>Choose the best estimate. Your payment is held in escrow -- vendors get paid only when you approve.</p>
+                                </div>
+                            </div>
+
+                            <div class="step-item" data-step="5">
+                                <div class="step-number">5</div>
+                                <div class="step-text">
+                                    <h4>Track to Completion</h4>
+                                    <p>Monitor your project in real time with your unique tracking code. Stay updated every step of the way.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="step-images-wrapper">
+                            <img src="../assets/img/1.png" class="step-image active" data-step="1" alt="Describe Your Project">
+                            <img src="../assets/img/2.png" class="step-image" data-step="2" alt="Get Matched with Vendors">
+                            <img src="../assets/img/3.png" class="step-image" data-step="3" alt="Review Estimates">
+                            <img src="../assets/img/4.png" class="step-image" data-step="4" alt="Accept and Pay Securely">
+                            <img src="../assets/img/5.png" class="step-image" data-step="5" alt="Track to Completion">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /How It Works Section -->
+
+        <!-- ==================== PROTECTION / BENEFITS SECTION ==================== -->
+        <section id="protection" class="protection-section section">
+            <div class="container">
+                <div class="section-title text-center" data-aos="fade-up">
+                    <h2 class="text-white">Your Protection, Guaranteed</h2>
+                    <p class="text-white">Every project comes with built-in safeguards for your peace of mind</p>
+                </div>
+
+                <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="col-xl-4 col-md-6">
+                        <div class="protection-card">
+                            <div class="icon-wrap">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                            <h4>Escrow Payment Protection</h4>
+                            <p>Your payment is held securely until the job is done to your satisfaction. Vendors get paid only after you approve.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6">
+                        <div class="protection-card">
+                            <div class="icon-wrap">
+                                <i class="bi bi-headset"></i>
+                            </div>
+                            <h4>Real Human Support</h4>
+                            <p>Talk to a real person. Our dedicated team is here to help you at every step of your project.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6">
+                        <div class="protection-card">
+                            <div class="icon-wrap">
+                                <i class="bi bi-person-check"></i>
+                            </div>
+                            <h4>Vetted Professionals Only</h4>
+                            <p>Every vendor is verified, qualified, and reviewed. We only work with trusted professionals.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6">
+                        <div class="protection-card">
+                            <div class="icon-wrap">
+                                <i class="bi bi-receipt"></i>
+                            </div>
+                            <h4>Compare Multiple Estimates</h4>
+                            <p>Get competitive quotes from several vendors. Choose the best fit for your budget and timeline.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6">
+                        <div class="protection-card">
+                            <div class="icon-wrap">
+                                <i class="bi bi-door-open"></i>
+                            </div>
+                            <h4>No Account Required</h4>
+                            <p>Submit a request as a guest. Track your project anytime with just your unique tracking code.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6">
+                        <div class="protection-card">
+                            <div class="icon-wrap">
+                                <i class="bi bi-cash-stack"></i>
+                            </div>
+                            <h4>Transparent, Fair Pricing</h4>
+                            <p>No hidden fees or surprise charges. What you see in the estimate is exactly what you pay.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section><!-- /Protection Section -->
+
+        <!-- ==================== TESTIMONIALS SECTION ==================== -->
+        <section id="testimonials" class="testimonials section light-background">
+            <div class="container">
+                <div class="section-title text-center" data-aos="fade-up">
+                    <h2>What Homeowners Say</h2>
+                    <p>Real stories from real homeowners who trusted us with their projects</p>
+                </div>
+
+                <div class="init-swiper" data-aos="fade-up" data-aos-delay="200">
+                    <script type="application/json" class="swiper-config">{
+                        "loop": true,
+                        "speed": 600,
+                        "autoplay": { "delay": 5000 },
+                        "slidesPerView": 1,
+                        "spaceBetween": 24,
+                        "breakpoints": {
+                            "768": { "slidesPerView": 2 },
+                            "1024": { "slidesPerView": 3 }
+                        },
+                        "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true }
+                    }</script>
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p class="quote">"The whole process was incredibly smooth. I submitted my request on Monday and had a vetted plumber at my door by Wednesday. Transparent pricing, no surprises."</p>
+                                <div class="author">
+                                    <img src="../assets/img/avatar-1.webp" alt="Emily D.">
+                                    <div class="author-info">
+                                        <h5>Emily D.</h5>
+                                        <span>Salt Lake City, UT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p class="quote">"I loved being able to compare multiple estimates. The escrow payment gave me peace of mind knowing I wouldn't pay until the work was done right."</p>
+                                <div class="author">
+                                    <img src="../assets/img/avatar-2.webp" alt="Michael B.">
+                                    <div class="author-info">
+                                        <h5>Michael B.</h5>
+                                        <span>Draper, UT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p class="quote">"Our kitchen renovation turned out amazing. The tracking feature let me stay updated on every stage. Highly recommend Quick Property Services!"</p>
+                                <div class="author">
+                                    <img src="../assets/img/avatar-3.webp" alt="Jessica T.">
+                                    <div class="author-info">
+                                        <h5>Jessica T.</h5>
+                                        <span>Murray, UT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </div>
+                                <p class="quote">"No account needed to submit a request -- that was a nice surprise. Got my tracking code instantly and could follow the whole process online."</p>
+                                <div class="author">
+                                    <img src="../assets/img/avatar-4.webp" alt="Daniel A.">
+                                    <div class="author-info">
+                                        <h5>Daniel A.</h5>
+                                        <span>Taylorsville, UT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p class="quote">"Professional from start to finish. The vendor did an outstanding job on our roof repair, and the price was exactly what was quoted. No hidden fees."</p>
+                                <div class="author">
+                                    <img src="../assets/img/avatar-5.webp" alt="Karen W.">
+                                    <div class="author-info">
+                                        <h5>Karen W.</h5>
+                                        <span>Sandy, UT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
 
             </div>
+        </section><!-- /Testimonials Section -->
 
-        </section><!-- /Choose Us Cards Section -->
-
-        <!-- Features 2 Section -->
-        <section id="features-2" class="features-2 section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <!-- Section Title -->
-                <div class="container section-title" data-aos="fade-up">
-                    <h2>Experience Seamless Performance Across All Platforms</h2>
-                    <p>Our platform is designed for speed, security, and accessibility—ensuring a flawless user experience on any device, any browser, anytime.</p>
-                </div>
-                <!-- End Section Title -->
-                <div class="row align-items-center">
-
-                    <div class="col-lg-3">
-
-                        <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
-                            <div class="d-flex align-items-center justify-content-end gap-4">
-                                <div class="feature-content">
-                                    <h3>Works on Any Device</h3>
-                                    <p>Enjoy a seamless experience across all devices, from desktops to smartphones. Our
-                                        platform is built to adapt flawlessly to any screen size.</p>
-                                </div>
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-display"></i>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
-                            <div class="d-flex align-items-center justify-content-end gap-4">
-                                <div class="feature-content">
-                                    <h3>Modern & Intuitive Icons</h3>
-                                    <p>Our clean and minimal icons enhance usability, making navigation effortless and
-                                        visually appealing.</p>
-                                </div>
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-feather"></i>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
-                            <div class="d-flex align-items-center justify-content-end gap-4">
-                                <div class="feature-content">
-                                    <h3>Crystal Clear Display (Retina Ready)</h3>
-                                    <p>Experience sharp, high-resolution visuals designed to look stunning on all modern
-                                        screens.</p>
-                                </div>
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-eye"></i>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                    </div>
-
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="phone-mockup text-center">
-                            <img src="../assets/img/laptop.png" alt="Phone Mockup" class="img-fluid" width="100%"
-                                height="auto">
-                        </div>
-                    </div><!-- End Phone Mockup -->
-
-                    <div class="col-lg-3">
-
-                        <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
-                            <div class="d-flex align-items-center gap-4">
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-code-square"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3> Clean & Optimized Code (W3C Valid)</h3>
-                                    <p>We follow best coding practices, ensuring a high-quality, error-free website that
-                                        performs efficiently.</p>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="300">
-                            <div class="d-flex align-items-center gap-4">
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-phone"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3> Fully Responsive Design</h3>
-                                    <p>No matter the device, our layout adjusts dynamically to provide a smooth browsing
-                                        experience.</p>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                        <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
-                            <div class="d-flex align-items-center gap-4">
-                                <div class="feature-icon flex-shrink-0">
-                                    <i class="bi bi-browser-chrome"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Cross-Browser Compatibility</h3>
-                                    <p>Our website is optimized to work perfectly on all major web browsers, ensuring a
-                                        consistent experience everywhere.</p>
-                                </div>
-                            </div>
-                        </div><!-- End .feature-item -->
-
-                    </div>
-                </div>
-
-            </div>
-
-        </section><!-- /Features 2 Section -->
-
-        <!-- Call To Action Section -->
-        <section id="call-to-action" class="call-to-action section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row content justify-content-center align-items-center position-relative">
-                    <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="display-4 mb-4">Ready to Start Your Project?</h2>
-                        <p class="mb-4">Submit a service request and we'll connect you with qualified vendors. Get competitive estimates, choose the best one, and watch your vision come to life.</p>
-                        <a href="submit-request.php" class="btn btn-cta">Submit a Service Request</a>
-                    </div>
-
-                    <!-- Abstract Background Elements -->
-                    <div class="shape shape-1">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M47.1,-57.1C59.9,-45.6,68.5,-28.9,71.4,-10.9C74.2,7.1,71.3,26.3,61.5,41.1C51.7,55.9,35,66.2,16.9,69.2C-1.3,72.2,-21,67.8,-36.9,57.9C-52.8,48,-64.9,32.6,-69.1,15.1C-73.3,-2.4,-69.5,-22,-59.4,-37.1C-49.3,-52.2,-32.8,-62.9,-15.7,-64.9C1.5,-67,34.3,-68.5,47.1,-57.1Z"
-                                transform="translate(100 100)"></path>
-                        </svg>
-                    </div>
-
-                    <div class="shape shape-2">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M41.3,-49.1C54.4,-39.3,66.6,-27.2,71.1,-12.1C75.6,3,72.4,20.9,63.3,34.4C54.2,47.9,39.2,56.9,23.2,62.3C7.1,67.7,-10,69.4,-24.8,64.1C-39.7,58.8,-52.3,46.5,-60.1,31.5C-67.9,16.4,-70.9,-1.4,-66.3,-16.6C-61.8,-31.8,-49.7,-44.3,-36.3,-54C-22.9,-63.7,-8.2,-70.6,3.6,-75.1C15.4,-79.6,28.2,-58.9,41.3,-49.1Z"
-                                transform="translate(100 100)"></path>
-                        </svg>
-                    </div>
-
-                    <!-- Dot Pattern Groups -->
-                    <div class="dots dots-1">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <pattern id="dot-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                                <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
-                            </pattern>
-                            <rect width="100" height="100" fill="url(#dot-pattern)"></rect>
-                        </svg>
-                    </div>
-
-                    <div class="dots dots-2">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <pattern id="dot-pattern-2" x="0" y="0" width="20" height="20"
-                                patternUnits="userSpaceOnUse">
-                                <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
-                            </pattern>
-                            <rect width="100" height="100" fill="url(#dot-pattern-2)"></rect>
-                        </svg>
-                    </div>
-
-                    <div class="shape shape-3">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M43.3,-57.1C57.4,-46.5,71.1,-32.6,75.3,-16.2C79.5,0.2,74.2,19.1,65.1,35.3C56,51.5,43.1,65,27.4,71.7C11.7,78.4,-6.8,78.3,-23.9,72.4C-41,66.5,-56.7,54.8,-65.4,39.2C-74.1,23.6,-75.8,4,-71.7,-13.2C-67.6,-30.4,-57.7,-45.2,-44.3,-56.1C-30.9,-67,-15.5,-74,0.7,-74.9C16.8,-75.8,33.7,-70.7,43.3,-57.1Z"
-                                transform="translate(100 100)"></path>
-                        </svg>
-                    </div>
-                </div>
-
-            </div>
-
-        </section><!-- /Call To Action Section -->
-
-        <!-- Faq Section -->
-        <section class="faq-9 faq section light-background" id="faq">
-
+        <!-- ==================== FAQ SECTION ==================== -->
+        <section class="faq-9 faq section" id="faq">
             <div class="container">
                 <div class="row">
 
                     <div class="col-lg-5" data-aos="fade-up">
-                        <h2 class="faq-title"> Find Answers to Common Questions</h2>
-                        <p class="faq-description">Have questions? We've got you covered! Browse through our frequently asked questions to find detailed answers about our services, features, and how we can assist you. If you don’t see your question here, feel free to reach out to our support team for further assistance.</p>
-                        <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
-                            <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </div>
+                        <h2 class="faq-title">Have Questions?<br>We've Got Answers.</h2>
+                        <p class="faq-description">Browse through our frequently asked questions to find detailed answers about our services, process, and how we protect your investment.</p>
                     </div>
 
                     <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
@@ -445,7 +442,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
                             <div class="faq-item">
                                 <h3>Do I need to create an account?</h3>
                                 <div class="faq-content">
-                                    <p>No! You can submit a request as a guest. You'll receive a unique tracking code to monitor your project's progress at any time.</p>
+                                    <p>No! You can submit a request as a guest. You'll receive a unique tracking code to monitor your project's progress at any time. An account is automatically created if you want to manage multiple requests.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div>
@@ -453,7 +450,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
                             <div class="faq-item">
                                 <h3>How is pricing determined?</h3>
                                 <div class="faq-content">
-                                    <p>We collect estimates from multiple qualified vendors and present you with the best option. Pricing is transparent with no hidden fees.</p>
+                                    <p>We collect estimates from multiple qualified vendors and present you with the best option. Pricing is transparent with no hidden fees -- what you see is what you pay.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div>
@@ -461,7 +458,15 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
                             <div class="faq-item">
                                 <h3>Is my payment secure?</h3>
                                 <div class="faq-content">
-                                    <p>Yes! Your payment is held in escrow until the project is completed to your satisfaction. The vendor only gets paid after the work is done.</p>
+                                    <p>Absolutely. Your payment is held in escrow until the project is completed to your satisfaction. The vendor only gets paid after the work is done and you approve it.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3>What types of services do you offer?</h3>
+                                <div class="faq-content">
+                                    <p>We cover a wide range of home services including plumbing, electrical, painting, carpentry, roofing, HVAC, landscaping, cleaning, flooring, and general maintenance.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div>
@@ -469,7 +474,15 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
                             <div class="faq-item">
                                 <h3>How can I track my project?</h3>
                                 <div class="faq-content">
-                                    <p>Use the tracking code provided when you submitted your request. Visit our "Track Request" page to see real-time updates on your project status.</p>
+                                    <p>Use the tracking code provided when you submitted your request. Visit our "Track Request" page to see real-time updates on your project status, from vendor assignment to completion.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3>What if I'm not satisfied with the work?</h3>
+                                <div class="faq-content">
+                                    <p>Your payment is held in escrow until you approve the completed work. If there are issues, our support team will work with the vendor to resolve them before any payment is released.</p>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div>
@@ -487,7 +500,20 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
 
                 </div>
             </div>
-        </section><!-- /Faq Section -->
+        </section><!-- /FAQ Section -->
+
+        <!-- ==================== CTA SECTION ==================== -->
+        <section id="call-to-action" class="call-to-action section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row content justify-content-center align-items-center position-relative">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-4 mb-4">Ready to Start Your Project?</h2>
+                        <p class="mb-4">Submit a service request today and let us connect you with vetted professionals. Transparent estimates, escrow protection, and real-time tracking -- all included.</p>
+                        <a href="submit-request.php" class="btn btn-cta">Submit a Service Request</a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /CTA Section -->
 
     </main>
 
@@ -499,6 +525,9 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'vendor') {
 
     <!-- Vendor JS Files -->
     <?php include "includes/script.php" ?>
+
+    <!-- Homepage Revamp JS -->
+    <script src="../assets/js/homepage-revamp.js"></script>
 
 </body>
 

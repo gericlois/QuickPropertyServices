@@ -15,6 +15,7 @@
                     <li><a href="homeowner-dashboard.php" class="<?= $current_page == 'homeowner-dashboard.php' ? 'active' : '' ?>">Dashboard</a></li>
                     <li><a href="submit-request.php" class="<?= $current_page == 'submit-request.php' ? 'active' : '' ?>">Submit Request</a></li>
                     <li><a href="track.php" class="<?= $current_page == 'track.php' ? 'active' : '' ?>">Track Request</a></li>
+                    <li><a href="homeowner-profile.php" class="<?= $current_page == 'homeowner-profile.php' ? 'active' : '' ?>">Profile</a></li>
                 <?php else: ?>
                     <li><a href="index.php" class="<?= $current_page == 'index.php' ? 'active' : '' ?>">Home</a></li>
                     <li><a href="submit-request.php" class="<?= $current_page == 'submit-request.php' ? 'active' : '' ?>">Submit Request</a></li>
@@ -47,6 +48,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="homeowner-dashboard.php"><i class="bi bi-grid me-2"></i>Dashboard</a></li>
+                    <li><a class="dropdown-item" href="homeowner-profile.php"><i class="bi bi-person me-2"></i>Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="scripts/homeowner-logout.php"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                 </ul>

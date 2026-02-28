@@ -30,6 +30,14 @@
                     </a>
                 </li>
 
+                <!-- Homeowners -->
+                <li class="nxl-item <?= $currentPage == 'homeowners.php' ? 'active' : '' ?>">
+                    <a href="homeowners.php" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-users"></i></span>
+                        <span class="nxl-mtext">Homeowners</span>
+                    </a>
+                </li>
+
                 <!-- Vendors -->
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">

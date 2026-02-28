@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Homeowner Login | Quick Property Services</title>
+  <title>Register | Quick Property Services</title>
 
   <!-- Favicons -->
   <link href="../assets/img/logo.jpg" rel="icon">
@@ -32,7 +32,7 @@
 
     <main class="main">
 
-        <!-- Homeowner Login Section -->
+        <!-- Homeowner Registration Section -->
         <section id="contact" class="contact section light-background">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -40,57 +40,73 @@
                 <div class="row g-4 g-lg-5 justify-content-center">
                     <div class="col-lg-5 col-md-7 mx-auto">
                         <div class="contact-form text-center p-4 shadow rounded" data-aos="fade-up" data-aos-delay="300">
-                            <h3 class="mb-3"><i class="bi bi-house-door me-2"></i>Homeowner Login</h3>
-                            <p class="text-muted">Sign in to view and track all your service requests.</p>
+                            <h3 class="mb-3"><i class="bi bi-person-plus me-2"></i>Create Account</h3>
+                            <p class="text-muted">Register to submit and track your service requests.</p>
 
                             <?php if (isset($_GET['error'])): ?>
-                                <?php if ($_GET['error'] == 'InvalidPassword'): ?>
+                                <?php if ($_GET['error'] == 'MissingFields'): ?>
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <b>Incorrect password. Please try again.</b>
+                                        <b>Please fill in all required fields.</b>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
-                                <?php elseif ($_GET['error'] == 'UserNotFound'): ?>
+                                <?php elseif ($_GET['error'] == 'EmailExists'): ?>
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <b>No account found with this email. <a href="submit-request.php" class="alert-link">Submit a request</a> to create an account.</b>
+                                        <b>An account with this email already exists. <a href="homeowner-login.php" class="alert-link">Login instead</a>.</b>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
-                                <?php elseif ($_GET['error'] == 'AccountPending'): ?>
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <b>Your account is pending admin approval.</b> You'll be able to log in once approved.
+                                <?php elseif ($_GET['error'] == 'PasswordMismatch'): ?>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <b>Passwords do not match.</b>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
-                                <?php elseif ($_GET['error'] == 'AccountDeactivated'): ?>
+                                <?php elseif ($_GET['error'] == 'PasswordTooShort'): ?>
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <b>Your account has been deactivated. Please contact the administrator.</b>
+                                        <b>Password must be at least 6 characters.</b>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php elseif ($_GET['error'] == 'RegistrationFailed'): ?>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <b>Something went wrong. Please try again.</b>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                 <?php endif; ?>
                             <?php endif; ?>
 
-                            <?php if (isset($_GET['success']) && $_GET['success'] == 'LoggedOut'): ?>
+                            <?php if (isset($_GET['success']) && $_GET['success'] == 'Registered'): ?>
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <b>You have been successfully logged out.</b>
+                                    <b>Your account has been created!</b> Please wait for admin approval before logging in.
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php endif; ?>
 
-                            <form action="scripts/homeowner-login.php" method="post">
+                            <form action="scripts/homeowner-register.php" method="post">
                                 <div class="row gy-3">
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" name="name" placeholder="Full Name" required>
+                                    </div>
+
                                     <div class="col-12">
                                         <input type="email" class="form-control" name="email" placeholder="Email Address" required>
                                     </div>
 
                                     <div class="col-12">
-                                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                        <input type="text" class="form-control" name="phone" placeholder="Phone Number" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <input type="password" class="form-control" name="password" placeholder="Password (min. 6 characters)" required minlength="6">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required minlength="6">
                                     </div>
 
                                     <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                                        <button type="submit" class="btn btn-primary w-100">Register</button>
                                     </div>
 
                                     <div class="col-12 text-center">
-                                        <p class="mt-2 mb-1"><a href="homeowner-register.php" class="text-decoration-none"><i class="bi bi-person-plus me-1"></i>Create an account</a></p>
-                                        <p class="mb-1"><a href="track.php" class="text-decoration-none"><i class="bi bi-search me-1"></i>Track with code instead</a></p>
+                                        <p class="mt-2 mb-1"><a href="homeowner-login.php" class="text-decoration-none"><i class="bi bi-box-arrow-in-right me-1"></i>Already have an account? Login</a></p>
                                         <p class="mb-0"><a href="index.php" class="text-decoration-none"><i class="bi bi-arrow-left me-1"></i>Back to Home</a></p>
                                     </div>
                                 </div>
@@ -102,7 +118,7 @@
             </div>
 
         </section>
-        <!-- /Homeowner Login Section -->
+        <!-- /Homeowner Registration Section -->
 
     </main>
 
